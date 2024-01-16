@@ -6,27 +6,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $password = $_POST['login_password'];
 
-    $stmt = $conn->prepare("SELECT id, first_name, email, phone, ref_id,  hashed_password, wallet_bal FROM user_data WHERE phone = ?");
+    $stmt = $conn->prepare("SELECT id, full_name, email, phone, ref_id, hashed_password, wallet_bal FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
     $stmt->bind_result($id, $full_name, $email, $phone, $ref_id, $hashed_password, $wallet_bal);
 
-    if ($stmt->fetch() && password_verify($password, $hashed_password)) {
-        $_SESSION['id'] = $id;
-        $_SESSION['full_name'] = $full_name;
-        $_SESSION['email'] = $email;
-        $_SESSION['phone'] = $phone;
-        $_SESSION['ref_id'] = $ref_id;
-        $_SESSION['wallet_bal'] = $wallet_bal;
-        header("Location: index.php");
+    if ($stmt->fetch()) {
+        if (password_verify($password, $hashed_password)) {
+            $_SESSION['id'] = $id;
+            $_SESSION['full_name'] = $full_name;
+            $_SESSION['email'] = $email;
+            $_SESSION['phone'] = $phone;
+            $_SESSION['ref_id'] = $ref_id;
+            $_SESSION['wallet_bal'] = $wallet_bal;
+            header("Location: index.php");
+        } else {
+            echo "Invalid password.";
+        }
     } else {
-        echo "Invalid username or password.";
+        echo "Invalid phone number.";
     }
-    
+
     $stmt->close();
     $conn->close();
 }
 ?>
+
 
 
 
