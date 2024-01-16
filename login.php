@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $password = $_POST['login_password'];
 
-    $stmt = $conn->prepare("SELECT id, first_name, email, phone, ref_id,  hashed_password, wallet_bal FROM users WHERE phone = ?");
+    $stmt = $conn->prepare("SELECT id, first_name, email, phone, ref_id,  hashed_password, wallet_bal FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
     $stmt->bind_result($id, $full_name, $email, $phone, $ref_id, $hashed_password, $wallet_bal);
