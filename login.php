@@ -1,55 +1,33 @@
 <?php
-$servername = "localhost";
-$username = "u562619669_kolkataff";
-$password = "Bishnu@2024";
-$dbname = "u562619669_kolkataff_live";
+session_start();
+require_once('database.php');
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $phone = $_POST['phone'];
+    $password = $_POST['login_password'];
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $stmt = $conn->prepare("SELECT id, first_name, email, phone, ref_id,  hashed_password, wallet_bal FROM users WHERE phone = ?");
+    $stmt->bind_param("s", $phone);
+    $stmt->execute();
+    $stmt->bind_result($id, $full_name, $email, $phone, $ref_id, $hashed_password, $wallet_bal);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $phone = $_POST["phone"];
-    $loginPassword = $_POST["login_password"];
-
-    // Validate user credentials against the database
-    $sql = "SELECT * FROM user_data WHERE phone = ?";
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt) {
-        $stmt->bind_param("s", $phone);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            // User found, check the password
-            $row = $result->fetch_assoc();
-            $hashedPassword = $row["password"];
-
-            if (password_verify($loginPassword, $hashedPassword)) {
-                // Authentication successful
-                echo "login scuccessful";
-                header("location: index.php");
-                exit();
-            } else {
-                // Authentication failed
-                echo "Invalid username or password.";
-            }
-        } else {
-            // User not found
-            echo "Invalid username or password.";
-        }
-
-        $stmt->close();
+    if ($stmt->fetch() && password_verify($password, $hashed_password)) {
+        $_SESSION['id'] = $id;
+        $_SESSION['full_name'] = $full_name;
+        $_SESSION['email'] = $email;
+        $_SESSION['phone'] = $phone;
+        $_SESSION['ref_id'] = $ref_id;
+        $_SESSION['wallet_bal'] = $wallet_bal;
+        header("Location: index.php");
     } else {
-        echo "Error preparing SQL statement: " . $conn->error;
+        echo "Invalid username or password.";
     }
-}
 
-$conn->close();
+    $stmt->close();
+    $conn->close();
+}
 ?>
+
 
 
 <!DOCTYPE html>
