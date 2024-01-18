@@ -226,7 +226,7 @@ include "database.php";
                         </span>
                       </td>
                       <td>
-                        <a href="#0" class="buy-tips-btn">
+                        <a href="add-bet.php" class="buy-tips-btn">
                           Closed
                         </a>  
                       </td>
