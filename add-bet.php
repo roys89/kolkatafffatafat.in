@@ -211,39 +211,6 @@
                   </div>
                 </div>
               </div>
-            <div class="primary-step">
-                <form>
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-6">
-                            <div class="dropdown show">
-                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Select Your Sports
-                                </a>
-                              
-                                <div class="dropdown-menu-betipsta dropdown-menu sports-logo select-sports" aria-labelledby="dropdownMenuLink3">
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-football"></i></span> <span class="text">Single</span> </a>
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-tennis-ball"></i></span> <span class="text">Patti</span></a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6">
-                            <div class="dropdown show">
-                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Select Your Series
-                                </a>
-                                <div class="dropdown-menu-betipsta dropdown-menu" aria-labelledby="dropdownMenuLink4">
-                                  <a class="dropdown-item" href="#">AFC - Champions League</a>
-                                  <a class="dropdown-item" href="#">Belarus - Premier League</a>
-                                  <a class="dropdown-item" href="#">Chile - Primera Division Corners</a>
-                                  <a class="dropdown-item" href="#">AFC - Champions League</a>
-                                  <a class="dropdown-item" href="#">Belarus - Premier League</a>
-                                  <a class="dropdown-item" href="#">Chile - Primera Division Corners</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
             <div class="prediction-select-step">
                 <div class="single-game first-element">
                     <div class="row justify-content-between">
@@ -254,7 +221,6 @@
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="team">
-                                <span class="single-team">I. England Super League</span>
                                 <span class="single-team">II. Paraguya Kings XII</span>
                             </div>
                         </div>
@@ -308,7 +274,6 @@
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="team">
-                                <span class="single-team">I. England Super League</span>
                                 <span class="single-team">II. Paraguya Kings XII</span>
                             </div>
                         </div>
@@ -350,109 +315,6 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-game">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-1 col-lg-1 col-md-2">
-                            <div class="part-icon">
-                                <i class="flaticon-football"></i>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4">
-                            <div class="team">
-                                <span class="single-team">I. England Super League</span>
-                                <span class="single-team">II. Paraguya Kings XII</span>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4">
-                            <div class="time">
-                                <div>
-                                    <span class="clock">10:30 am
-                                        <span class="live-badge">LIVE</span></span>
-                                    <span class="date">10/20/2020</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-lg-5 col-md-12">
-                            <div class="prediction-sheet">
-                                <ul>
-                                    <li>
-                                        <a href="#0">
-                                            <span class="prediction-amount">
-                                                1.25
-                                            </span>
-                                            <span class="match-odds">England SL</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">
-                                            <span class="prediction-amount">
-                                                4.30
-                                            </span>
-                                            <span class="match-odds">Draw</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">
-                                            <span class="prediction-amount">
-                                                5.75
-                                            </span>
-                                            <span class="match-odds">Paraguya K</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="publish-step">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-8">
-                        <div class="part-header">
-                            <div class="left">
-                                <span class="team">I. England Super League</span>
-                                <span class="vs">Vs</span>
-                                <span class="team">II. Paraguya Kings XII</span>
-                            </div>
-                            <div class="right">
-                                <span class="match-odds">Draw</span>
-                                <span class="prediction-amount">/ 4.30</span>
-                            </div>
-                        </div>
-                        <div class="part-analysis">
-                            <label for="analysis">Write match analysis-</label>
-                            <textarea id="analysis" placeholder="It's optional..."></textarea>
-                        </div>
-                        <div class="part-footer">
-                            <div class="privacy">
-                                <form>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input betipsta-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Free</label>
-                                      </div>
-                                      <div class="form-check form-check-inline">
-                                        <input class="form-check-input betipsta-radio" checked type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Premium</label>
-                                      </div>
-                                      <div class="form-check form-check-inline">
-                                        <input class="form-check-input betipsta-radio" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                                        <label class="form-check-label" for="inlineRadio3">Unlisted</label>
-                                      </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 d-xl-flex d-lg-flex d-block align-items-center justify-content-center">
-                        <div class="part-right">
-                            <div class="stake">
-                                <button id="#stake-increase"><i class="fas fa-plus"></i></button>
-                                <span class="stake-number">0</span>
-                                <button id="#stake-decrease"><i class="fas fa-minus"></i></button>
-                            </div>
-                            <button class="publish-btn">Publish Your Tips</button>
                         </div>
                     </div>
                 </div>
