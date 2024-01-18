@@ -15,13 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("SELECT id, user_id, full_name, hashed_password FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
-    $stmt->bind_result($id, $user_id, $hashed_password);
+    $stmt->bind_result($id, $user_id, $full_name, $hashed_password);
 
     if ($stmt->fetch()) {
         if (password_verify($login_password, $hashed_password)) {
             $_SESSION['id'] = $id;
             $_SESSION['user_id'] = $user_id;
-            header("Location: user-profile.php");
+            $_SESSION['full_name'] = $full_name;
+            header("Location: index.php");
         } else {
             echo "Invalid password.";
         }
