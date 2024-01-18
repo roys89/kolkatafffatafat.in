@@ -222,6 +222,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="team">
                                 <span class="single-team">Single</span>
+                                <span class="single-team">Play Now</span>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
@@ -259,6 +260,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="team">
                                 <span class="single-team">Patti</span>
+                                <span class="single-team">Play Now</span>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
