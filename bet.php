@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-
 // Your bet placing page content goes here
 ?>
 <!DOCTYPE html>

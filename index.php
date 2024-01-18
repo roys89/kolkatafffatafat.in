@@ -206,7 +206,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          9:55
+                          10:00
                         </span>
                       </td>
                       <td>
@@ -247,7 +247,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          11:25
+                          11;30
                         </span>
                       </td>
                       <td>
@@ -288,7 +288,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          12:55
+                          13:00
                         </span>
                       </td>
                       <td>
@@ -329,7 +329,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          14:25
+                          14:30
                         </span>
                       </td>
                       <td>
@@ -370,7 +370,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          15:55
+                          16:00
                         </span>
                       </td>
                       <td>
@@ -411,7 +411,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          17:25
+                          17:30
                         </span>
                       </td>
                       <td>
@@ -452,7 +452,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          18:55
+                          19:00
                         </span>
                       </td>
                       <td>
@@ -493,7 +493,7 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          20:25
+                          20:30
                         </span>
                       </td>
                       <td>
