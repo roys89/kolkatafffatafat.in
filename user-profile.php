@@ -77,7 +77,7 @@ $conn->close();
                         <i class="far fa-envelope"></i>
                       </span>
                       <span class="text">
-                        yourmail@domain.com
+                        
                       </span>
                     </li>
                     <li>
@@ -85,7 +85,7 @@ $conn->close();
                         <i class="fas fa-phone"></i>
                       </span>
                       <span class="text">
-                        +880 1952 000000
+                       
                       </span>
                     </li>
                   </ul>
@@ -93,7 +93,7 @@ $conn->close();
               </div>
               <div class="col-xl-2 col-lg-2 d-xl-block d-lg-block d-none">
                 <div class="logo">
-                    <a href='index.html'>
+                    <a href='index.php'>
                         <img src="assets/img/logo1.png" alt="">
                     </a>
                 </div>
@@ -129,14 +129,14 @@ $conn->close();
           <div class="container">
             <div class="row d-xl-none d-lg-none d-flex">
               <div class="col-8">
-                <a class='mobile-logo' href='index.html'>
+                <a class='mobile-logo' href='https://kolkatafatafat.help/'>
                   <img src="assets/img/logo.png" alt="">
-                  Betiptar
+                  Kolkata Fatafat
                 </a>
               </div>
               <div class="col-4 d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-fw fa-2x"><path fill="currentColor" d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z" class=""></path></svg>
+                  <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bars" role="img" xmlns="http://https://w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-fw fa-2x"><path fill="currentColor" d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z" class=""></path></svg>
                 </button>
               </div>
             </div>
@@ -151,22 +151,16 @@ $conn->close();
                                     <div class="col-xl-5 col-lg-5">
                                       <ul class="navbar-nav">
                                         <li class="nav-item active">
-                                          <a class='nav-link' href='index.html'>Home </a>
+                                          <a class='nav-link' href='index.php'>Home </a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='about.html'>About us</a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Tipster
-                                          </a>
-                                          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                            <a class='dropdown-item' href='tipster.html'>Tipster</a>
-                                            <a class='dropdown-item' href='tipster-details.html'>Tipster Details</a>
-                                          </div>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/ff_lucky_number/'>FF Lucky Number</a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='subscription-plan.html'>Plans</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -176,32 +170,20 @@ $conn->close();
                                     <div class="col-xl-5 col-lg-5">
                                       <ul class="navbar-nav">
                                         <li class="nav-item">
-                                          <a class='nav-link' href='bookmakers.html'>Bookmakers</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_patti-list/'>Kolkata FF Patti List</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
+                                          </a>
                                         </li>
                                         <li class="nav-item dropdown">
                                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Blog
+                                          User
                                           </a>
                                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class='dropdown-item' href='blog.html'>Blog Post</a>
-                                            <a class='dropdown-item' href='blog-details.html'>Blog Details</a>
+                                            <a class='dropdown-item' href='login.php'>Login</a>
+                                            <a class='dropdown-item' href='registration.php'>Sign up</a>
                                           </div>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Pages
-                                          </a>
-                                          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                            <a class='dropdown-item' href='add-tips.html'>Add tips</a>
-                                            <a class='dropdown-item' href='error.html'>Error 404</a>
-                                            <a class='dropdown-item' href='faq.html'>faq</a>
-                                            <a class='dropdown-item' href='login.html'>login</a>
-                                            <a class='dropdown-item' href='registration.html'>registration</a>
-                                            <a class='dropdown-item' href='terms-and-condition.html'>term & condition</a>
-                                          </div>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class='nav-link' href='contact.html'>Contact</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -311,7 +293,7 @@ $conn->close();
                                         <img src="assets/img/icon/subscription.png" alt="">
                                     </span>
                                     <div class="part-stats">
-                                        <a href="#" class="subscribe">Bet</a>
+                                        <a href="index.php" class="subscribe">Bet</a>
                                     </div>
                                 </div>
                                 <div class="single-statics">
@@ -319,7 +301,7 @@ $conn->close();
                                         <img src="assets/img/icon/view.png" alt="">
                                     </span>
                                     <div class="part-stats">
-                                        <a href="#" class="subscribe">Check Game</a>
+                                        <a href="https://kolkatafatafat.help/" class="subscribe">Check Result</a>
                                     </div>
                                 </div>
                             </div>
@@ -337,62 +319,20 @@ $conn->close();
     </div>
     <!-- tipster details end -->
 
-    <!-- footer begin -->
-    <div class="footer">
-        <a class='site-logo' href='index.html'>
-            <img src="assets/img/logo.png" alt="">
+          <!-- footer begin -->
+          <div class="footer">
+        <a class='site-logo' href='index.php'>
+          <img src="assets/img/logo.png" alt="">
         </a>
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-xl-4 col-lg-5 col-md-10">
                     <div class="about-widget">
-                        <a class='site-title' href='index.html'>
-                            The Betipstar
+                        <a class='site-title' href='index.php'>
+                            The Kolkata Fatafat Live
                         </a>
-                        <p>Betipstar offers you all the best online prediction from every corner of the planet with thousands of online prediction markets.</p>
-                        <div class="social">
-                            <ul>
-                                <li>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-pinterest-p"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="support">
-                            <ul>
-                                <li>
-                                    <span class="icon">
-                                        <img src="assets/img/svg/email.svg" alt="">
-                                    </span>
-                                    <span class="text">
-                                        <span class="title">Mail Us</span>
-                                        <span class="descr">don't@reply.com</span>
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <img src="assets/img/svg/phone-call.svg" alt="">
-                                    </span>
-                                    <span class="text">
-                                        <span class="title">Get In Touch</span>
-                                        <span class="descr">+88 015 00 00 00</span>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
+                        <p>Text</p>
+                       
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
@@ -400,25 +340,7 @@ $conn->close();
                         <h3>Useful links</h3>
                         <ul>
                             <li>
-                                <a href="#">in-play</a>
-                            </li>
-                            <li>
-                                <a href="#">promotions</a>
-                            </li>
-                            <li>
-                                <a href="#">statics</a>
-                            </li>
-                            <li>
-                                <a href="#">results</a>
-                            </li>
-                            <li>
-                                <a href="#">predict now</a>
-                            </li>
-                            <li>
-                                <a href="#">game results</a>
-                            </li>
-                            <li>
-                                <a href="#">standings</a>
+                              <a href='https://kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
                             </li>
                         </ul>
                     </div>
@@ -428,25 +350,8 @@ $conn->close();
                         <h3>Connect Us</h3>
                         <ul>
                             <li>
-                                <a href="#">about us</a>
-                            </li>
-                            <li>
-                                <a href="#">blog</a>
-                            </li>
-                            <li>
-                                <a href="#">blog details</a>
-                            </li>
-                            <li>
-                                <a href="#">service</a>
-                            </li>
-                            <li>
-                                <a href="#">contact us</a>
-                            </li>
-                            <li>
-                                <a href="#">team overview</a>
-                            </li>
-                            <li>
-                                <a href="#">schedule</a>
+                              <a href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
+                              </a>
                             </li>
                         </ul>
                     </div>
@@ -456,26 +361,9 @@ $conn->close();
                         <h3>probable Tips</h3>
                         <ul>
                             <li>
-                                <a href="#">football</a>
+                              <a href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
                             </li>
                             <li>
-                                <a href="#">tennis</a>
-                            </li>
-                            <li>
-                                <a href="#">basketball</a>
-                            </li>
-                            <li>
-                                <a href="#">ice hockey</a>
-                            </li>
-                            <li>
-                                <a href="#">volleyball</a>
-                            </li>
-                            <li>
-                                <a href="#">badminton</a>
-                            </li>
-                            <li>
-                                <a href="#">baseball</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -515,27 +403,27 @@ $conn->close();
                 </div>
             </div>
         </div>
-    </div>
-    <!-- footer end -->
+      </div>
+      <!-- footer end -->
 
-    <!-- copyright footer begin -->
-    <div class="copyright-footer">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-xl-5 col-md-6 col-lg-6 d-lg-flex d-lg-flex d-block align-items-center">
-                <p class="copyright-text">
-                    <a href="#">Betipstar</a> © 2020. Privacy & Policy
-                </p>
-            </div>
-            <div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
-                <p class="copyright-text">
-                    Powerd By <a href="https://themeforest.net/user/autworks/portfolio">Autworks ( Envato Author )</a>
-                </p>
+      <!-- copyright footer begin -->
+      <div class="copyright-footer">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-5 col-md-6 col-lg-6 d-lg-flex d-lg-flex d-block align-items-center">
+                    <p class="copyright-text">
+                        <a href="#">kolkatafatafat</a> © 2024. Privacy & Policy
+                    </p>
+                </div>
+                <div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
+                    <p class="copyright-text">
+                        Powerd By <a href="https://kolkatafatafat.help">kolkatafatafat.help</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    <!-- copyright footer end -->
+      </div>
+      <!-- copyright footer end -->
 
     <!-- jquery -->
     <script src="assets/js/jquery.js"></script>

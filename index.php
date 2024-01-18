@@ -1,12 +1,8 @@
 <?php
 session_start();
-// Check if the user is already logged in
-if (isset($_SESSION['user_id'])) {
-  header("Location: user-profile.php");
-  exit();
-}
 include "database.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -104,14 +100,14 @@ include "database.php";
           <div class="container">
             <div class="row d-xl-none d-lg-none d-flex">
               <div class="col-8">
-                <a class='mobile-logo' href='index.php'>
+                <a class='mobile-logo' href='https://kolkatafatafat.help/'>
                   <img src="assets/img/logo.png" alt="">
                   Kolkata Fatafat
                 </a>
               </div>
               <div class="col-4 d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-fw fa-2x"><path fill="currentColor" d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z" class=""></path></svg>
+                  <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bars" role="img" xmlns="http://https://w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-fw fa-2x"><path fill="currentColor" d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z" class=""></path></svg>
                 </button>
               </div>
             </div>
@@ -129,13 +125,13 @@ include "database.php";
                                           <a class='nav-link' href='index.php'>Home </a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='www.kolkatafatafat.help/index.php/ff_lucky_number/'>FF Lucky Number</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/ff_lucky_number/'>FF Lucky Number</a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='www.kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='www.kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -145,10 +141,10 @@ include "database.php";
                                     <div class="col-xl-5 col-lg-5">
                                       <ul class="navbar-nav">
                                         <li class="nav-item">
-                                          <a class='nav-link' href='www.kolkatafatafat.help/index.php/kolkataff_patti-list/'>Kolkata FF Patti List</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_patti-list/'>Kolkata FF Patti List</a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='www.kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
                                           </a>
                                         </li>
                                         <li class="nav-item dropdown">
@@ -360,7 +356,7 @@ include "database.php";
                         <h3>Useful links</h3>
                         <ul>
                             <li>
-                              <a href='www.kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
+                              <a href='https://kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
                             </li>
                         </ul>
                     </div>
@@ -370,7 +366,7 @@ include "database.php";
                         <h3>Connect Us</h3>
                         <ul>
                             <li>
-                              <a href='www.kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
+                              <a href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
                               </a>
                             </li>
                         </ul>
@@ -381,7 +377,7 @@ include "database.php";
                         <h3>probable Tips</h3>
                         <ul>
                             <li>
-                              <a href='www.kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
+                              <a href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
                             </li>
                             <li>
                         </ul>
@@ -437,7 +433,7 @@ include "database.php";
                 </div>
                 <div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
                     <p class="copyright-text">
-                        Powerd By <a href="www.kolkatafatafat.help">kolkatafatafat.help</a>
+                        Powerd By <a href="https://kolkatafatafat.help">kolkatafatafat.help</a>
                     </p>
                 </div>
             </div>
