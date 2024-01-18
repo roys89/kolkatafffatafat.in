@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 
 // Retrieve user data from the database based on the session information
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT * FROM user_data WHERE id = ?";
+$sql = "SELECT * FROM user_data WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();

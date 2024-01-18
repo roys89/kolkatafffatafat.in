@@ -12,16 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $login_password = $_POST['login_password'];
 
-    $stmt = $conn->prepare("SELECT id, full_name, email, phone, ref_id, hashed_password, password, wallet_bal FROM user_data WHERE phone = ?");
+    $stmt = $conn->prepare("SELECT id, user_id, full_name, hashed_password FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
-    $stmt->bind_result($id, $user_id, $hashed_password, $password, $wallet_bal);
+    $stmt->bind_result($id, $user_id, $hashed_password);
 
     if ($stmt->fetch()) {
         if (password_verify($login_password, $hashed_password)) {
             $_SESSION['id'] = $id;
-            $_SESSION['full_name'] = $user_id;
-            header("Location: dashboard.php");
+            $_SESSION['user_id'] = $user_id;
+            header("Location: user-profile.php");
         } else {
             echo "Invalid password.";
         }
