@@ -221,7 +221,7 @@
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="team">
-                                <span class="single-team">II. Paraguya Kings XII</span>
+                                <span class="single-team">Single</span>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
@@ -229,7 +229,7 @@
                                 <div>
                                     <span class="clock">10:30 am
                                         <span class="live-badge">LIVE</span></span>
-                                    <span class="date">10/20/2020</span>
+                                    <span class="date">10/20/2024</span>
                                 </div>
                             </div>
                         </div>
@@ -239,25 +239,9 @@
                                     <li>
                                         <a href="#0">
                                             <span class="prediction-amount">
-                                                1.25
+                                               10-900
                                             </span>
-                                            <span class="match-odds">England SL</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">
-                                            <span class="prediction-amount">
-                                                4.30
-                                            </span>
-                                            <span class="match-odds">Draw</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">
-                                            <span class="prediction-amount">
-                                                5.75
-                                            </span>
-                                            <span class="match-odds">Paraguya K</span>
+                                            <span class="match-odds">Bet</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -274,7 +258,7 @@
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="team">
-                                <span class="single-team">II. Paraguya Kings XII</span>
+                                <span class="single-team">Patti</span>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
@@ -282,7 +266,7 @@
                                 <div>
                                     <span class="clock">10:30 am
                                         <span class="live-badge">LIVE</span></span>
-                                    <span class="date">10/20/2020</span>
+                                    <span class="date">10/20/2024</span>
                                 </div>
                             </div>
                         </div>
@@ -292,25 +276,9 @@
                                     <li>
                                         <a href="#0">
                                             <span class="prediction-amount">
-                                                1.25
+                                                100-10000
                                             </span>
-                                            <span class="match-odds">England SL</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">
-                                            <span class="prediction-amount">
-                                                4.30
-                                            </span>
-                                            <span class="match-odds">Draw</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#0">
-                                            <span class="prediction-amount">
-                                                5.75
-                                            </span>
-                                            <span class="match-odds">Paraguya K</span>
+                                            <span class="match-odds">Bet</span>
                                         </a>
                                     </li>
                                 </ul>
