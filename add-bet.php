@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Betipstar - Prediction Tips and Tipster HTML Template</title>
+    <title> Kolkata Fatafat Live Place Bet</title>
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- bootstrap -->
@@ -203,11 +203,11 @@
                 <div class="col-xl-8 col-lg-9 col-md-10">
                   <div class="section-title">
                     <h4 class="sub-title">
-                     Create a tips
+                     Create Bet
                     </h4>
                     <h2>Share your probable thinking</h2>
-                    <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
-                      and offers from leading bookmakers! See how it works!</p>
+                    <!-- <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
+                      and offers from leading bookmakers! See how it works!</p> -->
                   </div>
                 </div>
               </div>
@@ -216,45 +216,13 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-3 col-md-6">
                             <div class="dropdown show">
-                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Select Bookmakers
-                                </a>
-                              
-                                <div class="dropdown-menu-betipsta dropdown-menu bookmers-logo bookmakers" aria-labelledby="dropdownMenuLink">
-                                  <a class="dropdown-item" href="#"><span class="number">1.</span><span class="text">BetAndOdds</span> </a>
-                                  <a class="dropdown-item" href="#"><span class="number">2.</span><span class="text">GetBestOdd</span></a>
-                                  <a class="dropdown-item" href="#"><span class="number">3.</span><span class="text">24Betting</span></a>
-                                  <a class="dropdown-item" href="#"><span class="number">4.</span><span class="text">Betting777</span></a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6">
-                            <div class="dropdown show">
-                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Select B/M Category
-                                </a>
-                              
-                                <div class="dropdown-menu-betipsta dropdown-menu bkm-category" aria-labelledby="dropdownMenuLink2">
-                                  <a class="dropdown-item" href="#">BetAndOdds Live</a>
-                                  <a class="dropdown-item" href="#">BetAndOdds</a>
-                                  <a class="dropdown-item" href="#">BetAndOdds Combo</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6">
-                            <div class="dropdown show">
                                 <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Select Your Sports
                                 </a>
                               
                                 <div class="dropdown-menu-betipsta dropdown-menu sports-logo select-sports" aria-labelledby="dropdownMenuLink3">
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-football"></i></span> <span class="text">Football</span> </a>
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-tennis-ball"></i></span> <span class="text">Tennis</span></a>
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-basketball-ball-variant"></i></span> <span class="text">Basketball</span></a>
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-ice-hockey"></i></span> <span class="text">Ice Hocky</span></a>
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-volleyball"></i></span> <span class="text">Volleyball</span></a>
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-badminton"></i></span> <span class="text">Badminton</span></a>
-                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-baseball"></i></span> <span class="text">Baseball</span></a>
+                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-football"></i></span> <span class="text">Single</span> </a>
+                                  <a class="dropdown-item" href="#"><span class="icon"><i class="flaticon-tennis-ball"></i></span> <span class="text">Patti</span></a>
                                 </div>
                               </div>
                         </div>
@@ -263,7 +231,6 @@
                                 <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Select Your Series
                                 </a>
-                              
                                 <div class="dropdown-menu-betipsta dropdown-menu" aria-labelledby="dropdownMenuLink4">
                                   <a class="dropdown-item" href="#">AFC - Champions League</a>
                                   <a class="dropdown-item" href="#">Belarus - Premier League</a>
