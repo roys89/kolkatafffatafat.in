@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+// Check if the user is already logged in
+if (isset($_SESSION['user_id'])) {
+    header("Location: dashboard.php");
+    exit();
+}
 require_once('database.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -9,17 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("SELECT id, full_name, email, phone, ref_id, hashed_password, password, wallet_bal FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
-    $stmt->bind_result($id, $full_name, $email, $phone, $ref_id, $hashed_password, $password, $wallet_bal);
+    $stmt->bind_result($id, $user_id, $hashed_password, $password, $wallet_bal);
 
     if ($stmt->fetch()) {
         if (password_verify($login_password, $hashed_password)) {
             $_SESSION['id'] = $id;
-            $_SESSION['full_name'] = $full_name;
-            $_SESSION['email'] = $email;
-            $_SESSION['phone'] = $phone;
-            $_SESSION['ref_id'] = $ref_id;
-            $_SESSION['wallet_bal'] = $wallet_bal;
-            header("Location: index.php");
+            $_SESSION['full_name'] = $user_id;
+            header("Location: dashboard.php");
         } else {
             echo "Invalid password.";
         }
