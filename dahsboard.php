@@ -1,4 +1,32 @@
+<?php
+// Assuming you have a session with the user's information after login
+session_start();
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Replace these values with your actual database credentials
+include 'database.php';
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve user data from the database based on the session information
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM user_data WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$stmt->close();
+$conn->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +37,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kolkata ff Live - </title>
+    <title>Kolkata ff Live - <?php echo $user['full_name']; ?></title>
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- bootstrap -->
