@@ -1,7 +1,7 @@
 <?php
 session_start();
+include "database.php";
 ?>
-  
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -192,6 +192,12 @@ session_start();
               Kolkata FF (Baji 1)
             </h5>
             <div class="col-xl-12 col-lg-12">
+            <?php
+            $query = "SELECT * FROM game_table";
+            $result = $conn->query($query);
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                    ?>
               <div class="leaderboard-table">
                 <table class="table">
                   <thead>
@@ -206,17 +212,17 @@ session_start();
                     <tr>
                       <td>
                         <span class="single-data">
-                          10:00
+                        <?php echo $row["closing_time"]; ?>
                         </span>
                       </td>
                       <td>
                         <span class="profit">
-                          v1
+                        <?php echo $row["single_result"]; ?>
                         </span>
                       </td>
                       <td>
                         <span class="profit">
-                          v2
+                        <?php echo $row["patti_result"]; ?>
                         </span>
                       </td>
                       <td>
@@ -228,293 +234,12 @@ session_start();
                   </tbody>
                 </table>
               </div>
-            </div>
-            <h5>
-              Kolkata FF (Baji 2)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                          11;30
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v1
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v2
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#0" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <h5>
-              Kolkata FF (Baji 3)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                          13:00
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v1
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v2
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#0" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <h5>
-              Kolkata FF (Baji 4)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                          14:30
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v1
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v2
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#0" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <h5>
-              Kolkata FF (Baji 5)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                          16:00
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v1
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v2
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#0" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <h5>
-              Kolkata FF (Baji 6)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                          17:30
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v1
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v2
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#0" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <h5>
-              Kolkata FF (Baji 7)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                          19:00
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v1
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v2
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#0" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <h5>
-              Kolkata FF (Baji 8)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                          20:30
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v1
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                          v2
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#0" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <?php
+                }
+            } else {
+              echo 'No products found.';
+                   } 
+            ?>
             </div>
           </div>
         </div>
