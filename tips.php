@@ -1,14 +1,44 @@
+<?php
+// Assuming you have a session with the user's information after login
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Replace these values with your actual database credentials
+include 'database.php';
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve user data from the database based on the session information
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM user_data WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$stmt->close();
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   
-<!-- Mirrored from betipster.netlify.app/live/tipster-details by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jan 2024 16:58:10 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Betipstar - Prediction Tips and Tipster HTML Template</title>
+    <title>Kolkata ff Live</title>
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- bootstrap -->
@@ -226,38 +256,38 @@
                     <div class="row justify-content-between">
                         <div class="col-xl-4 col-lg-5 d-xl-flex d-lg-flex d-block align-items-center">
                             <div class="part-bio">
-                                <h2 class="name">Jonathan Jordan</h2>
-                                <span class="ranking-number">Tipster Ranking # 025</span>
+                                <h2 class="name"><?php echo $user['full_name']; ?></h2>
+                                <span class="ranking-number"><?php echo $user['user_id']; ?></span>
                                 <ul>
                                     <li>
                                         <span class="icon"><i class="fas fa-flag"></i></span>
-                                        <span class="title">Country : </span>
-                                        <span class="text">Bangladesh</span>
+                                        <span class="title">Email ID : </span>
+                                        <span class="text"><?php echo $user['email']; ?></span>
                                     </li>
                                     <li>
                                         <span class="icon"><i class="fas fa-suitcase"></i></span>
-                                        <span class="title">Exprience : </span>
-                                        <span class="text">2 Years of Exprience</span>
+                                        <span class="title">Phone No : </span>
+                                        <span class="text"><?php echo $user['phone']; ?></span>
                                     </li>
                                     <li>
                                         <span class="icon"><i class="fas fa-bookmark"></i></span>
-                                        <span class="title">Favourite Bookmakers :</span>
+                                        <span class="title">Bet Placed :</span>
                                         <span class="text">
-                                            <img src="assets/img/bookamkers/logo-1.png" alt="">
+                                        <span class="special"><?php echo $user['bet_placed']; ?></span> 
                                         </span>
                                     </li>
                                     <li>
                                         <span class="icon"><i class="fas fa-tag"></i></span>
-                                        <span class="title">Price Per Tips :</span>
+                                        <span class="title">Wallet Balance :</span>
                                         <span class="text">
-                                            <span class="special">$21.00</span> 
+                                        <span class="special"><?php echo $user['wallet_bal']; ?></span> 
                                         </span>
                                     </li>
                                 </ul>
 
                                 <div class="act-buttons">
-                                    <a href="#" class="follow">Follow <i class="far fa-bell"></i></a>
-                                    <a href="#" class="subscribe">Subscribe <i class="far fa-eye"></i></a>
+                                    <a href="#" class="follow">Add Balance<i class="far fa-bell"></i></a>
+                                   <a href="#" class="subscribe">Withdrow Balance<i class="far fa-eye"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -273,8 +303,7 @@
                                         <img src="assets/img/icon/impact.png" alt="">
                                     </span>
                                     <div class="part-stats">
-                                        <span class="number">3,102</span>
-                                        <span class="title">Followers</span>
+                                        <a href="#" class="subscribe">Result App</a>
                                     </div>
                                 </div>
                                 <div class="single-statics">
@@ -282,8 +311,7 @@
                                         <img src="assets/img/icon/subscription.png" alt="">
                                     </span>
                                     <div class="part-stats">
-                                        <span class="number">6004+</span>
-                                        <span class="title">Subscribers</span>
+                                        <a href="#" class="subscribe">Bet</a>
                                     </div>
                                 </div>
                                 <div class="single-statics">
@@ -291,8 +319,7 @@
                                         <img src="assets/img/icon/view.png" alt="">
                                     </span>
                                     <div class="part-stats">
-                                        <span class="number">35,055</span>
-                                        <span class="title">Visitors</span>
+                                        <a href="#" class="subscribe">Check Game</a>
                                     </div>
                                 </div>
                             </div>
@@ -302,573 +329,11 @@
             </div>
         </div>
         
-        <div class="statics-step">
-            <div class="container">
+        
 
-                <div class="title-cover style-2">
-                    <h3 class="part-title">Performance Indicator</h3>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">28%</span>
-                            <span class="title">All time roi</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">23.02%</span>
-                            <span class="title">Hit rate</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">41:00</span>
-                            <span class="title">Avr. Times for tips</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">3.86</span>
-                            <span class="title">Avr. Odds</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">82</span>
-                            <span class="title">Avr. tips per month</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">+34.35%</span>
-                            <span class="title">Total yeild</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">+1967</span>
-                            <span class="title">Total profit</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">+1967</span>
-                            <span class="title">Total tips</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-sm-6">
-                        <div class="single-statics">
-                            <span class="number">713.00 <small>GBP</small> </span>
-                            <span class="title">Avr. profit per month</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
-        <div class="chart-step">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-xl-8 col-lg-8 col-md-8">
-                        <div class="title-cover">
-                            <h3 class="part-title">Monthly profit chart</h3>
-                        </div>
-                        <div class="monthly-profit">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="title-cover">
-                            <h3 class="part-title">Avr. win rate</h3>
-                        </div>
-                        <div class="win-rate">
-                            <canvas id="doghnutChart" width="100%"></canvas>
-                        </div>
-                        <div class="result">
-                            <ul>
-                                <li>
-                                    <span class="title">Won</span>
-                                    <span class="number won-number">70%</span>
-                                </li>
-                                <li>
-                                    <span class="title">Lost</span>
-                                    <span class="number loss-number">30%</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="breakdown-step">
-            <div class="container">
-                <div class="title-cover">
-                    <h3 class="part-title">Monthly breakdown</h3>
-                </div>
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12">
-                        <div class="table-cover">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Kick off</th>
-                                        <th scope="col">Match</th>
-                                        <th scope="col">Tips</th>
-                                        <th scope="col">Odds</th>
-                                        <th scope="col">Stake</th>
-                                        <th scope="col">Profit</th>
-                                        <th scope="col">Result</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            Jan 20
-                                        </th>
-                                        <td>
-                                            <span class="single-data">
-                                                13:00
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data event">
-                                                <a href="#">
-                                                Eng v Ban Asia Cup T20
-                                                </a>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                Ban to win
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                1.72
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="single-data gray">
-                                                60.00 GBP
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="profit">
-                                                -60.00 GBP
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="result-icon win">
-                                                <i class="fas fa-check-circle"></i>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Jan 20
-                                        </th>
-                                        <td>
-                                            <span class="single-data">
-                                                13:00
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data event">
-                                                <a href="#">
-                                                    Ind v Nep Ned.Trophy T20
-                                                </a>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                Nep to win
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                1.72
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="single-data gray">
-                                                60.00 GBP
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="lost">
-                                                -60.00 GBP
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="result-icon loss">
-                                                <!-- <i class="fas fa-check-circle"></i> -->
-                                                <i class="fas fa-times-circle"></i>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Jan 20
-                                        </th>
-                                        <td>
-                                            <span class="single-data">
-                                                13:00
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data event">
-                                                <a href="#">
-                                                    Arg v Ger World Cup 2002
-                                                </a>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                Ger to win
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                1.72
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="single-data gray">
-                                                60.00 GBP
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="profit">
-                                                -60.00 GBP
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="result-icon win">
-                                                <i class="fas fa-check-circle"></i>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Jan 20
-                                        </th>
-                                        <td>
-                                            <span class="single-data">
-                                                13:00
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data event">
-                                                <a href="#">
-                                                    Bel v USA Uefa Ch.ship 20
-                                                </a>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                Bel to win
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                1.72
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="single-data gray">
-                                                60.00 GBP
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="lost">
-                                                -60.00 GBP
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="result-icon loss">
-                                                <i class="fas fa-times-circle"></i>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Jan 20
-                                        </th>
-                                        <td>
-                                            <span class="single-data">
-                                                13:00
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data event">
-                                                <a href="#">
-                                                    Eng v Ban Asia Cup T20
-                                                </a>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                Ban to win
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="single-data">
-                                                1.72
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="single-data gray">
-                                                60.00 GBP
-                                            </span>
-                                            </td>
-                                        <td>
-                                            <span class="profit">
-                                                -60.00 GBP
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="result-icon win">
-                                                <i class="fas fa-check-circle"></i>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- tips begin -->
-                <div class="tips tipster-details">
-                    
-                <div class="title-cover">
-                    <h3 class="part-title">Recent tips from this tipster</h3>
-                </div>
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12">
-                        <div class="tips-table">
-                            <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Event</th>
-                                <th scope="col">Bet Closes</th>
-                                <th scope="col">Picks</th>
-                                <th scope="col">Odds</th>
-                                <th scope="col">Stake</th>
-                                <th scope="col">Yeild</th>
-                                <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td>
-                                    <span class="single-data event">
-                                    <a href="#">
-                                        Eng v Ban Asia Cup T20
-                                    </a>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="suchi">
-                                    <span class="date">06 Oct 20</span>
-                                    <span class="time">02:30 PM</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    242
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    3.75
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +20.25
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +4.75%
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="#0" class="buy-tips-btn">
-                                    Buy Tips
-                                    </a>  
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                    <span class="single-data event">
-                                    <a href="#0">Ind v Nep Nedhas Trophy T20</a>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="suchi">
-                                    <span class="date">06 Oct 20</span>
-                                    <span class="time">02:30 PM</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    242
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    3.75
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +20.25
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +4.75%
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="#0" class="buy-tips-btn">
-                                    Buy Tips
-                                    </a>  
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                    <span class="single-data event">
-                                    <a href="#0">
-                                        Arg v Ger World Cup 2002
-                                    </a>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="suchi">
-                                    <span class="date">06 Oct 20</span>
-                                    <span class="time">02:30 PM</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    242
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    3.75
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +20.25
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +4.75%
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="#0" class="buy-tips-btn">
-                                    Buy Tips
-                                    </a>  
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                    <span class="single-data event">
-                                    <a href="#0">
-                                        Bel v USA Uefa Championship 20
-                                    </a>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="suchi">
-                                    <span class="date">06 Oct 20</span>
-                                    <span class="time">02:30 PM</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    242
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    3.75
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +20.25
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +4.75%
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="#0" class="buy-tips-btn">
-                                    Buy Tips
-                                    </a>  
-                                </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                    <span class="single-data event">
-                                    <a href="#0">
-                                        Eng v Ban Asia Cup T20
-                                    </a>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="suchi">
-                                    <span class="date">06 Oct 20</span>
-                                    <span class="time">02:30 PM</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    242
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data">
-                                    3.75
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +20.25
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="single-data green">
-                                    +4.75%
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="#0" class="buy-tips-btn">
-                                    Buy Tips
-                                    </a>  
-                                </td>
-                                </tr>
-                            </tbody>
-                            </table>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- tips end -->
-            </div>
-        </div>
+        
     </div>
     <!-- tipster details end -->
 
@@ -1089,5 +554,5 @@
     <script src="assets/js/main.js"></script>
     </body>
 
-<!-- Mirrored from betipster.netlify.app/live/tipster-details by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jan 2024 16:58:14 GMT -->
+
 </html>
