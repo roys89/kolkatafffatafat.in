@@ -201,7 +201,7 @@ include "database.php";
               <div class="leaderboard-table">
                 <table class="table">
                   <thead>
-                    <tr>
+                    <tr data-slot-id="<?= $row['slot_id'] ?>" data-season="<?= $row['season'] ?>" data-baji="<?= $row['baji'] ?>" data-status="<?= $row['status'] ?>" >
                       <th scope="col">Closing</th>
                       <th scope="col">Single</th>
                       <th scope="col">Patti</th>
@@ -439,7 +439,16 @@ include "database.php";
         </div>
       </div>
       <!-- copyright footer end -->
-
+      <script>
+        document.getElementById('game_table').addEventListener('click', function (e) {
+        if (e.target.classList.contains('buy-tips-btn')) {
+            var row = e.target.closest('tr');
+            var slotId = row.dataset.slotId;
+            var season = row.dataset.season;
+            window.location.href = 'add-bet.php?slot_id=' + slotId + '&season=' + season;
+        }
+        });
+      </script>
       <!-- jquery -->
       <script src="assets/js/jquery.js"></script>
       <!-- propper js -->
