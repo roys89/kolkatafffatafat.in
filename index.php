@@ -199,7 +199,7 @@ include "database.php";
               while ($row = $result->fetch_assoc()) {
                     ?>
               <div class="leaderboard-table">
-                <table class="table">
+                <table class="table" id="game_table">
                   <thead>
                     <tr data-slot-id="<?= $row['slot_id'] ?>" data-season="<?= $row['season'] ?>" data-baji="<?= $row['baji'] ?>" data-status="<?= $row['status'] ?>" >
                       <th scope="col">Closing</th>
