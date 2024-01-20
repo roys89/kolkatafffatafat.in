@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insert_stmt = $conn->prepare($insert_query);
 
             if ($insert_stmt) {
-                $insert_stmt->bind_param("ssssss", $fullName, $email, $phone, $refId, $hashedPassword, $loginPassword);
+                $insert_stmt->bind_param("sssssss",$user_id, $fullName, $email, $phone, $refId, $hashedPassword, $loginPassword);
 
                 if ($insert_stmt->execute()) {
                     echo '<script>alert("Registration successful!");</script>';
