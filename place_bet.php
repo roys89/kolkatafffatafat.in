@@ -1,3 +1,13 @@
+<?php
+session_start();
+include "database.php";
+// Retrieve data from URL parameters
+$slot_id = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
+$baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
+$status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
+$game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -7,7 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Betipstar - Prediction Tips and Tipster HTML Template</title>
+    <title>Kolkata Fatafat Live - Place Bet</title>
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- bootstrap -->
@@ -215,26 +225,17 @@
                 <div class="col-xl-8 col-lg-8 col-md-7">
                     <div class="contact-form">
                         <form>
+                            <button class="submit-btn">Add More</button>
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
-                                    <label for="fullName">Full Name</label>
-                                    <input type="text" id="fullName" placeholder="Ex: John Doe">
+                                    <label for="fullName">Amount</label>
+                                    <input type="number" id="amount" placeholder="Enter the bet amount">
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
-                                    <label for="phoneNo">Phone No</label>
-                                    <input type="text" id="phoneNo" placeholder="+96 xxx xxx xxx">
-                                </div>
-                                <div class="col-xl-6 col-lg-6">
-                                    <label for="emailAdd">Email</label>
-                                    <input type="text" id="emailAdd" placeholder="Ex: yourmail@do.main">
-                                </div>
-                                <div class="col-xl-6 col-lg-6">
-                                    <label for="mailSubject">Subject</label>
-                                    <input type="text" id="mailSubject" placeholder="Ex: Service">
+                                    <label for="phoneNo">Number</label>
+                                    <input type="number" id="bet_number" placeholder="Enter the number you want to bet on">
                                 </div>
                             </div>
-                            <label for="yourMessage">Subject</label>
-                            <textarea id="yourMessage" placeholder="Ex: Hello Admin!"></textarea>
                             <button class="submit-btn">Submit</button>
                         </form>
                     </div>

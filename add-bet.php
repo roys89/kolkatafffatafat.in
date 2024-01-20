@@ -38,12 +38,12 @@ $status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
 
     <?php
     // Create a URL with parameters to pass to the next page
-    $url1 = "place_bet.php?slot_id=" . urlencode($slot_id) . "&baji=" . urlencode($baji) . "&status=" . urlencode($status) . "&game_tyle=" . urlencode('single');
+    $url1 = "place_bet.php?slot_id=" . urlencode($slot_id) . "&baji=" . urlencode($baji) . "&status=" . urlencode($status) . "&game_type=" . urlencode('single');
     ?>
 
     <?php
     // Create a URL with parameters to pass to the next page
-    $url2 = "place_bet.php?slot_id=" . urlencode($slot_id) . "&baji=" . urlencode($baji) . "&status=" . urlencode($status) . "&game_tyle=" . urlencode('patti');
+    $url2 = "place_bet.php?slot_id=" . urlencode($slot_id) . "&baji=" . urlencode($baji) . "&status=" . urlencode($status) . "&game_type=" . urlencode('patti');
     ?>
 
     <!-- preloader begin -->
