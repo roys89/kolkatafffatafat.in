@@ -225,16 +225,19 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="contact-form">
                         <form>
-                            <button class="add-btn">Add More</button>
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6">
-                                    <label for="fullName">Amount</label>
-                                    <input type="number" id="amount" placeholder="Enter the bet amount">
-                                </div>
-                                <div class="col-xl-6 col-lg-6">
-                                    <label for="phoneNo">Number</label>
-                                    <input type="number" id="bet_number" placeholder="Enter the number you want to bet on">
-                                </div>
+                          
+                            <button class="add-btn" onclick="addDynamicSection()">Add More</button>
+                            <div id="container">
+                              <div class="row repeat">
+                                  <div class="col-xl-6 col-lg-6">
+                                      <label for="fullName">Amount</label>
+                                      <input type="number" id="amount" placeholder="Enter the bet amount">
+                                  </div>
+                                  <div class="col-xl-6 col-lg-6">
+                                      <label for="phoneNo">Number</label>
+                                      <input type="number" id="bet_number" placeholder="Enter the number you want to bet on">
+                                  </div>
+                              </div>
                             </div>
                             <button class="submit-btn">Submit</button>
                         </form>
@@ -350,6 +353,17 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
         </div>
       </div>
       <!-- copyright footer end -->
+
+      <script>
+        function addDynamicSection() {
+          // Clone the template section
+          var templateSection = document.querySelector('.repeat');
+          var newSection = templateSection.cloneNode(true);
+
+          // Append the cloned section to the container
+          document.getElementById('container').appendChild(newSection);
+        }
+    </script>
 
     <!-- jquery -->
     <script src="assets/js/jquery.js"></script>
