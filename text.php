@@ -36,13 +36,3 @@ $conn->close();
     <?php endwhile; ?>
 </table>
 
-<script>
-    document.getElementById('game_table').addEventListener('click', function (e) {
-        if (e.target.classList.contains('place-bet-btn')) {
-            var row = e.target.closest('tr');
-            var gameId = row.dataset.gameId;
-            var season = row.dataset.season;
-            window.location.href = 'place-bet.php?gameId=' + gameId + '&season=' + season;
-        }
-    });
-</script>

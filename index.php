@@ -201,7 +201,7 @@ include "database.php";
               <div class="leaderboard-table">
                 <table class="table" id="game_table">
                   <thead>
-                    <tr data-slot-id="<?= $row['slot_id'] ?>" data-season="<?= $row['season'] ?>" data-baji="<?= $row['baji'] ?>" data-status="<?= $row['status'] ?>" >
+                    <tr>
                       <th scope="col">Closing</th>
                       <th scope="col">Single</th>
                       <th scope="col">Patti</th>
@@ -226,7 +226,7 @@ include "database.php";
                         </span>
                       </td>
                       <td>
-                        <a class="buy-tips-btn">
+                        <a href="place-bet.php?slot_Id=<?= $row['slot_Id'] ?>&baji=<?= $row['baji']?>&status=<?= $row['status']?>" class="buy-tips-btn">
                           Closed
                         </a>  
                       </td>
