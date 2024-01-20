@@ -366,7 +366,7 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
     </script>
 
     <!-- jquery -->
-    <script src="assets/js/jquery.js"></script>
+    <!-- <script src="assets/js/jquery.js"></script> -->
     <!-- propper js -->
     <script src="assets/js/popper.min.js"></script>
     <!-- bootstrap -->
