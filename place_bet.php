@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-
+// Retrieve data from URL parameters
+$slot_id = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
+$baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
+$game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
 ?>
 
 <!DOCTYPE html>
@@ -173,7 +176,10 @@ session_start();
         </div>
       </div>
       <!-- header end -->
-
+      <h1>Received Data:</h1>
+    <p>Parameter 1: <?php echo $slot_id; ?></p>
+    <p>Parameter 2: <?php echo $baji; ?></p>
+    <p>Parameter 3: <?php echo $game_type; ?></p>
     <!-- breadcrumb begin -->
     <div class="breadcrumb-betipsta">
         <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
@@ -380,11 +386,10 @@ session_start();
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => response.json()) // assuming the PHP script returns JSON
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
-    }
-</script>
+      }
     </script>
 
     <!-- jquery -->
