@@ -182,6 +182,7 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
       <p>Status: <?php echo $status; ?></p>
       <p>Baji: <?php echo $baji; ?></p>
       <p>userId: <?php echo $userId; ?></p>
+      <p>gameType: <?php echo $gameType; ?></p>
     <!-- breadcrumb begin -->
     <div class="breadcrumb-betipsta">
         <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
