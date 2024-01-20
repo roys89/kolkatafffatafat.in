@@ -387,7 +387,17 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
             body: formData
         })
         .then(response => response.json()) // assuming the PHP script returns JSON
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+
+            // Check if the submission was successful before removing the form
+            if (data.success) {
+                // Remove the submitted form from the DOM
+                $(event.target).remove();
+                // Display an alert after successful submission
+                alert('Form submitted successfully!');
+            }
+        })
         .catch(error => console.error('Error:', error));
       }
     </script>
