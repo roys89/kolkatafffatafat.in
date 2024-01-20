@@ -2,9 +2,9 @@
 session_start();
 
 // Retrieve data from URL parameters
-$slot_id = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
-$baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
-$game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
+$slot_id1 = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
+$baji1 = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
+$game_type1 = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
 ?>
 
 <!DOCTYPE html>
@@ -369,14 +369,14 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
         var formData = new FormData(event.target);
 
         // Get three PHP variables from the page
-        var slot_id = '<?php echo $slot_id; ?>'; // Replace with your actual PHP variable
-        var baji = '<?php echo $baji; ?>'; // Replace with your actual PHP variable
-        var game_type = '<?php echo $game_type; ?>'; // Replace with your actual PHP variable
+        var slot_id = '<?php echo $slot_id1; ?>'; // Replace with your actual PHP variable
+        var baji = '<?php echo $baji1; ?>'; // Replace with your actual PHP variable
+        var game_type = '<?php echo $game_type1; ?>'; // Replace with your actual PHP variable
 
         // Append PHP variables to the form data
-        formData.append('slot_id', slot_id);
-        formData.append('baji', baji);
-        formData.append('game_type', game_type);
+        formData.append('slot_id1', slot_id);
+        formData.append('baji1', baji);
+        formData.append('game_type1', game_type);
 
         // Perform an asynchronous request to your PHP script (replace 'your_script.php' with the actual script)
         fetch('bet_submit.php', {
