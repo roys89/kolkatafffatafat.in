@@ -1,41 +1,40 @@
-<?php
-session_start();
-include "database.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
+  
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Kolkata Fatafat Live</title>
-      <!-- favicon -->
-      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-      <!-- bootstrap -->
-      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-      <!-- fontawesome icon  -->
-      <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-      <!-- animate.css -->
-      <link rel="stylesheet" href="assets/css/animate.css">
-      <!-- Owl Carousel -->
-      <link rel="stylesheet" href="assets/css/owl.carousel.css">
-      <!-- stylesheet -->
-      <link rel="stylesheet" href="assets/css/style.css">
-      <!-- responsive -->
-      <link rel="stylesheet" href="assets/css/responsive.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Betipstar - Prediction Tips and Tipster HTML Template</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- fontawesome icon  -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <!-- flaticon css  -->
+    <link rel="stylesheet" href="assets/fonts/flaticon.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset="0">
 
-      <!-- preloader begin -->
-      <div class="preloader">
-          <img src="assets/img/preloader.gif" alt="">
-      </div>
-      <!-- preloader end -->
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img src="assets/img/preloader.gif" alt="">
+    </div>
+    <!-- preloader end -->
 
-      <!-- header begin -->
-      <div class="header">
+     <!-- header begin -->
+     <div class="header">
         <div class="header-top">
           <div class="container">
             <div class="row justify-content-between">
@@ -169,173 +168,84 @@ include "database.php";
       </div>
       <!-- header end -->
 
-      <!-- leaderboard begin  -->
-      <div class="leaderboard">
+    <!-- breadcrumb begin -->
+    <div class="breadcrumb-betipsta">
+        <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-10">
-              <div class="section-title">
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-10">
-              <div class="section-title">
-                <h4 class="sub-title">
-                  KOLKATA FF LIVE
-                </h4>
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <h5>
-              Kolkata FF (Baji 1)
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-            <?php
-            $query = "SELECT * FROM game_table";
-            $result = $conn->query($query);
-            if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
-                    ?>
-              <div class="leaderboard-table">
-                <table class="table" id="game_table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Closing</th>
-                      <th scope="col">Single</th>
-                      <th scope="col">Patti</th>
-                      <th scope="col">Bet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                        <?php echo $row["closing_time"]; ?>
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                        <?php echo $row["single_result"]; ?>
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                        <?php echo $row["patti_result"]; ?>
-                        </span>
-                      </td>
-                      <td>
-                      <a href="add-bet.php?slot_id=<?= $row['slot_id'] ?>&baji=<?= $row['baji']?>&status=<?= $row['status']?>" class="buy-tips-btn">
-                          Closed
-                        </a>  
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <?php
-                }
-            } else {
-              echo 'No products found.';
-                   } 
-            ?>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- leaderboard end  -->
-
-
-
-      <!-- tips begin -->
-      <div class="tips">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-9">
-              <div class="section-title">
-                <h4 class="sub-title">
-                  Latest Prediction Tips
-                </h4>
-                <h2>Today's all active tips</h2>
-                <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
-                  and offers from leading bookmakers! See how it works!</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-12 col-lg-12">
-              <div class="tips-table">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data green">
-                          Single
-                        </span>
-                      </td>
-                      <td>
-                        <span class="single-data green">
-                          Patti
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="single-data green">
-                          10 ka 900
-                        </span>
-                      </td>
-                      <td>
-                        <span class="single-data green">
-                          100 ka 10000
-                        </span>
-                      </td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- tips end -->
-
-
-
-      <!-- newsletter begin -->
-      <div class="newsletter">
-        <div class="part-img">
-          <img src="assets/img/newsletter.png" alt="">
-        </div>
-        <div class="container">
-          <div class="row justify-content-between">
-            <div class="col-xl-7 col-lg-7 d-xl-flex d-lg-flex d-block align-items-center">
-              <div class="newsletter-area">
-                <div class="part-text">
-                  <h3 class="sub-title">Get Always Update News</h3>
-                  <h2>Kolkata Fatafat Newsletter</h2>
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-7">
+                    <div class="part-text">
+                        <h2 class="title">Contact us</h2>
+                        <ul>
+                            <li>
+                                <a href='index.html'>Home</a>
+                            </li>
+                            <li>
+                                Contact us
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="part-form">
-                  <form>
-                    <input type="email" placeholder="Enter your email address here...@">
-                    <button type="submit">
-                      <img src="assets/img/icon/rocket.png" alt="">
-                    </button>
-                  </form>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="part-img">
+                        <img src="#" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb end -->
+
+    <!-- contact begin -->
+    <div class="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-8 col-md-10">
+                  <div class="section-title">
+                    <h4 class="sub-title">
+                      Contact With Us
+                    </h4>
+                    <h2>Get in touch with Authority</h2>
+                    <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
+                      and offers from leading bookmakers! See how it works!</p>
+                  </div>
                 </div>
               </div>
+            <div class="row no-gutters">
+                <div class="col-xl-8 col-lg-8 col-md-7">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" placeholder="Ex: John Doe">
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <label for="phoneNo">Phone No</label>
+                                    <input type="text" id="phoneNo" placeholder="+96 xxx xxx xxx">
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <label for="emailAdd">Email</label>
+                                    <input type="text" id="emailAdd" placeholder="Ex: yourmail@do.main">
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <label for="mailSubject">Subject</label>
+                                    <input type="text" id="mailSubject" placeholder="Ex: Service">
+                                </div>
+                            </div>
+                            <label for="yourMessage">Subject</label>
+                            <textarea id="yourMessage" placeholder="Ex: Hello Admin!"></textarea>
+                            <button class="submit-btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- newsletter end -->
+    </div>
+    <!-- contact end -->
 
-
-
-      <!-- footer begin -->
-      <div class="footer">
+    <!-- footer begin -->
+    <div class="footer">
         <a class='site-logo' href='index.php'>
           <img src="assets/img/logo.png" alt="">
         </a>
@@ -440,18 +350,18 @@ include "database.php";
       </div>
       <!-- copyright footer end -->
 
-      <!-- jquery -->
-      <script src="assets/js/jquery.js"></script>
-      <!-- propper js -->
-      <script src="assets/js/popper.min.js"></script>
-      <!-- bootstrap -->
-      <script src="assets/js/bootstrap.min.js"></script>
-      <!-- owl carousel -->
-      <script src="assets/js/owl.carousel.min.js"></script>
-      <!-- clock js -->
-      <script src="assets/js/clock.min.js"></script>
-      <!-- main -->
-      <script src="assets/js/main.js"></script>
-  </body>
+    <!-- jquery -->
+    <script src="assets/js/jquery.js"></script>
+    <!-- propper js -->
+    <script src="assets/js/popper.min.js"></script>
+    <!-- bootstrap -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- owl carousel -->
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- clock js -->
+    <script src="assets/js/clock.min.js"></script>
+    <!-- main -->
+    <script src="assets/js/main.js"></script>
+    </body>
 
 </html>
