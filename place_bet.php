@@ -1,4 +1,12 @@
-
+<?php
+session_start();
+include "database.php";
+// Retrieve data from URL parameters
+$slot_id = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
+$baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
+$status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
+$game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -351,9 +359,9 @@
           // Clone the template section
           var templateSection = document.querySelector('.repeat');
           var newSection = templateSection.cloneNode(true);
-
           // Append the cloned section to the container
           document.getElementById('container').appendChild(newSection);
+          event.preventDefault();
         }
     </script>
 
