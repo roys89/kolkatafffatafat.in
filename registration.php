@@ -7,6 +7,8 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Generate a random user_id with 8 characters
+    $user_id = bin2hex(random_bytes(4)); // 4 bytes = 8 characters
     $fullName = $_POST["full_name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
@@ -21,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashedPassword = password_hash($loginPassword, PASSWORD_DEFAULT);
 
-    $check_query = "SELECT id FROM user_data WHERE phone = ? OR email = ?";
+    $check_query = "SELECT user_id FROM user_data WHERE phone = ? OR email = ?";
     $check_stmt = $conn->prepare($check_query);
 
     if ($check_stmt) {
@@ -32,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($check_stmt->num_rows > 0) {
             echo '<script>alert("Mobile number or email is already in use!");</script>';
         } else {
-            $insert_query = "INSERT INTO user_data (full_name, email, phone, ref_id, hashed_password, password) VALUES (?, ?, ?, ?, ?, ?)";
+            $insert_query = "INSERT INTO user_data (user_id, full_name, email, phone, ref_id, hashed_password, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $insert_stmt = $conn->prepare($insert_query);
 
             if ($insert_stmt) {
