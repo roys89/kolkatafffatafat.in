@@ -376,7 +376,7 @@ session_start();
         formData.append('game_type', gameType);
 
         // Perform an asynchronous request to your PHP script (replace 'your_script.php' with the actual script)
-        fetch('your_script.php', {
+        fetch('bet_submit.php', {
             method: 'POST',
             body: formData
         })
