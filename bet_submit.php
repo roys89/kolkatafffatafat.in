@@ -5,10 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bet_number = $_POST['bet_number'];
 
     // Extract URL parameters
-    $slot_id = $_POST['slot_id']; // replace 'url_param1' with the actual parameter name
-    $baji = $_POST['baji']; // replace 'url_param2' with the actual parameter name
-    $game_type = $_POST['game_type']; // replace 'url_param1' with the actual parameter name
-
+    $slot_id = $_POST['slot_id'];
+    $baji = $_POST['baji']; 
+    $game_type = $_POST['game_type']; 
 
     include "database.php";
 
