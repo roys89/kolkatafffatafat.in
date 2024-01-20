@@ -12,7 +12,7 @@ $slotId = isset($_SESSION['slot_id']) ? $_SESSION['slot_id'] : '';
 $status = isset($_SESSION['status']) ? $_SESSION['status'] : '';
 $baji = isset($_SESSION['baji']) ? $_SESSION['baji'] : '';
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
-$phone = isset($_SESSION['user_id']) ? $_SESSION['phone'] : '';
+$phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
 ?>
 
 <!DOCTYPE html>
