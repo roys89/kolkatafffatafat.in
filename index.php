@@ -27,7 +27,7 @@ include "database.php";
       <link rel="stylesheet" href="assets/css/responsive.css">
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset="0">
-
+    
       <!-- preloader begin -->
       <div class="preloader">
           <img src="assets/img/preloader.gif" alt="">
