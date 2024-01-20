@@ -227,7 +227,7 @@ include "database.php";
                         </span>
                       </td>
                       <td>
-                      <a href="" class="buy-tips-btn">
+                      <a href="<?php echo $url; ?>" class="buy-tips-btn">
                           Closed
                         </a>  
                       </td>
@@ -246,9 +246,7 @@ include "database.php";
         </div>
       </div>
       <!-- leaderboard end  -->
-
-
-
+      
       <!-- tips begin -->
       <div class="tips">
         <div class="container">
