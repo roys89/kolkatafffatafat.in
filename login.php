@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $login_password = $_POST['login_password'];
 
-    $stmt = $conn->prepare("SELECT id, user_id, full_name, hashed_password FROM user_data WHERE phone = ?");
+    $stmt = $conn->prepare("SELECT id, user_id, full_name, phone, hashed_password FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
     $stmt->bind_result($id, $user_id, $full_name, $hashed_password);
