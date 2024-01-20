@@ -197,6 +197,7 @@ include "database.php";
             $result = $conn->query($query);
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
+                $url = "add-bet.php?slot_id=" . urlencode($row['slot_id']) . "&baji=" . urlencode($row['baji']) . "&status=" . urlencode($row['status']);
                     ?>
               <div class="leaderboard-table">
                 <table class="table" id="game_table">
@@ -226,7 +227,7 @@ include "database.php";
                         </span>
                       </td>
                       <td>
-                      <a href="add-bet.php?slot_id=<?= $row['slot_id'] ?>&baji=<?= $row['baji']?>&status=<?= $row['status']?>" class="buy-tips-btn">
+                      <a href="<?php echo $url; ?>" class="buy-tips-btn">
                           Closed
                         </a>  
                       </td>
