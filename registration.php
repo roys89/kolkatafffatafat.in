@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $insert_stmt->bind_param("sssssss",$user_id, $fullName, $email, $phone, $refId, $hashedPassword, $loginPassword);
 
                 if ($insert_stmt->execute()) {
+                    $_SESSION['user_id'] = $user_id;
                     echo '<script>alert("Registration successful!");</script>';
                 } else {
                     echo "Error during registration: " . $insert_stmt->error;
