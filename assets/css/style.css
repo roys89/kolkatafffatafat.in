@@ -4596,6 +4596,7 @@ ul {
   margin-bottom: 40px;
   cursor: pointer;
   transition: all 0.3s ease-in;
+  left: 0;
 }
 
 .contact .contact-form form .add-btn:hover {
