@@ -268,8 +268,8 @@ $conn->close();
                                 </ul>
 
                                 <div class="act-buttons">
-                                    <a href="#" class="add">Add <i class="far fa-bell"></i></a>
-                                   <a href="#" class="withdraw">Withdrow<i class="far fa-eye"></i></a>
+                                    <a href="#" class="follow">Add <i class="far fa-bell"></i></a>
+                                   <a href="#" class="subscribe">Withdrow<i class="far fa-eye"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +285,7 @@ $conn->close();
                                         <img src="assets/img/icon/impact.png" alt="">
                                     </span>
                                     <div class="part-stats">
-                                        <a href="#" class="withdraw">Result App</a>
+                                        <a href="#" class="subscribe">Result App</a>
                                     </div>
                                 </div>
                                 <div class="single-statics">
@@ -293,7 +293,7 @@ $conn->close();
                                         <img src="assets/img/icon/subscription.png" alt="">
                                     </span>
                                     <div class="part-stats">
-                                        <a href="index.php" class="subscribe">Bet</a>
+                                        <a href="logout.php" class="subscribe">Logout</a>
                                     </div>
                                 </div>
                                 <div class="single-statics">

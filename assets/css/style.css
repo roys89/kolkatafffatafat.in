@@ -3604,13 +3604,13 @@ ul {
   font-size: 15px;
 }
 
-.tipster-list .single-tipster .part-img a.taken-btn.add-btn {
+.tipster-list .single-tipster .part-img a.taken-btn.follow-btn {
   top: 0px;
   right: calc(100% - 50px);
 }
 
-.tipster-list .single-tipster .part-img a.taken-btn.add-btn span.icon,
-.tipster-list .single-tipster .part-img a.taken-btn.add-btn span.text {
+.tipster-list .single-tipster .part-img a.taken-btn.follow-btn span.icon,
+.tipster-list .single-tipster .part-img a.taken-btn.follow-btn span.text {
   background: green;
   color: #fff;
 }
@@ -3964,11 +3964,11 @@ ul {
   margin-left: 4px;
 }
 
-.tipster-datails .part-bio .act-buttons a.add {
+.tipster-datails .part-bio .act-buttons a.follow {
   background: green;
 }
 
-.tipster-datails .part-bio .act-buttons a.withdraw {
+.tipster-datails .part-bio .act-buttons a.subscribe {
   background: #ff6a00;
 }
 
@@ -3996,11 +3996,6 @@ ul {
 .tipster-datails .part-statics .single-statics .part-stats span {
   display: block;
 }
-
-.tipster-datails .part-statics .single-statics .part-stats a.add {
-    background: green;
-  }
-
 
 .tipster-datails .part-statics .single-statics .part-stats span.title {
   font-size: 18px;
