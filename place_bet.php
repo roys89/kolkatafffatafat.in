@@ -376,14 +376,15 @@ session_start();
         formData.append('game_type', gameType);
 
         // Perform an asynchronous request to your PHP script (replace 'your_script.php' with the actual script)
-        fetch('bet_submit.php', {
+        fetch('your_script.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json()) // assuming the PHP script returns JSON
+        .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
-      }
+    }
+</script>
     </script>
 
     <!-- jquery -->
