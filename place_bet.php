@@ -4,7 +4,6 @@ include "database.php";
 // Retrieve data from URL parameters
 $slot_id = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
 $baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
-$status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
 $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
 ?>
 
@@ -223,23 +222,20 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
               </div>
             <div class="row no-gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12">
-                    <div class="contact-form">
-                        <form>
-                          
-                            <button class="add-btn" onclick="addDynamicSection()">Add More</button>
-                            <div id="container">
-                              <div class="row repeat">
-                                  <div class="col-xl-6 col-lg-6">
-                                      <label for="fullName">Amount</label>
-                                      <input type="number" id="amount" placeholder="Enter the bet amount">
-                                  </div>
-                                  <div class="col-xl-6 col-lg-6">
-                                      <label for="phoneNo">Number</label>
-                                      <input type="number" id="bet_number" placeholder="Enter the number you want to bet on">
-                                  </div>
-                              </div>
+                <button class="add-btn" onclick="addForm()">Add More</button>
+                    <div class="contact-form" id="formContainer">
+                        <form class="dynamic-form" onsubmit="submitForm(event)">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <label for="fullName">Amount</label>
+                                    <input type="number" id="amount" name="amount" placeholder="Enter the bet amount">
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <label for="phoneNo">Number</label>
+                                    <input type="number" id="bet_number" name="bet_number" placeholder="Enter the number you want to bet on">
+                                </div>
                             </div>
-                            <button class="submit-btn">Submit</button>
+                            <button class="submit-btn" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -353,16 +349,40 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
         </div>
       </div>
       <!-- copyright footer end -->
+    <script>
+      function addForm() {
+        // Clone the template form
+        var templateForm = document.querySelector('.dynamic-form');
+        var newForm = templateForm.cloneNode(true);
 
-      <script>
-        function addDynamicSection() {
-          // Clone the template section
-          var templateSection = document.querySelector('.repeat');
-          var newSection = templateSection.cloneNode(true);
-          // Append the cloned section to the container
-          document.getElementById('container').appendChild(newSection);
-          event.preventDefault();
+        // Clear the input values in the cloned form
+        newForm.reset();
+
+        // Append the cloned form to the container
+        document.getElementById('formContainer').appendChild(newForm);
+      }
+
+      function submitForm(event) {
+        event.preventDefault();
+
+        // Get the form data
+        var formData = new FormData(event.target);
+
+          // Get URL parameters
+          var urlParams = new URLSearchParams(window.location.search);
+        for (const [key, value] of urlParams) {
+            formData.append(key, value);
         }
+
+        // Perform an asynchronous request to your PHP script (replace 'your_script.php' with the actual script)
+        fetch('bet_submit.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) // assuming the PHP script returns JSON
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+      }
     </script>
 
     <!-- jquery -->
