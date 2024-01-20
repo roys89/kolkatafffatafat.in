@@ -1,5 +1,10 @@
 <?php
 session_start();
+// Check if the user is already logged in
+if (isset($_SESSION['user_id'])) {
+  header("Location: user-profile.php");
+  exit();
+}
 // Retrieve data from URL parameters
 $gameType = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
 // Retrieve data from SESSION parameters
