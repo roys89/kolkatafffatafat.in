@@ -222,7 +222,7 @@ $game_type = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Defaul
                 </div>
               </div>
             <div class="row no-gutters">
-                <div class="col-xl-8 col-lg-8 col-md-7">
+                <div class="col-xl-8 col-lg-8 col-md-12">
                     <div class="contact-form">
                         <form>
                             <button class="add-btn">Add More</button>

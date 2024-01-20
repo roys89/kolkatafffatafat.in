@@ -4493,13 +4493,13 @@ ul {
 
 .contact {
   padding: 120px 0 240px;
-
+  position: relative;
 }
 
 .contact .contact-form {
   box-shadow: 0px 0px 11px 7px rgba(56, 56, 56, 0.08);
   padding: 50px;
-
+  position: relative;
   z-index: 3;
   background: #fff;
 }
@@ -4584,7 +4584,7 @@ ul {
 }
 
 .contact .contact-form form .add-btn {
-  background: -webkit-linear-gradient(120deg, #eb3349, #f45c43);
+  background: -webkit-linear-gradient(120deg, #06ad30, #3eff38);
   color: #fff;
   text-transform: capitalize;
   border: none;
@@ -4592,7 +4592,7 @@ ul {
   width: 130px;
   font-size: 18px;
   font-family: "Fira Sans", sans-serif;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   cursor: pointer;
   transition: all 0.3s ease-in;
   right: 0;
