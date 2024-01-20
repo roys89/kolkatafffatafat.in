@@ -27,7 +27,7 @@ include "database.php";
       <link rel="stylesheet" href="assets/css/responsive.css">
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset="0">
-    
+
       <!-- preloader begin -->
       <div class="preloader">
           <img src="assets/img/preloader.gif" alt="">
@@ -227,7 +227,7 @@ include "database.php";
                         </span>
                       </td>
                       <td>
-                      <a href="<?php echo $url; ?>" class="buy-tips-btn">
+                      <a href="" class="buy-tips-btn">
                           Closed
                         </a>  
                       </td>

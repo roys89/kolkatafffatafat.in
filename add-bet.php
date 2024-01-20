@@ -2,9 +2,14 @@
 session_start();
 include "database.php";
 // Retrieve data from URL parameters
-$slot_id = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
+$slotId = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
 $baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
 $status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
+
+// Save parameters in session
+$_SESSION['slot_id'] = $slotId;
+$_SESSION['baji'] = $baji;
+$_SESSION['status'] = $status;
 ?>
 
 <!DOCTYPE html>
@@ -35,17 +40,11 @@ $status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
     <link rel="stylesheet" href="assets/css/responsive.css">
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset="0">
-
-    <?php
+  <?php
     // Create a URL with parameters to pass to the next page
-    $url1 = "place_bet.php?slot_id=" . urlencode($slot_id) . "&baji=" . urlencode($baji) . "&status=" . urlencode($status) . "&game_type=" . urlencode('single');
+    $url1 = "place_bet.php?game_type=" . urlencode('single');
+    $url2 = "place_bet.php?game_type=" . urlencode('patti');
     ?>
-
-    <?php
-    // Create a URL with parameters to pass to the next page
-    $url2 = "place_bet.php?slot_id=" . urlencode($slot_id) . "&baji=" . urlencode($baji) . "&status=" . urlencode($status) . "&game_type=" . urlencode('patti');
-    ?>
-
     <!-- preloader begin -->
     <div class="preloader">
         <img src="assets/img/preloader.gif" alt="">
@@ -186,7 +185,7 @@ $status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
         </div>
       </div>
       <!-- header end -->
-
+    
     <!-- breadcrumb begin -->
     <div class="breadcrumb-betipsta">
         <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
