@@ -4583,6 +4583,24 @@ ul {
   background: #444;
 }
 
+.contact .contact-form form .add-btn {
+  background: -webkit-linear-gradient(120deg, #eb3349, #f45c43);
+  color: #fff;
+  text-transform: capitalize;
+  border: none;
+  height: 50px;
+  width: 130px;
+  font-size: 18px;
+  font-family: "Fira Sans", sans-serif;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.contact .contact-form form .add-btn:hover {
+  background: #444;
+}
+
 .contact .contact-information {
   background: -webkit-linear-gradient(120deg, #eb3349, #f45c43);
   padding: 30px;
@@ -8182,6 +8200,9 @@ ul {
   }
 
   .contact .contact-form form .submit-btn {
+    height: 40px;
+  }
+  .contact .contact-form form .add-btn {
     height: 40px;
   }
 
