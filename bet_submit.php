@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $baji = $_POST['baji']; 
     $gameType = $_POST['game_type']; 
     $userId = $_POST['user_id']; 
+    $phone = $_POST['phone']; 
 
     include "database.php";
 
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId')";
+    $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
 
     if ($conn->query($sql) === TRUE) {
         echo json_encode(['success' => true, 'message' => 'Data inserted successfully']);

@@ -7,6 +7,7 @@ $slotId = isset($_SESSION['slot_id']) ? $_SESSION['slot_id'] : '';
 $status = isset($_SESSION['status']) ? $_SESSION['status'] : '';
 $baji = isset($_SESSION['baji']) ? $_SESSION['baji'] : '';
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
+$phone = isset($_SESSION['user_id']) ? $_SESSION['phone'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -183,6 +184,7 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
       <p>Baji: <?php echo $baji; ?></p>
       <p>userId: <?php echo $userId; ?></p>
       <p>gameType: <?php echo $gameType; ?></p>
+      <p>phone: <?php echo $phone; ?></p>
     <!-- breadcrumb begin -->
     <div class="breadcrumb-betipsta">
         <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
@@ -379,13 +381,14 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
         var baji = '<?php echo urldecode($baji); ?>';
         var gameType = '<?php echo urldecode($gameType); ?>';
         var userId = '<?php echo urldecode($userId); ?>';
+        var phone = '<?php echo urldecode($phone); ?>';
 
         // Append PHP variables to the form data
         formData.append('slot_id', slotId);
         formData.append('baji', baji);
         formData.append('game_type', gameType);
         formData.append('user_id', userId);
-        userId
+        formData.append('phone', phone);
 
         // Perform an asynchronous request to your PHP script (replace 'your_script.php' with the actual script)
         fetch('bet_submit.php', {

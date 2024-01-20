@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['id'] = $id;
             $_SESSION['user_id'] = $user_id;
             $_SESSION['full_name'] = $full_name;
+            $_SESSION['phone'] = $phone;
             header("Location: user-profile.php");
         } else {
             echo "Invalid password.";
