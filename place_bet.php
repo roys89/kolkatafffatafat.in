@@ -11,7 +11,7 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
 
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -178,7 +178,10 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
         </div>
       </div>
       <!-- header end -->
-
+      <p>Slot ID: <?php echo $slotId; ?></p>
+      <p>Status: <?php echo $status; ?></p>
+      <p>Baji: <?php echo $baji; ?></p>
+      <p>userId: <?php echo $userId; ?></p>
     <!-- breadcrumb begin -->
     <div class="breadcrumb-betipsta">
         <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
