@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 // Check if user_id is set in the session
 if (!isset($_SESSION['user_id'])) {
@@ -22,9 +22,9 @@ $query = "UPDATE user_data
           SET total_bet = (
               SELECT SUM(amount) 
               FROM bet_table 
-              WHERE user_id = user.id
+              WHERE user_id = '$user_id'
           )
-          WHERE user_id = '$user_id'"; // Replace 'user_id_here' with the actual user ID
+          WHERE user_id = '$user_id'";
 
 $result = $conn->query($query);
 
@@ -37,10 +37,10 @@ if ($result) {
         $totalBet = $fetchResult->fetch_assoc()['total_bet'];
         $response = array('status' => 'success', 'totalBet' => $totalBet);
     } else {
-        $response = array('status' => 'error', 'message' => 'Error fetching total bet');
+        $response = array('status' => 'error', 'message' => 'Error fetching total bet: ' . $conn->error);
     }
 } else {
-    $response = array('status' => 'error', 'message' => 'Error updating total bet');
+    $response = array('status' => 'error', 'message' => 'Error updating total bet: ' . $conn->error);
 }
 
 // Close the database connection
