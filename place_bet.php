@@ -362,8 +362,8 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
         </div>
       </div>
       <!-- copyright footer end -->
-    <script>
-      function addForm() {
+      <script>
+    function addForm() {
         // Clone the template form
         var templateForm = document.querySelector('.dynamic-form');
         var newForm = templateForm.cloneNode(true);
@@ -373,9 +373,9 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
 
         // Append the cloned form to the container
         document.getElementById('formContainer').appendChild(newForm);
-      }
+    }
 
-      function submitForm(event) {
+    function submitForm(event) {
         event.preventDefault();
 
         // Get the form data
@@ -410,11 +410,19 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                 $(event.target).remove();
                 // Display an alert after successful submission
                 alert('Form submitted successfully!');
+            } else {
+                // Display an alert with the error message if the submission failed
+                alert('Error: ' + data.message);
             }
         })
-        .catch(error => console.error('Error:', error));
-      }
-    </script>
+        .catch(error => {
+            // Display an alert with the error message if there is a fetch error
+            console.error('Error:', error);
+            alert('Fetch error: ' + error.message);
+        });
+    }
+</script>
+
 
     <!-- jquery -->
     <script src="assets/js/jquery.js"></script>
