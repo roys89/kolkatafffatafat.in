@@ -263,7 +263,7 @@ $conn->close();
                                         <span class="icon"><i class="fas fa-tag"></i></span>
                                         <span class="title">Wallet Balance :</span>
                                         <span class="text">
-                                        <span class="special"><?php echo $user['wallet_bal']; ?></span> 
+                                        <span class="special" id="amount"></span> 
                                         </span>
                                     </li>
                                 </ul>
@@ -450,8 +450,30 @@ $conn->close();
                 });
             }
 
+            function updateAmount() {
+                console.log('Sending AJAX request...');
+                
+                $.ajax({
+                    url: 'updateAmount.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(response){
+                        console.log('AJAX request successful:', response);
+
+                        if (response.status === 'success') {
+                            $('#amount').text(response.amount);
+                        } else {
+                            console.log('Error updating total bet:', response.message);
+                        }
+                    },
+                    error: function(error){
+                        console.log('AJAX request failed:', error);
+                    }
+                });
+            }
             // Call the function on page load
             updateTotalBet();
+            updateAmount();
         });
     </script>
 
