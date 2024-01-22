@@ -253,9 +253,9 @@ $conn->close();
                                     </li>
                                     <li>
                                         <span class="icon"><i class="fas fa-bookmark"></i></span>
-                                        <span class="title" id="totalBet">Bet Placed :</span>
+                                        <span class="title" >Bet Placed :</span>
                                         <span class="text">
-                                        <span class="special"><?php echo $user['bet_placed']; ?></span> 
+                                        <span class="special" id="totalBet"></span> 
                                         </span>
                                     </li>
                                     <li>
