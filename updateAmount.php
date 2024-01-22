@@ -19,12 +19,14 @@ if ($conn->connect_error) {
 
 // Query to calculate the sum of bet values for a user and update amount column
 $query = "UPDATE user_data
-            SET amount = amount - bet
-            WHERE user_id = '$user_id'";
+          SET amount = amount - bet
+          WHERE user_id = '$user_id'";
 
 $result = $conn->query($query);
 
 if ($result) {
+    echo "Amount updated successfully.\n";
+
     // Query to fetch the updated amount
     $fetchQuery = "SELECT amount FROM user_data WHERE user_id = '$user_id'";
     $fetchResult = $conn->query($fetchQuery);
@@ -32,11 +34,14 @@ if ($result) {
     if ($fetchResult) {
         $amount = $fetchResult->fetch_assoc()['amount'];
         $response = array('status' => 'success', 'amount' => $amount);
+        echo "Updated amount: $amount\n";
     } else {
         $response = array('status' => 'error', 'message' => 'Error fetching amount: ' . $conn->error);
+        echo "Error fetching amount: " . $conn->error . "\n";
     }
 } else {
     $response = array('status' => 'error', 'message' => 'Error updating amount: ' . $conn->error);
+    echo "Error updating amount: " . $conn->error . "\n";
 }
 
 // Close the database connection
