@@ -18,9 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
+    $sql2 = "UPDATE user_data SET wallet_bal = wallet_bal - $amount  WHERE user_id = '$userId'";
 
     if ($conn->query($sql) === TRUE) {
-        echo json_encode(['success' => true, 'message' => 'Data inserted successfully']);
+        if ($conn->query($sql2) === TRUE) {
+            echo json_encode(['success' => true, 'message' => 'Data inserted successfully']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Error: ' . $sql2 . '<br>' . $conn->error]);
+        }
     } else {
         echo json_encode(['success' => false, 'message' => 'Error: ' . $sql . '<br>' . $conn->error]);
     }

@@ -263,7 +263,7 @@ $conn->close();
                                         <span class="icon"><i class="fas fa-tag"></i></span>
                                         <span class="title">Wallet Balance :</span>
                                         <span class="text">
-                                        <span class="special" id="walletBal"></span> 
+                                        <span class="special"><?php echo $user['wallet_bal']; ?></span> 
                                         </span>
                                     </li>
                                 </ul>
@@ -310,7 +310,13 @@ $conn->close();
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+        
+        
+
+        
+
+        
     </div>
     <!-- tipster details end -->
 
@@ -422,22 +428,20 @@ $conn->close();
       <script>
         $(document).ready(function(){
             // Function to update total bet on page load
-           
-
-            function updateAmount() {
+            function updateTotalBet() {
                 console.log('Sending AJAX request...');
                 
                 $.ajax({
-                    url: 'updateAmount.php',
+                    url: 'updateTotalBet.php',
                     type: 'POST',
                     dataType: 'json',
                     success: function(response){
                         console.log('AJAX request successful:', response);
 
                         if (response.status === 'success') {
-                            $('#walletBal').text(response.walletBal);
+                            $('#totalBet').text(response.totalBet);
                         } else {
-                            console.log('Error updating amount:', response.message);
+                            console.log('Error updating total bet:', response.message);
                         }
                     },
                     error: function(error){
@@ -445,9 +449,9 @@ $conn->close();
                     }
                 });
             }
+
             // Call the function on page load
-            
-            updateAmount();
+            updateTotalBet();
         });
     </script>
 
