@@ -422,27 +422,7 @@ $conn->close();
       <script>
         $(document).ready(function(){
             // Function to update total bet on page load
-            function updateTotalBet() {
-                console.log('Sending AJAX request...');
-                
-                $.ajax({
-                    url: 'updateTotalBet.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    success: function(response){
-                        console.log('AJAX request successful:', response);
-
-                        if (response.status === 'success') {
-                            $('#totalBet').text(response.totalBet);
-                        } else {
-                            console.log('Error updating total bet:', response.message);
-                        }
-                    },
-                    error: function(error){
-                        console.log('AJAX request failed:', error);
-                    }
-                });
-            }
+           
 
             function updateAmount() {
                 console.log('Sending AJAX request...');
@@ -466,7 +446,7 @@ $conn->close();
                 });
             }
             // Call the function on page load
-            updateTotalBet();
+            
             updateAmount();
         });
     </script>
