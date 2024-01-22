@@ -428,19 +428,23 @@ $conn->close();
         $(document).ready(function(){
             // Function to update total bet on page load
             function updateTotalBet() {
+                console.log('Sending AJAX request...');
+                
                 $.ajax({
                     url: 'updateTotalBet.php',
                     type: 'POST',
                     dataType: 'json',
                     success: function(response){
+                        console.log('AJAX request successful:', response);
+
                         if (response.status === 'success') {
                             $('#totalBet').text(response.totalBet);
                         } else {
-                            console.log('Error updating total bet');
+                            console.log('Error updating total bet:', response.message);
                         }
                     },
                     error: function(error){
-                        console.log(error);
+                        console.log('AJAX request failed:', error);
                     }
                 });
             }
@@ -449,19 +453,17 @@ $conn->close();
             updateTotalBet();
         });
     </script>
+
     <!-- jquery -->
     <script src="assets/js/jquery.js"></script>
     <!-- propper js -->
     <script src="assets/js/popper.min.js"></script>
     <!-- bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>  
     <!-- owl carousel -->
     <script src="assets/js/owl.carousel.min.js"></script>
     <!-- clock js -->
     <script src="assets/js/clock.min.js"></script>
-    <!-- chart js -->
-    <script src="../../cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-    <script src="assets/js/chart-js-initialize.js"></script>
     <!-- main -->
     <script src="assets/js/main.js"></script>
     </body>
