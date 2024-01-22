@@ -1,4 +1,3 @@
-
 <?php
 // Handle the form submission and database storage
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo json_encode(['success' => false, 'message' => 'Error: ' . $conn->error]);
             }
         } else {
+            // Display an alert for insufficient funds
             echo '<script>alert("Insufficient funds");</script>';
             echo json_encode(['success' => false, 'message' => 'Insufficient funds']);
         }
