@@ -19,7 +19,11 @@ if ($conn->connect_error) {
 
 // Query to calculate the sum of bet values for a user and update wallet_bal column
 $query = "UPDATE user_data
-          SET wallet_bal = wallet_bal - total_bet
+          SET wallet_bal = wallet_bal - (
+              SELECT SUM(amount) 
+              FROM bet_table 
+              WHERE user_id = '$user_id'
+          )
           WHERE user_id = '$user_id'";
 
 $result = $conn->query($query);

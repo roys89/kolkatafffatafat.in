@@ -310,13 +310,7 @@ $conn->close();
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-
-        
-
-        
+        </div> 
     </div>
     <!-- tipster details end -->
 
