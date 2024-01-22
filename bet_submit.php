@@ -1,9 +1,14 @@
-
 <?php
 // Handle the form submission and database storage
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $amount = $_POST['amount'];
     $bet_number = $_POST['bet_number'];
+
+    // Additional condition to check if the amount does not exceed 5000
+    if ($amount > 5000) {
+        echo json_encode(['success' => false, 'message' => 'Amount cannot exceed 5000']);
+        exit; // Stop execution if the amount is too high
+    }
 
     // Extract URL parameters
     $slotId = $_POST['slot_id'];
