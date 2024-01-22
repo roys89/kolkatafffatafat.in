@@ -207,13 +207,13 @@ $conn->close();
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-7">
                     <div class="part-text">
-                        <h2 class="title">Tipster details</h2>
+                        <h2 class="title">User Profile</h2>
                         <ul>
                             <li>
-                                <a href='index.html'>Home</a>
+                                <a href='index.php'>Home</a>
                             </li>
                             <li>
-                                Tipster details
+                                User Profile
                             </li>
                         </ul>
                     </div>
@@ -228,7 +228,7 @@ $conn->close();
     </div>
     <!-- breadcrumb end -->
 
-    <!-- tipster details begin -->
+    <!-- User Profile begin -->
     <div class="tipster-datails">
         <div class="primary-step">
             <div class="container">
@@ -318,7 +318,7 @@ $conn->close();
 
         
     </div>
-    <!-- tipster details end -->
+    <!-- User Profile end -->
 
           <!-- footer begin -->
           <div class="footer">
