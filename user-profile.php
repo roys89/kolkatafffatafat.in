@@ -263,7 +263,7 @@ $conn->close();
                                         <span class="icon"><i class="fas fa-tag"></i></span>
                                         <span class="title">Wallet Balance :</span>
                                         <span class="text">
-                                        <span class="special" id="amount"></span> 
+                                        <span class="special" id="walletBal"></span> 
                                         </span>
                                     </li>
                                 </ul>
@@ -461,9 +461,9 @@ $conn->close();
                         console.log('AJAX request successful:', response);
 
                         if (response.status === 'success') {
-                            $('#amount').text(response.amount);
+                            $('#walletBal').text(response.walletBal);
                         } else {
-                            console.log('Error updating total bet:', response.message);
+                            console.log('Error updating amount:', response.message);
                         }
                     },
                     error: function(error){

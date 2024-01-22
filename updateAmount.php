@@ -32,15 +32,15 @@ if ($result) {
     $fetchResult = $conn->query($fetchQuery);
 
     if ($fetchResult) {
-        $wallet_bal = $fetchResult->fetch_assoc()['wallet_bal'];
-        $response = array('status' => 'success', 'wallet_bal' => $wallet_bal);
-        echo "Updated wallet_bal: $wallet_bal\n";
+        $walletBal = $fetchResult->fetch_assoc()['wallet_bal'];
+        $response = array('status' => 'success', 'wallet_bal' => $walletBal);
+        echo "Updated wallet_bal: $walletBal\n";
     } else {
-        $response = array('status' => 'error', 'message' => 'Error fetching wallet_bal: ' . $conn->error);
+        $response = array('status' => 'error', 'message' => 'Error fetching wallet bal: ' . $conn->error);
         echo "Error fetching wallet_bal: " . $conn->error . "\n";
     }
 } else {
-    $response = array('status' => 'error', 'message' => 'Error updating wallet_bal: ' . $conn->error);
+    $response = array('status' => 'error', 'message' => 'Error updating wallet bal: ' . $conn->error);
     echo "Error updating wallet_bal: " . $conn->error . "\n";
 }
 
