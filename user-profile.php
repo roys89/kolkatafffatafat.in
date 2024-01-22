@@ -55,6 +55,7 @@ $conn->close();
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset="0">
 
@@ -466,6 +467,7 @@ $conn->close();
     <script src="assets/js/clock.min.js"></script>
     <!-- main -->
     <script src="assets/js/main.js"></script>
+
     </body>
 
 
