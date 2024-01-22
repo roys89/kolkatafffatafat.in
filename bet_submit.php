@@ -3,6 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $amount = $_POST['amount'];
     $bet_number = $_POST['bet_number'];
+    $gameType = $_POST['game_type'];
 
     // Additional condition to check if the amount does not exceed 5000
     if ($amount > 5000) {
@@ -10,10 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit; // Stop execution if the amount is too high
     }
 
+    // Additional condition to check if the game type is single and bet number is between 1 and 10
+    if ($gameType === 'single' && ($bet_number < 1 || $bet_number > 10)) {
+        echo json_encode(['success' => false, 'message' => 'Invalid bet number (Should to 1 - 9)']);
+        exit; // Stop execution if the bet number is invalid for single game type
+    }
+
     // Extract URL parameters
     $slotId = $_POST['slot_id'];
     $baji = $_POST['baji']; 
-    $gameType = $_POST['game_type']; 
     $userId = $_POST['user_id']; 
     $phone = $_POST['phone']; 
 

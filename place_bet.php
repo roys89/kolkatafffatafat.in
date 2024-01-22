@@ -200,7 +200,7 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                         <h2 class="title">Contact us</h2>
                         <ul>
                             <li>
-                                <a href='index.html'>Home</a>
+                                <a href='index.php'>Home</a>
                             </li>
                             <li>
                                 Contact us
