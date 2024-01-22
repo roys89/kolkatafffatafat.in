@@ -253,7 +253,7 @@ $conn->close();
                                     </li>
                                     <li>
                                         <span class="icon"><i class="fas fa-bookmark"></i></span>
-                                        <span class="title">Bet Placed :</span>
+                                        <span class="title" id="totalBet">Bet Placed :</span>
                                         <span class="text">
                                         <span class="special"><?php echo $user['bet_placed']; ?></span> 
                                         </span>
@@ -424,7 +424,31 @@ $conn->close();
         </div>
       </div>
       <!-- copyright footer end -->
+      <script>
+        $(document).ready(function(){
+            // Function to update total bet on page load
+            function updateTotalBet() {
+                $.ajax({
+                    url: 'updateTotalBet.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(response){
+                        if (response.status === 'success') {
+                            $('#totalBet').text(response.totalBet);
+                        } else {
+                            console.log('Error updating total bet');
+                        }
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+            }
 
+            // Call the function on page load
+            updateTotalBet();
+        });
+    </script>
     <!-- jquery -->
     <script src="assets/js/jquery.js"></script>
     <!-- propper js -->
