@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "Invalid username or password.";
   }
 }
+
 // Close connection
 $conn->close();
 ?>
