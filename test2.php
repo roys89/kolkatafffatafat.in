@@ -6,8 +6,6 @@ include 'database.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-
                                
                                 // Fetch data from bet_no and bet_placed tables
                                 $query = "SELECT
