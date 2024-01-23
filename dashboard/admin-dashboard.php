@@ -233,22 +233,15 @@ if ($conn->connect_error) {
                             </div><!--end grid-->
                             <div class="overflow-x-auto">
                                 <?php
-                                // Check connection
-                                    if ($conn->connect_error) {
-                                        die("Connection failed: " . $conn->connect_error);
-                                    }
-
                                     // Query to fetch data for each unique user_id with game_type as "single"
                                     $query = "SELECT
-                                                user_id,
-                                                phone,
-                                                baji,
-                                                SUM(amount) AS total_amount,
-                                                GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers
-                                                COUNT(b.bet_number) AS total_bets
-                                            FROM bet_table
-                                            WHERE game_type = 'single'
-                                            GROUP BY user_id";
+                                        user_id,
+                                        phone,
+                                        SUM(amount) AS total_amount,
+                                        GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers
+                                    FROM bet_table
+                                    WHERE game_type = 'single'
+                                    GROUP BY user_id";
 
                                     $result = $conn->query($query); 
                                     if ($result->num_rows > 0) {
