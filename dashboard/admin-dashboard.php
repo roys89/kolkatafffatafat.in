@@ -212,7 +212,7 @@ if (!isset($_SESSION['admin_id'])) {
                         <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Bets</h6>
+                                    <h6 class="text-15">Bets</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                             <div class="overflow-x-auto">
