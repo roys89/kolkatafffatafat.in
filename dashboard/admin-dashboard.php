@@ -152,49 +152,7 @@ if ($conn->connect_error) {
                     </div>
     
                     <div class="flex gap-3 ms-auto">
-                        <div class="relative flex items-center dropdown h-header">
-                            <button type="button" class="inline-flex justify-center items-center p-0 text-topbar-item transition-all w-[37.5px] h-[37.5px] duration-200 ease-linear bg-topbar rounded-md dropdown-toggle btn hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:hover:bg-zink-600 group-data-[topbar=dark]:dark:text-zink-500 group-data-[topbar=dark]:dark:hover:text-zink-50" id="flagsDropdown" data-bs-toggle="dropdown">
-                                <img src="assets/images/us.svg" alt="" id="header-lang-img" class="h-5 rounded-sm">
-                            </button>
-                            <div class="absolute z-50 hidden p-4 ltr:text-left rtl:text-right bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[10rem] flex flex-col gap-4 dark:bg-zink-600" aria-labelledby="flagsDropdown">
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="en" title="English">
-                                    <img src="assets/images/us.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">English</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="sp" title="Spanish">
-                                    <img src="assets/images/es.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">Spanish</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="gr" title="German">
-                                    <img src="assets/images/de.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">German</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="fr" title="French">
-                                    <img src="assets/images/fr.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">French</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="jp" title="Japanese">
-                                    <img src="assets/images/jp.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">Japanese</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="ch" title="Chinese">
-                                    <img src="assets/images/china.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">Chinese</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="it" title="Italian">
-                                    <img src="assets/images/it.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">Italian</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="ru" title="Russian">
-                                    <img src="assets/images/ru.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">Russian</h6>
-                                </a>
-                                <a href="#!" class="flex items-center gap-3 group/items language" data-lang="ar" title="Arabic">
-                                    <img src="assets/images/ae.svg" alt="" class="object-cover h-4 rounded-full">
-                                    <h6 class="transition-all duration-200 ease-linear font-15medium text- text-slate-600 dark:text-zink-200 group-hover/items:text-custom-500">Arabic</h6>
-                                </a>
-                            </div>
-                        </div>
+                        
     
                         <div class="relative flex items-center h-header">
                             <button type="button" class="inline-flex relative justify-center items-center p-0 text-topbar-item transition-all w-[37.5px] h-[37.5px] duration-200 ease-linear bg-topbar rounded-md btn hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:hover:bg-zink-600 group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:hover:text-zink-50 group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:text-topbar-item-dark" id="light-dark-mode">
