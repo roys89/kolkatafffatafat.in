@@ -86,7 +86,7 @@ $conn->close();
                         <p class="text-slate-500 dark:text-zink-200">Sign in to continue to KOlkata FF Live.</p>
                     </div>
             
-                    <form action="#!" class="mt-10" id="signInForm" method="POST">
+                    <form action="#!" class="mt-10"  method="POST">
                         <div class="hidden px-4 py-3 mb-3 text-sm text-green-500 border border-green-200 rounded-md bg-green-50 dark:bg-green-400/20 dark:border-green-500/50" id="successAlert">
                             You have <b>successfully</b> signed in.
                         </div>
@@ -112,13 +112,6 @@ $conn->close();
                         </div>
             
 
-            
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <button type="button" class="flex items-center justify-center w-[37.5px] h-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 active:text-white active:bg-custom-600 active:border-custom-600"><i data-lucide="facebook" class="w-4 h-4"></i></button>
-                            <button type="button" class="flex items-center justify-center w-[37.5px] h-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-orange-500 border-orange-500 hover:text-white hover:bg-orange-600 hover:border-orange-600 focus:text-white focus:bg-orange-600 focus:border-orange-600 active:text-white active:bg-orange-600 active:border-orange-600"><i data-lucide="mail" class="w-4 h-4"></i></button>
-                            <button type="button" class="flex items-center justify-center w-[37.5px] h-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-sky-500 border-sky-500 hover:text-white hover:bg-sky-600 hover:border-sky-600 focus:text-white focus:bg-sky-600 focus:border-sky-600 active:text-white active:bg-sky-600 active:border-sky-600"><i data-lucide="twitter" class="w-4 h-4"></i></button>
-                            <button type="button" class="flex items-center justify-center w-[37.5px] h-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-slate-500 border-slate-500 hover:text-white hover:bg-slate-600 hover:border-slate-600 focus:text-white focus:bg-slate-600 focus:border-slate-600 active:text-white active:bg-slate-600 active:border-slate-600"><i data-lucide="github" class="w-4 h-4"></i></button>
-                        </div>
                     </form>
                 </div>
             </div>
