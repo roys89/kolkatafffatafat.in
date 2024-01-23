@@ -240,10 +240,10 @@ if ($conn->connect_error) {
                                     SUM(amount) AS total_amount,
                                     GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
                                     baji,
-                                    COUNT(bet_id) AS total_bets
-                                FROM bet_table
-                                WHERE game_type = 'single'
-                                GROUP BY user_id";
+                                    COUNT(bet_number) AS total_bets
+                                    FROM bet_table
+                                    WHERE game_type = 'single'
+                                    GROUP BY user_id";
 
                                 $result = $conn->query($query);
 
