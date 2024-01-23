@@ -232,8 +232,28 @@ if ($conn->connect_error) {
                                 </div><!--end col-->
                             </div><!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap">
+                                <?php
+                                // Check connection
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+
+                                    // Query to fetch data for each unique user_id with game_type as "single"
+                                    $query = "SELECT
+                                    user_id,
+                                    phone,
+                                    SUM(amount) AS total_amount,
+                                    GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers
+                                FROM bet_table
+                                WHERE game_type = 'single'
+                                GROUP BY user_id";
+
+                                    $result = $conn->query($query); 
+                                    if ($result->num_rows > 0) {
+                                        echo
+                               '<table class="w-full whitespace-nowrap">
                                     <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                        
                                         <tr>
                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Id
@@ -278,8 +298,15 @@ if ($conn->connect_error) {
                                                 </div>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
+                                    </tbody>';
+                               echo '</table>';
+                            } else {
+                                echo "No data found";
+                            }
+                            
+                            // Close the database connection
+                            $conn->close();
+                                ?>
                             </div>
                         </div>
                     </div><!--end col-->
