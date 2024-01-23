@@ -415,8 +415,7 @@ if (!isset($_SESSION['admin_id'])) {
 
                                 echo '</tbody></table>';
 
-                                // Close the database connection
-                                $conn->close();
+                              
                                 ?>
 
                         </div>
@@ -459,8 +458,6 @@ if (!isset($_SESSION['admin_id'])) {
                                     echo "No data found";
                                 }
 
-                                // Close the database connection
-                                $conn->close();
                                 ?>
                             </div>
                         </div>
