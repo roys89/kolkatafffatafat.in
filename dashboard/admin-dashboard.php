@@ -406,10 +406,10 @@ if (!isset($_SESSION['admin_id'])) {
                                                         $bet_number = $row['bet_number'];
                                                         $total_amount = $row['total_amount'];
                                                         $total_bets = $row['total_bets'];
-                                                        
+                                                        $url = 'example.php?variable=' . urlencode($bet_number);
                                                         echo '  <tbody>
                                                                     <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $bet_number . '</a></td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="single-overview.php?bet_number=$bet_number" target="_blank">' . $bet_number . '</a></td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_bets . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
