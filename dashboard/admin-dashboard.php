@@ -361,29 +361,77 @@ if (!isset($_SESSION['admin_id'])) {
                                                         } else {
                                                             echo "No data found";
                                                         }
-
+                                                        
+                                                        // Close the database connection
+                                                        $conn->close();
                                                         ?>
                             </div>
                         </div>
                     </div><!--end col-->
-                    <div class="col-span-6 card 2xl:col-span-6">
+                    <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
                         <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-6">
-                                <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Check Bet On Single</h6> 
-                                </div><!--end col-->
-                            </div><!--end grid-->
-                            <div class="overflow-x-auto">
+                            <div class="flex items-center mb-3">
+                                <h6 class="grow text-15">Single List</h6>
+                            </div>
                             <?php
-                              
+                               
+                                // Fetch data from bet_no and bet_placed tables
+                                $query = "SELECT
+                                sl.bet_number,
+                                SUM(bt.amount) AS total_amount,
+                                COUNT(bt.user_id) AS total_bets
+                                FROM
+                                    single_list sl
+                                LEFT JOIN
+                                    bet_table bt ON sl.bet_number = bt.bet_number
+                                GROUP BY
+                                    sl.bet_number;";
 
+                                $result = $conn->query($query);
+
+                                // Display data in a table
+                                echo '<table border="1">
+                                    <thead>
+                                        <tr>
+                                            <th>Bet Number</th>
+                                            <th>Total Amount</th>
+                                            <th>Total Bets</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+
+                                // Process query results and display in the table
+                                while ($row = $result->fetch_assoc()) {
+                                    $bet_number = $row['bet_number'];
+                                    $total_amount = $row['total_amount'];
+                                    $total_bets = $row['total_bets'];
+
+                                    echo '<tr>
+                                            <td>' . $bet_number . '</td>
+                                            <td>' . $total_amount . '</td>
+                                            <td>' . $total_bets . '</td>
+                                        </tr>';
+                                }
+
+                                echo '</tbody></table>';
+
+                                // Close the database connection
+                                $conn->close();
+                                ?>
+
+                        </div>
+                    </div><!--end col-->
+                    <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
+                        <div class="card-body">
+                            <div class="flex items-center mb-3">
+                                <h6 class="grow text-15">Patti List/h6>
+                                <?php
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
                                             user_id,
-                                            phone, baji, game_type,
+                                            phone,
                                             SUM(amount) AS total_amount,
-                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
-                                            COUNT(bet_number) AS total_bets
+                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers
                                         FROM bet_table
                                         WHERE game_type = 'single'
                                         GROUP BY user_id";
@@ -391,276 +439,30 @@ if (!isset($_SESSION['admin_id'])) {
                                 $result = $conn->query($query);  
 
                                 if ($result->num_rows > 0) {
-                                    echo 
-                                                '<table class="w-full whitespace-nowrap">
-                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                                        <tr>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Amount</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Bet No.</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Baji</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bets</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Game Type</th>
-                                                        </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        
-                                                        echo '  <tbody>
-                                                                    <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $row['phone'] . '</a></td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_amount'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_numbers'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['baji'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bets'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                                            <div class="relative dropdown">
-                                                                                <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
-                                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="apps-ecommerce-order-overview.html"><i data-lucide="eye" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Overview</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>';
-                                                            }
-                                                        
-                                                            echo '</table>';
-                                                        } else {
-                                                            echo "No data found";
-                                                        }
-                                                        
-                                                        // Close the database connection
-                                                        
-                                                        ?>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                    
-                    <div class="col-span-6 card 2xl:col-span-6">
-                        <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-6">
-                                <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Check Bet On Single</h6> 
-                                </div><!--end col-->
-                            </div><!--end grid-->
-                            <div class="overflow-x-auto">
-                            <?php
-                              
+                                    echo '<table border="1">
+                                            <tr>
+                                                <th>Phone Number</th>
+                                                <th>Total Amount</th>
+                                                <th>Bet Numbers</th>
+                                            </tr>';
 
-                                // Query to fetch data for each unique user_id with game_type as "single"
-                                $query = "SELECT
-                                            user_id,
-                                            phone, baji, game_type,
-                                            SUM(amount) AS total_amount,
-                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
-                                            COUNT(bet_number) AS total_bets
-                                        FROM bet_table
-                                        WHERE game_type = 'single'
-                                        GROUP BY user_id";
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<tr>
+                                                <td>' . $row['phone'] . '</td>
+                                                <td>' . $row['total_amount'] . '</td>
+                                                <td>' . $row['bet_numbers'] . '</td>
+                                            </tr>';
+                                    }
 
-                                $result = $conn->query($query);  
+                                    echo '</table>';
+                                } else {
+                                    echo "No data found";
+                                }
 
-                                if ($result->num_rows > 0) {
-                                    echo 
-                                                '<table class="w-full whitespace-nowrap">
-                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                                        <tr>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Amount</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Bet No.</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Baji</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bets</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Game Type</th>
-                                                        </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        
-                                                        echo '  <tbody>
-                                                                    <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $row['phone'] . '</a></td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_amount'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_numbers'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['baji'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bets'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                                            <div class="relative dropdown">
-                                                                                <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
-                                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="apps-ecommerce-order-overview.html"><i data-lucide="eye" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Overview</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>';
-                                                            }
-                                                        
-                                                            echo '</table>';
-                                                        } else {
-                                                            echo "No data found";
-                                                        }
-                                                        
-                                                        // Close the database connection
-                                                        
-                                                        ?>
+                                // Close the database connection
+                                $conn->close();
+                                ?>
                             </div>
-                        </div>
-                    </div><!--end col-->
-
-                    
-                    <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
-                        <div class="card-body">
-                            <div class="flex items-center mb-3">
-                                <h6 class="grow text-15">Customer Service</h6>
-                                <div class="relative dropdown shrink-0">
-                                    <button type="button" class="flex items-center justify-center w-[30px] h-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle" id="customServiceDropdown" data-bs-toggle="dropdown">
-                                        <i data-lucide="more-vertical" class="inline-block w-4 h-4"></i>
-                                    </button>
-                                
-                                    <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="customServiceDropdown">
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Weekly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Monthly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">3 Monthly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">6 Monthly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">This Yearly</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="flex items-center justify-between mt-5 mb-2">
-                                    <p class="text-slate-500 dark:text-zink-200">28% of the Goal Reached ($25k)</p>
-                                </div>
-                                <div class="w-full h-2 rounded-full bg-slate-200 dark:bg-zink-600">
-                                    <div class="h-2 bg-green-500 rounded-full" style="width: 28%"></div>
-                                </div>
-                                <div class="grid mt-3 xl:grid-cols-2">
-                                    <div class="flex items-center gap-2">
-                                        <div class="shrink-0">
-                                            <i data-lucide="calendar-days" class="inline-block w-4 h-4 mb-1 align-middle"></i>
-                                        </div>
-                                        <p class="mb-0 text-slate-500 dark:text-zink-200">This Month: <span class="font-medium text-slate-800 dark:text-zink-50">$13,741</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <h6 class="mt-4 mb-3">Top Customer</h6>
-                            <ul class="divide-y divide-slate-200 dark:divide-zink-500">
-                                <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
-                                    <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
-                                        <img src="assets/images/avatar-2.png" alt="" class="w-8 h-8 rounded-full">
-                                    </div>
-                                    <div class="grow">
-                                        <h6 class="font-medium">Urrie Arthur</h6>
-                                        <p class="text-slate-500 dark:text-zink-200">arthur@tailwick.com</p>
-                                    </div>
-                                    <div class="shrink-0">
-                                        <h6>$2,452</h6>
-                                    </div>
-                                </li>
-                                <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
-                                    <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
-                                        <img src="assets/images/avatar-3.png" alt="" class="w-8 h-8 rounded-full">
-                                    </div>
-                                    <div class="grow">
-                                        <h6 class="font-medium">Natalie Christy</h6>
-                                        <p class="text-slate-500 dark:text-zink-200">natalie@tailwick.com</p>
-                                    </div>
-                                    <div class="shrink-0">
-                                        <h6>$1,893</h6>
-                                    </div>
-                                </li>
-                                <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
-                                    <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
-                                        <img src="assets/images/avatar-4.png" alt="" class="w-8 h-8 rounded-full">
-                                    </div>
-                                    <div class="grow">
-                                        <h6 class="font-medium">Laurie Jackson</h6>
-                                        <p class="text-slate-500 dark:text-zink-200">jackson@tailwick.com</p>
-                                    </div>
-                                    <div class="shrink-0">
-                                        <h6>$1,196</h6>
-                                    </div>
-                                </li>
-                                <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
-                                    <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
-                                        <img src="assets/images/avatar-5.png" alt="" class="w-8 h-8 rounded-full">
-                                    </div>
-                                    <div class="grow">
-                                        <h6 class="font-medium">Michael Torres</h6>
-                                        <p class="text-slate-500 dark:text-zink-200">torres@tailwick.com</p>
-                                    </div>
-                                    <div class="shrink-0">
-                                        <h6>$976</h6>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!--end col-->
-                    <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
-                        <div class="card-body">
-                            <div class="flex items-center mb-3">
-                                <h6 class="grow text-15">Sales This Month</h6>
-                                <div class="relative dropdown shrink-0">
-                                    <button type="button" class="flex items-center justify-center w-[30px] h-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle" id="sellingProductDropdown" data-bs-toggle="dropdown">
-                                        <i data-lucide="more-vertical" class="inline-block w-4 h-4"></i>
-                                    </button>
-                            
-                                    <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="sellingProductDropdown">
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Weekly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Monthly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">3 Monthly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">6 Monthly</a>
-                                        </li>
-                                        <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">This Yearly</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 my-3">
-                                <div class="flex items-center justify-center w-12 h-12 text-green-500 rounded-md bg-green-50 shrink-0 dark:bg-green-500/10">
-                                    <i data-lucide="trending-up"></i>
-                                </div>
-                                <div class="grow">
-                                    <p class="mb-1 text-slate-500 dark:text-zink-200">Total Profit</p>
-                                    <h5 class="text-15">$<span class="counter-value" data-target="746.84">0</span>k</h5>
-                                </div>
-                            </div>
-                            <div id="salesThisMonthChart" class="apex-charts" data-chart-colors='["bg-sky-100", "bg-orange-100", "bg-sky-500", "bg-orange-500"]' dir="ltr"></div>
                         </div>
                     </div><!--end col-->
                     <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
