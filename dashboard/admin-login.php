@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Process form submission
-if ($adminPhone["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $adminPhone = $_POST["adminPhone"];
     $adminPass = $_POST["adminPass"];
