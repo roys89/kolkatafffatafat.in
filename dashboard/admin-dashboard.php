@@ -215,10 +215,10 @@ if (!isset($_SESSION['admin_id'])) {
                                     <h6 class="text-15">Bets</h6>
                                 </div><!--end col-->
                             </div><!--end grid-->
-                            <div >
+                            <div class="overflow-x-auto">
                             <?php
                                 // Include your database connection file
-                                include 'database.php';
+                                include '../database.php';
 
                                 // Check connection
                                 if ($conn->connect_error) {
