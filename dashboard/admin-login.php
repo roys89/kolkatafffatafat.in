@@ -16,8 +16,8 @@ if ($conn->connect_error) {
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $adminPhone = $_POST["adminPhone"];
-    $adminPass = $_POST["adminPass"];
+    $adminPhone = $_POST["admin_phone"];
+    $adminPass = $_POST["admin_pass"];
 
     // Sanitize the inputs to prevent SQL injection
     $adminPhone = mysqli_real_escape_string($conn, $adminPhone);
@@ -91,7 +91,7 @@ $conn->close();
                         </div>
                         <div class="mb-3">
                             <label for="username" class="inline-block mb-2 text-base font-medium">Phone Number.</label>
-                            <input type="text" id="adminPhone" name="adminPhone" class="form-input dark:bg-zink-600/50 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter username or email">
+                            <input type="text" id="admin_phone" name="admin_phone" class="form-input dark:bg-zink-600/50 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter username or email">
                             <div id="username-error" class="hidden mt-1 text-sm text-red-500">Please enter a valid Phone Number.</div>
                         </div>
                         <div class="mb-3">
