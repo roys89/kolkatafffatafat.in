@@ -361,9 +361,7 @@ if (!isset($_SESSION['admin_id'])) {
                                                         } else {
                                                             echo "No data found";
                                                         }
-                                                        
-                                                        // Close the database connection
-                                                        $conn->close();
+
                                                         ?>
                             </div>
                         </div>
@@ -377,13 +375,7 @@ if (!isset($_SESSION['admin_id'])) {
                             </div><!--end grid-->
                             <div class="overflow-x-auto">
                             <?php
-                                // Include your database connection file
-                                include '../database.php';
-
-                                // Check connection
-                                if ($conn->connect_error) {
-                                    die("Connection failed: " . $conn->connect_error);
-                                }
+                              
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
