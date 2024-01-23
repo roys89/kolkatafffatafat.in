@@ -6,7 +6,7 @@ if (isset($_SESSION['admin_id'])) {
   exit();
 }
 
-include 'database.php';
+include '../database.php';
 
 // Check connection
 if ($conn->connect_error) {
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Process form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $adminPhone = $_POST["adminPhone"];
     $adminPass = $_POST["adminPass"];
