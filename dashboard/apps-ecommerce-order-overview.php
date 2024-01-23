@@ -1,14 +1,4 @@
-<?php
-// Assuming you have a session with the user's information after login
-session_start();
 
-// Check if the user is logged in
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: admin-login.php");
-    exit();
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth group" data-layout="vertical" data-sidebar="light" data-sidebar-size="lg" data-mode="light" data-topbar="light" data-skin="default" data-navbar="sticky" data-content="fluid" dir="ltr">
@@ -192,328 +182,308 @@ if (!isset($_SESSION['admin_id'])) {
 
         <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.8)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
             <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-
+                
                 <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
                     <div class="grow">
-                        <h5 class="text-16">Kolkata FF Live</h5>
+                        <h5 class="text-16">Bet Overview</h5>
                     </div>
                     <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
                         <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
-                            <a href="#!" class="text-slate-400 dark:text-zink-200">Dashboards</a>
+                            <a href="#!" class="text-slate-400 dark:text-zink-200">FF Live</a>
                         </li>
                         <li class="text-slate-700 dark:text-zink-100">
-                            Kolkata FF Live
+                            Bet Overview
                         </li>
                     </ul>
                 </div>
-                <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
-                    
-                      <div class="col-span-12 card 2xl:col-span-12">
-                        <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
-                                <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
-                                </div><!--end col-->
-                            </div><!--end grid-->
-                            <div class="overflow-x-auto">
-                            <?php
-                                // Include your database connection file
-                                include '../database.php';
+                <div class="grid grid-cols-1 2xl:grid-cols-12 gap-x-5">
+                    <div class="2xl:col-span-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-md dark:bg-purple-500/20 ltr:float-right rtl:float-left">
+                                    <i data-lucide="truck" class="text-purple-500 fill-purple-200 dark:fill-purple-500/30"></i>
+                                </div>
+                                <h6 class="mb-4 text-15">Shipping Details</h6>
 
-                                // Check connection
-                                if ($conn->connect_error) {
-                                    die("Connection failed: " . $conn->connect_error);
-                                }
-
-                                // Query to fetch data for each unique user_id with game_type as "single"
-                                $query = "SELECT
-                                            user_id,
-                                            phone, baji, game_type,
-                                            SUM(amount) AS total_amount,
-                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
-                                            COUNT(bet_number) AS total_bets
-                                        FROM bet_table
-                                        WHERE game_type = 'single'
-                                        GROUP BY user_id";
-
-                                $result = $conn->query($query);  
-
-                                if ($result->num_rows > 0) {
-                                    echo 
-                                                '<table class="w-full whitespace-nowrap">
-                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                                        <tr>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Amount</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Bet No.</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Baji</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bets</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Game Type</th>
-                                                        </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        
-                                                        echo '  <tbody>
-                                                                    <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $row['phone'] . '</a></td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_amount'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_numbers'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['baji'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bets'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                                            <div class="relative dropdown">
-                                                                                <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
-                                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="apps-ecommerce-order-overview.html"><i data-lucide="eye" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Overview</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>';
-                                                            }
-                                                        
-                                                            echo '</table>';
-                                                        } else {
-                                                            echo "No data found";
-                                                        }
-                                                        
-                                                        // Close the database connection
-                                                        
-                                                        ?>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
-                                <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Patti Bets</h6> 
-                                </div><!--end col-->
-                            </div><!--end grid-->
-                            <div class="overflow-x-auto">
-                            <?php
-
-                                // Query to fetch data for each unique user_id with game_type as "single"
-                                $query = "SELECT
-                                            user_id,
-                                            phone, baji, game_type,
-                                            SUM(amount) AS total_amount,
-                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
-                                            COUNT(bet_number) AS total_bets
-                                        FROM bet_table
-                                        WHERE game_type = 'patti'
-                                        GROUP BY user_id";
-
-                                $result = $conn->query($query);  
-
-                                if ($result->num_rows > 0) {
-                                    echo 
-                                                '<table class="w-full whitespace-nowrap">
-                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                                        <tr>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Amount</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Bet No.</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Baji</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bets</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Game Type</th>
-                                                        </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        
-                                                        echo '  <tbody>
-                                                                    <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $row['phone'] . '</a></td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_amount'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_numbers'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['baji'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bets'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                                            <div class="relative dropdown">
-                                                                                <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
-                                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="apps-ecommerce-order-overview.html"><i data-lucide="eye" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Overview</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>';
-                                                            }
-                                                        
-                                                            echo '</table>';
-                                                        } else {
-                                                            echo "No data found";
-                                                        }
-                                                        
-                                                        ?>
+                                <h6 class="mb-1">Pauline Hylton</h6>
+                                <p class="mb-1 text-slate-500 dark:text-zink-200">1235 Crossing Meadows Dr, Onalaska</p>
+                                <p class="text-slate-500 dark:text-zink-200">West Virginia, USA</p>
                             </div>
                         </div>
                     </div><!--end col-->
+                    <div class="2xl:col-span-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-md dark:bg-orange-500/20 ltr:float-right rtl:float-left">
+                                    <i data-lucide="credit-card" class="text-orange-500 fill-orange-200 dark:fill-orange-500/30"></i>
+                                </div>
+                                <h6 class="mb-4 text-15">Billing Details</h6>
 
-
-                    <div class="col-span-12 card 2xl:col-span-12">
-                        <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
-                                <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
-                                </div><!--end col-->
-                            </div><!--end grid-->
-                            <div class="overflow-x-auto">
-                            <?php
-
-                                // Query to fetch data for each unique user_id with game_type as "single"
-                                $query = "SELECT
-                                sl.bet_number,
-                                SUM(bt.amount) AS total_amount,
-                                COUNT(bt.user_id) AS total_bets
-                                FROM
-                                    single_list sl
-                                LEFT JOIN
-                                    bet_table bt ON sl.bet_number = bt.bet_number
-                                GROUP BY
-                                    sl.bet_number;";
-                                    
-                                $result = $conn->query($query);
-
-                                if ($result->num_rows > 0) {
-                                    echo 
-                                                '<table class="w-full whitespace-nowrap">
-                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                                        <tr>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Number</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bets</th>
-                                                        </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        $bet_number = $row['bet_number'];
-                                                        $total_amount = $row['total_amount'];
-                                                        $total_bets = $row['total_bets'];
-                                                        
-                                                        echo '  <tbody>
-                                                                    <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $bet_number . '</a></td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_bets . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                                            <div class="relative dropdown">
-                                                                                <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
-                                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="apps-ecommerce-order-overview.html"><i data-lucide="eye" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Overview</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>';
-                                                            }
-                                                        
-                                                            echo '</table>';
-                                                        } else {
-                                                            echo "No data found";
-                                                        }
-                                                        
-                                                        ?>
+                                <h6 class="mb-1">Pauline Hylton</h6>
+                                <p class="mb-1 text-slate-500 dark:text-zink-200">1235 Crossing Meadows Dr, Onalaska</p>
+                                <p class="text-slate-500 dark:text-zink-200">West Virginia, USA</p>
                             </div>
                         </div>
+                    </div><!--end col-->
+                    <div class="2xl:col-span-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-md ltr:float-right rtl:float-left bg-sky-100 dark:bg-sky-500/20">
+                                    <i data-lucide="circle-dollar-sign" class="text-sky-500 fill-sky-200 dark:fill-sky-500/30"></i>
+                                </div>
+                                <h6 class="mb-4 text-15">Payment Details</h6>
 
-                        <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
-                                <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Patti List</h6> 
-                                </div><!--end col-->
-                            </div><!--end grid-->
-                            <div class="overflow-x-auto">
-                            <?php
+                                <h6 class="mb-1">ID: #TSD456DF41SD5</h6>
+                                <p class="mb-1 text-slate-500 dark:text-zink-200">Payment Method: <b>Credit Card</b></p>
+                                <p class="mb-1 text-slate-500 dark:text-zink-200">Card Number: <b>xxxx xxxx xxxx 1501</b></p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    <div class="2xl:col-span-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-md ltr:float-right rtl:float-left dark:bg-yellow-500/20">
+                                    <img src="assets/images/avatar-4.png" alt="" class="h-12 rounded-md">
+                                </div>
+                                <h6 class="mb-4 text-15">Customer Info</h6>
 
-                                // Query to fetch data for each unique user_id with game_type as "single"
-                                $query = "SELECT
-                                pl.bet_number,
-                                SUM(bt.amount) AS total_amount,
-                                COUNT(bt.user_id) AS total_bets
-                                FROM
-                                    patti_list pl
-                                LEFT JOIN
-                                    bet_table bt ON pl.bet_number = bt.bet_number
-                                GROUP BY
-                                    pl.bet_number;";
-                                    
-                                $result = $conn->query($query);
-
-                                if ($result->num_rows > 0) {
-                                    echo 
-                                                '<table class="w-full whitespace-nowrap">
-                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                                        <tr>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Number</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bets</th>
-                                                        </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        $bet_number = $row['bet_number'];
-                                                        $total_amount = $row['total_amount'];
-                                                        $total_bets = $row['total_bets'];
-                                                        
-                                                        echo '  <tbody>
-                                                                    <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $bet_number. '</a></td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_bets . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                                            <div class="relative dropdown">
-                                                                                <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
-                                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="apps-ecommerce-order-overview.html"><i data-lucide="eye" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Overview</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>';
-                                                            }
-                                                        
-                                                            echo '</table>';
-                                                        } else {
-                                                            echo "No data found";
-                                                        }
-                                                        
-                                                        ?>
+                                <h6 class="mb-1">Pauline Hylton</h6>
+                                <p class="mb-1 text-slate-500 dark:text-zink-200">pauline@tailwick.com</p>
+                                <p class="text-slate-500 dark:text-zink-200">+(78) 120 4843 4714</p>
                             </div>
                         </div>
                     </div><!--end col-->
                 </div><!--end grid-->
+
+                <div class="grid grid-cols-1 2xl:grid-cols-12 gap-x-5">
+                    <div class="2xl:col-span-9">
+                        <div class="grid grid-cols-1 2xl:grid-cols-5 gap-x-5">
+                            <div>
+                                <div class="card">
+                                    <div class="text-center card-body">
+                                        <h6 class="mb-1 underline">#TWT5015100366</h6>
+                                        <p class="uppercase text-slate-500 dark:text-zink-200">Order ID</p>
+                                    </div>
+                                </div>
+                            </div><!--end col-->
+                            <div>
+                                <div class="card">
+                                    <div class="text-center card-body">
+                                        <h6 class="mb-1">02 Nov, 2023</h6>
+                                        <p class="uppercase text-slate-500 dark:text-zink-200">Order Date</p>
+                                    </div>
+                                </div>
+                            </div><!--end col-->
+                            <div>
+                                <div class="card">
+                                    <div class="text-center card-body">
+                                        <h6 class="mb-1">09 Nov, 2023</h6>
+                                        <p class="uppercase text-slate-500 dark:text-zink-200">Delivery Date</p>
+                                    </div>
+                                </div>
+                            </div><!--end col-->
+                            <div>
+                                <div class="card">
+                                    <div class="text-center card-body">
+                                        <h6 class="mb-1">$843.49</h6>
+                                        <p class="uppercase text-slate-500 dark:text-zink-200">Order Amount</p>
+                                    </div>
+                                </div>
+                            </div><!--end col-->
+                            <div>
+                                <div class="card">
+                                    <div class="text-center card-body">
+                                        <span class="delivery_status px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-purple-100 border-purple-200 text-purple-500 dark:bg-purple-500/20 dark:border-purple-500/20">Shipping</span>
+                                        <p class="uppercase text-slate-500 dark:text-zink-200">Order Status</p>
+                                    </div>
+                                </div>
+                            </div><!--end col-->
+                        </div><!--end grid-->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <h6 class="text-15 grow">Order Summary</h6>
+                                    <a href="#!" class="text-red-500 underline shrink-0">Cancelled Order</a>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full">
+                                        <tbody>
+                                            <tr>
+                                                <td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0">
+                                                            <img src="assets/images/img-08.png" alt="" class="h-8">
+                                                        </div>
+                                                        <div class="grow">
+                                                            <h6 class="mb-1 text-15"><a href="apps-ecommerce-product-overview.html" class="transition-all duration-300 ease-linear hover:text-custom-500">Roar Twill Blue Baseball Cap</a></h6>
+                                                            <p class="text-slate-500 dark:text-zink-200">$149.99 x 02</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500 ltr:text-right rtl:text-left">$299.98</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0">
+                                                            <img src="assets/images/img-04.png" alt="" class="h-8">
+                                                        </div>
+                                                        <div class="grow">
+                                                            <h6 class="mb-1 text-15"><a href="apps-ecommerce-product-overview.html" class="transition-all duration-300 ease-linear hover:text-custom-500">Mesh Ergonomic Green Chair</a></h6>
+                                                            <p class="text-slate-500 dark:text-zink-200">$362.21 x 1</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500 ltr:text-right rtl:text-left">$362.21</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0">
+                                                            <img src="assets/images/img-012.png" alt="" class="h-8">
+                                                        </div>
+                                                        <div class="grow">
+                                                            <h6 class="mb-1 text-15"><a href="apps-ecommerce-product-overview.html" class="transition-all duration-300 ease-linear hover:text-custom-500">Smartest Printed T-shirt</a></h6>
+                                                            <p class="text-slate-500 dark:text-zink-200">$89.99 x 03</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500 ltr:text-right rtl:text-left">$269.97</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3.5 pt-4 pb-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
+                                                    Sub Total
+                                                </td>
+                                                <td class="px-3.5 pt-4 pb-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">$932.16</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3.5 py-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
+                                                    Estimated Tax (18%)
+                                                </td>
+                                                <td class="px-3.5 py-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">$167.79</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3.5 py-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
+                                                    Item Discounts (12%)
+                                                </td>
+                                                <td class="px-3.5 py-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">-$111.86</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3.5 py-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
+                                                    Shipping Charge
+                                                </td>
+                                                <td class="px-3.5 py-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">$0</td>
+                                            </tr>
+                                            <tr class="font-semibold">
+                                                <td class="px-3.5 pt-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
+                                                    Total Amount (USD)
+                                                </td>
+                                                <td class="px-3.5 pt-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">$988.09</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!--end card-->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <h6 class="text-15 grow">Order Status</h6>
+                                    <div class="shrink-0">
+                                        <a href="#!" class="inline-block text-red-500 underline ltr:mr-2 rtl:ml-2">Cancelled Order</a>
+                                        <a href="apps-invoice-overview.html" class="py-1 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><i data-lucide="download" class="inline-block w-4 h-4 align-middle ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Invoice</span></a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l rtl:before:border-r ltr:before:left-[0.1875rem] rtl:before:right-[0.1875rem] before:border-slate-200 [&.done]:before:border-custom-500 before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-white after:border after:border-slate-200 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 last:before:hidden [&.done]:after:bg-custom-500 [&.done]:after:border-custom-500 done">
+                                        <div class="flex gap-4">
+                                            <div class="grow">
+                                                <h6 class="mb-2 text-gray-800 text-15 dark:text-zink-50">Order Placed</h6>
+                                                <p class="text-gray-400 dark:text-zink-200">Your order has been successfully submitted.</p>
+                                            </div>
+                                            <p class="text-sm text-gray-400 dark:text-zink-200 shrink-0">02 Nov, 2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l rtl:before:border-r ltr:before:left-[0.1875rem] rtl:before:right-[0.1875rem] before:border-slate-200 [&.done]:before:border-custom-500 before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-white after:border after:border-slate-200 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 last:before:hidden [&.done]:after:bg-custom-500 [&.done]:after:border-custom-500 done">
+                                        <div class="flex gap-4">
+                                            <div class="grow">
+                                                <h6 class="mb-2 text-gray-800 text-15 dark:text-zink-50">Order Processing</h6>
+                                                <p class="text-gray-400 dark:text-zink-200">Once the order is received, it goes through the processing stage. During this time, the items are gathered, and the order is prepared for shipment.</p>
+                                            </div>
+                                            <p class="text-sm text-gray-400 dark:text-zink-200 shrink-0">02 Nov, 2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l rtl:before:border-r ltr:before:left-[0.1875rem] rtl:before:right-[0.1875rem] before:border-slate-200 [&.done]:before:border-custom-500 before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-white after:border after:border-slate-200 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 last:before:hidden [&.done]:after:bg-custom-500 [&.done]:after:border-custom-500 done">
+                                        <div class="flex gap-4">
+                                            <div class="grow">
+                                                <h6 class="mb-2 text-gray-800 text-15 dark:text-zink-50">Shipped Order</h6>
+                                                <p class="text-gray-400 dark:text-zink-200">The order is shipped out to the customer's designated delivery address.</p>
+                                            </div>
+                                            <p class="text-sm text-gray-400 dark:text-zink-200 shrink-0">04 Nov, 2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l rtl:before:border-r ltr:before:left-[0.1875rem] rtl:before:right-[0.1875rem] before:border-slate-200 [&.done]:before:border-custom-500 before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-white after:border after:border-slate-200 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 last:before:hidden [&.done]:after:bg-custom-500 [&.done]:after:border-custom-500 done">
+                                        <div class="flex gap-4">
+                                            <div class="grow">
+                                                <h6 class="mb-2 text-gray-800 text-15 dark:text-zink-50">Out for Delivery</h6>
+                                                <p class="text-gray-400 dark:text-zink-200">This status indicates that the order is currently out for delivery by the shipping or courier company.</p>
+                                            </div>
+                                            <p class="text-sm text-gray-400 dark:text-zink-200 shrink-0">06 Nov, 2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l rtl:before:border-r ltr:before:left-[0.1875rem] rtl:before:right-[0.1875rem] before:border-slate-200 [&.done]:before:border-custom-500 before:top-1.5 before:-bottom-1.5 after:absolute after:w-2 after:h-2 after:bg-white after:border after:border-slate-200 after:rounded-full ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 last:before:hidden [&.done]:after:bg-custom-500 [&.done]:after:border-custom-500 done">
+                                        <div class="flex gap-4">
+                                            <div class="grow">
+                                                <h6 class="mb-2 text-gray-800 text-15 dark:text-zink-50">Delivered</h6>
+                                                <p class="text-gray-400 dark:text-zink-200">Finally, when the order successfully reaches the customer's address and is handed over, the status changes to "Delivered."</p>
+                                            </div>
+                                            <p class="text-sm text-gray-400 dark:text-zink-200 shrink-0">09 Nov, 2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    <div class="2xl:col-span-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="mb-3 text-gray-800 text-15 dark:text-white">Documents</h6>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full">
+                                        <tbody>
+                                            <tr>
+                                                <td class="px-3.5 first:pl-0 last:pr-0 py-2 border-y border-transparent">Invoice No.</td>
+                                                <td class="px-3.5 first:pl-0 last:pr-0 py-2 border-y border-transparent"><a href="apps-invoice-overview.html" class="text-custom-500">#TWI154203</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3.5 first:pl-0 last:pr-0 py-2 border-y border-transparent">Shipping No</td>
+                                                <td class="px-3.5 first:pl-0 last:pr-0 py-2 border-y border-transparent"><a href="#!" class="text-custom-500">#TWS987102301</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <h6 class="text-15 grow">Logistics Details</h6>
+                                    <a href="#!" class="underline text-custom-500 shrink-0">Track Order</a>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="shrink-0">
+                                        <img src="assets/images/delivery-1.png" alt="" class="h-10">
+                                    </div>
+                                    <div class="grow">
+                                        <h6 class="mb-1 text-15">Express Delivery</h6>
+                                        <p class="text-slate-500 dark:text-zink-200">ID: EDTW1400457854</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end grid-->
+
             </div>
             <!-- container-fluid -->
         </div>
@@ -743,16 +713,11 @@ if (!isset($_SESSION['admin_id'])) {
 <script src="assets/libs/prismjs/prism.js"></script>
 <script src="assets/libs/lucide/umd/lucide.js"></script>
 <script src="assets/js/tailwick.bundle.js"></script>
-<!--apexchart js-->
-<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-
-<!--dashboard ecommerce init js-->
-<script src="assets/js/pages/dashboards-ecommerce.init.js"></script>
-
 <!-- App js -->
 <script src="assets/js/app.js"></script>
 
 </body>
 
 
+<!-- Mirrored from themesdesign.in/tailwick/html/apps-ecommerce-order-overview.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Jan 2024 08:04:49 GMT -->
 </html>
