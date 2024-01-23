@@ -443,15 +443,18 @@ if (!isset($_SESSION['admin_id'])) {
                                                         ?>
                             </div>
                         </div>
-
+                    </div><!--end col-->
+                    
+                    <div class="col-span-6 card 2xl:col-span-6">
                         <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
+                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-6">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Patti Bets</h6> 
+                                    <h6 class="text-15">Check Bet On Single</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                             <div class="overflow-x-auto">
                             <?php
+                              
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
@@ -461,7 +464,7 @@ if (!isset($_SESSION['admin_id'])) {
                                             GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
                                             COUNT(bet_number) AS total_bets
                                         FROM bet_table
-                                        WHERE game_type = 'patti'
+                                        WHERE game_type = 'single'
                                         GROUP BY user_id";
 
                                 $result = $conn->query($query);  
@@ -515,12 +518,13 @@ if (!isset($_SESSION['admin_id'])) {
                                                         }
                                                         
                                                         // Close the database connection
-                                                        $conn->close();
+                                                        
                                                         ?>
                             </div>
                         </div>
                     </div><!--end col-->
 
+                    
                     <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
                         <div class="card-body">
                             <div class="flex items-center mb-3">
