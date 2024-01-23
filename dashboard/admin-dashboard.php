@@ -8,13 +8,6 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-// Replace these values with your actual database credentials
-include 'database.php';
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 ?>
 
 <!DOCTYPE html>
