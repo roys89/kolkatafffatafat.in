@@ -43,7 +43,7 @@ $conn->close();
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-<link href="assets_loginsignup/images/favicon.png" rel="icon" />
+<link href="assets/img/favicon.png" rel="icon" />
 <title>Kolkata fatafat Admin Login</title>
 	<link rel="canonical" href="" />
 <meta name="description" content="Login and Register Form Html Template">
@@ -78,12 +78,12 @@ $conn->close();
       <div class="col-md-4">
         <div class="hero-wrap d-flex align-items-center h-100">
           <div class="hero-mask opacity-5 bg-dark"></div>
-          <div class="hero-bg hero-bg-scroll" style="background-image:url('assets_loginsignup/images/login-bg-6.jpg');"></div>
+          <div class="hero-bg hero-bg-scroll" style="background-image:url('assets/img/login-bg-6.jpg');"></div>
           <div class="hero-content mx-auto w-100 h-100">
             <div class="container d-flex flex-column h-100">
               <div class="row g-0">
                 <div class="col-11 col-lg-9 mx-auto">
-                  <div class="logo mt-5 mb-5"> <a class="d-flex" href="#" title="kolkatafatafat"><img src="assets_loginsignup/images/logo-2-light.png" alt="kolkatafatafat"></a> </div>
+                  <div class="logo mt-5 mb-5"> <a class="d-flex" href="#" title="kolkatafatafat"><img src="assets/img/logo-2-light.png" alt="kolkatafatafat"></a> </div>
                 </div>
               </div>
               <div class="row g-0 mt-3">
