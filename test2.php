@@ -11,15 +11,15 @@ if ($conn->connect_error) {
                                
                                 // Fetch data from bet_no and bet_placed tables
                                 $query = "SELECT
-                                sl.bet_number,
+                                pl.bet_number,
                                 SUM(bt.amount) AS total_amount,
                                 COUNT(bt.user_id) AS total_bets
                                 FROM
-                                    single_list sl
+                                    patti_list pl
                                 LEFT JOIN
-                                    bet_table bt ON sl.bet_number = bt.bet_number
+                                    bet_table bt ON pl.bet_number = bt.bet_number
                                 GROUP BY
-                                    sl.bet_number;";
+                                    pl.bet_number;";
 
                                 $result = $conn->query($query);
 
