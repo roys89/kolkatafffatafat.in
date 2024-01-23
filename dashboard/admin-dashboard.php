@@ -303,9 +303,7 @@ if ($conn->connect_error) {
                             } else {
                                 echo "No data found";
                             }
-                            
-                            // Close the database connection
-                            $conn->close();
+
                                 ?>
                             </div>
                         </div>
