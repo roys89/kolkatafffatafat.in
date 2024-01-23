@@ -183,7 +183,6 @@ $conn->close();
     <script src="assets/libs/prismjs/prism.js"></script>
     <script src="assets/libs/lucide/umd/lucide.js"></script>
     <script src="assets/js/tailwick.bundle.js"></script>
-    <script src="assets/js/pages/auth-login.init.js"></script>
 
 </body>
 
