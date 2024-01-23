@@ -443,7 +443,100 @@ if (!isset($_SESSION['admin_id'])) {
                             </div>
                         </div>
                     </div><!--end col-->
-                    
+                    <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
+                        <div class="card-body">
+                            <div class="flex items-center mb-3">
+                                <h6 class="grow text-15">Single List</h6>
+                            </div>
+                            <?php
+                               
+                                
+                                $query = "SELECT
+                                sl.bet_number,
+                                SUM(bt.amount) AS total_amount,
+                                COUNT(bt.user_id) AS total_bets
+                                FROM
+                                    single_list sl
+                                LEFT JOIN
+                                    bet_table bt ON sl.bet_number = bt.bet_number
+                                GROUP BY
+                                    sl.bet_number;";
+
+                                $result = $conn->query($query);
+
+                                // Display data in a table
+                                echo '<table border="1">
+                                    <thead>
+                                        <tr>
+                                            <th>Bet Number</th>
+                                            <th>Total Amount</th>
+                                            <th>Total Bets</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+
+                                // Process query results and display in the table
+                                while ($row = $result->fetch_assoc()) {
+                                    $bet_number = $row['bet_number'];
+                                    $total_amount = $row['total_amount'];
+                                    $total_bets = $row['total_bets'];
+
+                                    echo '<tr>
+                                            <td>' . $bet_number . '</td>
+                                            <td>' . $total_amount . '</td>
+                                            <td>' . $total_bets . '</td>
+                                        </tr>';
+                                }
+
+                                echo '</tbody></table>';
+
+                              
+                                ?>
+
+                        </div>
+                    </div><!--end col-->
+                    <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
+                        <div class="card-body">
+                            <div class="flex items-center mb-3">
+                                <h6 class="grow text-15">Patti List/h6>
+                                <?php
+                                // Query to fetch data for each unique user_id with game_type as "single"
+                                $query = "SELECT
+                                            user_id,
+                                            phone,
+                                            SUM(amount) AS total_amount,
+                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers
+                                        FROM bet_table
+                                        WHERE game_type = 'single'
+                                        GROUP BY user_id";
+
+                                $result = $conn->query($query);  
+
+                                if ($result->num_rows > 0) {
+                                    echo '<table border="1">
+                                            <tr>
+                                                <th>Phone Number</th>
+                                                <th>Total Amount</th>
+                                                <th>Bet Numbers</th>
+                                            </tr>';
+
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<tr>
+                                                <td>' . $row['phone'] . '</td>
+                                                <td>' . $row['total_amount'] . '</td>
+                                                <td>' . $row['bet_numbers'] . '</td>
+                                            </tr>';
+                                    }
+
+                                    echo '</table>';
+                                } else {
+                                    echo "No data found";
+                                }
+
+                                ?>
+                            </div>
+                        </div>
+                    </div><!--end col-->
                     <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
                         <div class="card-body">
                             <div class="flex items-center mb-3">
