@@ -23,19 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adminPhone = mysqli_real_escape_string($conn, $adminPhone);
     $adminPass = mysqli_real_escape_string($conn, $adminPass);
 
-
-
     // Query to retrieve user information from the database
     $query = "SELECT * FROM admin_data WHERE admin_phone='$adminPhone' AND admin_pass='$adminPass'";
     $result = $conn->query($query);
 
     // Check if a matching user is found
-    // Check if a matching user is found
     if ($result->num_rows == 1) {
         // Authentication successful, store user information in session
-        $_SESSION['admin_id'] = $username;
-        $_SESSION['admin_name'] = $adminName;
-        $_SESSION['admin_phone'] = $adminPhone;
+        $row = $result->fetch_assoc();
+        $_SESSION['admin_id'] = $row['admin_id'];
+        $_SESSION['admin_name'] = $row['admin_name'];
+        $_SESSION['admin_phone'] = $row['admin_phone'];
 
         // Redirect to a secure page
         header('Location: admin-dashboard.php');
@@ -49,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close connection
 $conn->close();
-?>
+?> 
+
 
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth group" data-layout="vertical" data-sidebar="light" data-sidebar-size="lg" data-mode="light" data-topbar="light" data-skin="default" data-navbar="sticky" data-content="fluid" dir="ltr">
