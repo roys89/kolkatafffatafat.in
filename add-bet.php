@@ -42,7 +42,7 @@ $_SESSION['status'] = $status;
   <body data-spy="scroll" data-target="#navbar" data-offset="0">
   <?php
     // Create a URL with parameters to pass to the next page
-    $url1 = "place_bet.php?game_type=" . urlencode('single');
+    $url1 = "place_bet.ph p?game_type=" . urlencode('single');
     $url2 = "place_bet.php?game_type=" . urlencode('patti');
     ?>
     <!-- preloader begin -->
