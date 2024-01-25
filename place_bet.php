@@ -184,12 +184,7 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
         </div>
       </div>
       <!-- header end -->
-      <p>Slot ID: <?php echo $slotId; ?></p>
-      <p>Game Status: <?php echo $baji_status; ?></p>
-      <p>Baji: <?php echo $baji; ?></p>
-      <p>userId: <?php echo $userId; ?></p>
-      <p>gameType: <?php echo $gameType; ?></p>
-      <p>phone: <?php echo $phone; ?></p>
+
     <!-- breadcrumb begin -->
     <div class="breadcrumb-betipsta">
         <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
