@@ -13,7 +13,11 @@ if ($conn->connect_error) {
 }
 
 // Update records in game_table where closing_time is less than or equal to the current server time
+<<<<<<< HEAD
 $query = "UPDATE game_table SET baji_status = 'close' WHERE baji = 4";
+=======
+$query = "UPDATE game_table SET baji_status = 'close' WHERE baji = 1";
+>>>>>>> df42bc2cd00bd73c34131d56bd19b96621fa3a88
 $result = $conn->query($query);
 
 if (!$result) {
