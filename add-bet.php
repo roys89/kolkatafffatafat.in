@@ -196,7 +196,7 @@ $_SESSION['status'] = $status;
                         <h2 class="title">Create a Tips</h2>
                         <ul>
                             <li>
-                                <a href='index.html'>Home</a>
+                                <a href='index.php'>Home</a>
                             </li>
                             <li>
                                 Create a tips
