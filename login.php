@@ -1,27 +1,34 @@
 <?php
 session_start();
+
 // Check if the user is already logged in
 if (isset($_SESSION['user_id'])) {
   header("Location: user-profile.php");
   exit();
 }
+
 require_once('database.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $login_password = $_POST['login_password'];
 
-    $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password FROM user_data WHERE phone = ?");
+    $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password, user_status FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
-    $stmt->bind_result($user_id, $full_name, $hashed_password);
+    $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status); // Fix the typo here
 
     if ($stmt->fetch()) {
         if (password_verify($login_password, $hashed_password)) {
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['full_name'] = $full_name;
-            $_SESSION['phone'] = $phone;
-            header("Location: user-profile.php");
+            if ($user_status === 'active') {
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['full_name'] = $full_name;
+                $_SESSION['phone'] = $phone;
+                header("Location: user-profile.php");
+                exit(); // Add exit() after header to stop further execution
+            } else {
+                echo "User is not active.";
+            }
         } else {
             echo "Invalid password.";
         }
@@ -33,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 ?>
+
 
 
 
