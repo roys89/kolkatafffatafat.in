@@ -406,7 +406,7 @@ if (!isset($_SESSION['admin_id'])) {
                                                         $bet_number = $row['bet_number'];
                                                         $total_amount = $row['total_amount'];
                                                         $total_bets = $row['total_bets'];
-                                                        $url = 'test.php?bet_number=' . urlencode($bet_number);
+                                                        $url = '../test.php?bet_number=' . urlencode($bet_number);
                                                         echo '  <tbody>
                                                                     <tr>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="'.$url.'">' . $bet_number . '</a></td>
