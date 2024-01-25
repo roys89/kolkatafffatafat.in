@@ -12,10 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Additional condition to check if the game type is single and bet number is between 1 and 10
-    if ($gameType === 'single' && ($bet_number >= 0 && $bet_number < 10))    {
-        echo json_encode(['success' => false, 'message' => 'Invalid bet number (Should to 1 - 9)']);
-        exit; // Stop execution if the bet number is invalid for single game type
-    }
+ 
 
     // Extract URL parameters
     $slotId = $_POST['slot_id'];
