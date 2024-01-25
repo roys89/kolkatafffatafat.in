@@ -234,15 +234,14 @@
                     $result = $stmt->get_result();
 
                     // Display data in a table
-                    echo '<table border="1">
-                            <thead>
+                    echo '<table class="w-full whitespace-nowrap">
+                            <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                 <tr>
-                                    <th>User ID</th>
-                                    <th>Total Amount</th>
-                                    <th>Phone Number</th>
+                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">User ID</th>
+                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
+                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone Number</th>
                                 </tr>
-                            </thead>
-                            <tbody>';
+                            </thead>';
 
                     // Process query results and display in the table
                     while ($row = $result->fetch_assoc()) {
@@ -250,11 +249,13 @@
                         $total_amount = $row['total_amount'];
                         $phone_number = $row['phone'];
 
-                        echo '<tr>
-                                <td>' . $user_id . '</td>
-                                <td>' . $total_amount . '</td>
-                                <td>' . $phone_number . '</td>
-                            </tr>';
+                        echo '  <tbody>
+                                <tr>
+                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $user_id . '</td>
+                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
+                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $phone_number . '</td>
+                                </tr>
+                                </tbody>';
                     }
 
                     echo '</tbody></table>';
