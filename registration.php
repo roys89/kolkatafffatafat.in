@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $refId = $_POST["ref_id"];
     $loginPassword = $_POST["login_password"];
     $confirm_password = $_POST["c_password"];
-    $user_status = $_POST['active'];
+    $user_status = 'active';
 
     if ($loginPassword !== $confirm_password) {
         echo '<script>alert("Passwords do not match!");</script>';
