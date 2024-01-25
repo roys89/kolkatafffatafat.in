@@ -15,4 +15,4 @@ $result = $conn->query($query);
 $conn->close();
 ?>
 
-domains/kolkatafffatafat.in/public_html/cornjobs/corn-baji1.php
+domains/kolkatafffatafat.in/public_html/cronjobs/cron-baji1.php
