@@ -61,13 +61,7 @@ include "database.php";
                   </ul>
                 </div>
               </div>
-              <div class="col-xl-2 ">
-                <div class="logo">
-                    <a href='index.php'>
-                        <img src="assets/img/logo1.png" alt="">
-                    </a>
-                </div>
-              </div>
+              
               <div class="col-xl-5 col-lg-5 col-md-5">
                 <div class="date">
                   <ul>
