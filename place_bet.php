@@ -185,7 +185,7 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
       </div>
       <!-- header end -->
       <p>Slot ID: <?php echo $slotId; ?></p>
-      <p>Game Status: <?php echo $game_status; ?></p>
+      <p>Game Status: <?php echo $baji_status; ?></p>
       <p>Baji: <?php echo $baji; ?></p>
       <p>userId: <?php echo $userId; ?></p>
       <p>gameType: <?php echo $gameType; ?></p>
