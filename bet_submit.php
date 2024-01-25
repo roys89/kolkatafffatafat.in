@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Check if game_status is 1 for the provided $baji
-    $checkGameStatusQuery = "SELECT game_status FROM game_table WHERE baji = '$baji'";
+    $checkGameStatusQuery = "SELECT baji_status FROM game_table WHERE baji = '$baji'";
     $gameStatusResult = $conn->query($checkGameStatusQuery);
 
     if ($gameStatusResult && $gameStatusResult->num_rows > 0) {
