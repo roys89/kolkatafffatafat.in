@@ -226,7 +226,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 1
+                                                WHERE bet_number = ? AND baji = 1 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
@@ -297,7 +297,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 2
+                                                WHERE bet_number = ? AND baji = 2 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
@@ -369,7 +369,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 3
+                                                WHERE bet_number = ? AND baji = 3 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
@@ -440,7 +440,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 4
+                                                WHERE bet_number = ? AND baji = 4 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
@@ -511,7 +511,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 5
+                                                WHERE bet_number = ? AND baji = 5 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
@@ -581,7 +581,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 6
+                                                WHERE bet_number = ? AND baji = 6 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
@@ -653,7 +653,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 7
+                                                WHERE bet_number = ? AND baji = 7 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
@@ -724,7 +724,7 @@ if ($conn->connect_error) {
                                                     SUM(amount) AS total_amount,
                                                     phone
                                                 FROM bet_table
-                                                WHERE bet_number = ? AND baji = 8
+                                                WHERE bet_number = ? AND baji = 8 AND game_type= 'Single'
                                                 GROUP BY user_id";
 
                                         // Prepare the statement
