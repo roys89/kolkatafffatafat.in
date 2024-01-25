@@ -11,9 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit; // Stop execution if the amount is too high
     }
 
-    // Additional condition to check if the game type is single and bet number is between 1 and 10
- 
-
     // Extract URL parameters
     $slotId = $_POST['slot_id'];
     $baji = $_POST['baji']; 
@@ -26,29 +23,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Check if wallet balance is sufficient
-    $checkBalanceQuery = "SELECT wallet_bal FROM user_data WHERE user_id = '$userId'";
-    $balanceResult = $conn->query($checkBalanceQuery);
+    // Check if game_status is 1 for the provided $baji
+    $checkGameStatusQuery = "SELECT game_status FROM game_table WHERE baji = '$baji'";
+    $gameStatusResult = $conn->query($checkGameStatusQuery);
 
-    if ($balanceResult && $balanceResult->num_rows > 0) {
-        $row = $balanceResult->fetch_assoc();
-        $walletBal = $row['wallet_bal'];
+    if ($gameStatusResult && $gameStatusResult->num_rows > 0) {
+        $row = $gameStatusResult->fetch_assoc();
+        $gameStatus = $row['game_status'];
 
-        // Check if wallet balance is sufficient
-        if ($walletBal >= $amount) {
-            $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
-            $sql2 = "UPDATE user_data SET wallet_bal = wallet_bal - $amount  WHERE user_id = '$userId'";
+        // Check if game_status is 1
+        if ($gameStatus == 1) {
+            // Check if wallet balance is sufficient
+            $checkBalanceQuery = "SELECT wallet_bal FROM user_data WHERE user_id = '$userId'";
+            $balanceResult = $conn->query($checkBalanceQuery);
 
-            if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
-                echo json_encode(['success' => true, 'message' => 'Data inserted successfully']);
+            if ($balanceResult && $balanceResult->num_rows > 0) {
+                $row = $balanceResult->fetch_assoc();
+                $walletBal = $row['wallet_bal'];
+
+                // Check if wallet balance is sufficient
+                if ($walletBal >= $amount) {
+                    $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
+                    $sql2 = "UPDATE user_data SET wallet_bal = wallet_bal - $amount  WHERE user_id = '$userId'";
+
+                    if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
+                        echo json_encode(['success' => true, 'message' => 'Data inserted successfully']);
+                    } else {
+                        echo json_encode(['success' => false, 'message' => 'Error: ' . $conn->error]);
+                    }
+                } else {
+                    echo json_encode(['success' => false, 'message' => 'Insufficient funds']);
+                }
             } else {
-                echo json_encode(['success' => false, 'message' => 'Error: ' . $conn->error]);
+                echo json_encode(['success' => false, 'message' => 'Error checking wallet balance: ' . $conn->error]);
             }
         } else {
-            echo json_encode(['success' => false, 'message' => 'Insufficient funds']);
+            echo json_encode(['success' => false, 'message' => 'Game is not active for the provided baji']);
         }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error checking wallet balance: ' . $conn->error]);
+        echo json_encode(['success' => false, 'message' => 'Error checking game status: ' . $conn->error]);
     }
 
     $conn->close();
