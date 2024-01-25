@@ -62,7 +62,11 @@ include "database.php";
                 </div>
               </div>
               <div class="col-xl-2 col-lg-2 d-xl-block d-lg-block d-none">
-                
+                <div class="logo">
+                    <a href='index.php'>
+                        
+                    </a>
+                </div>
               </div>
               <div class="col-xl-5 col-lg-5 col-md-5">
                 <div class="date">
