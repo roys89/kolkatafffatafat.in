@@ -1,5 +1,4 @@
 <?php
-// Include your database connection file
 include 'database.php';
 
 // Check connection
@@ -7,51 +6,46 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Assuming $bet_number is a PHP variable containing the bet number from the URL
 
-                               
-                                // Fetch data from bet_no and bet_placed tables
-                                $query = "SELECT
-                                sl.bet_number,
-                                SUM(bt.amount) AS total_amount,
-                                COUNT(bt.user_id) AS total_bets
-                                FROM
-                                    single_list sl
-                                LEFT JOIN
-                                    bet_table bt ON sl.bet_number = bt.bet_number
-                                GROUP BY
-                                    sl.bet_number;";
 
-                                $result = $conn->query($query);
+// Fetch data from the bet_table
+$query = "SELECT
+            user_id,
+            SUM(amount) AS total_amount,
+            phone
+          FROM bet_table
+          WHERE bet_number = '1' AND baji = 1
+          GROUP BY user_id";
 
-                                // Display data in a table
-                                echo '<table border="1">
-                                    <thead>
-                                        <tr>
-                                            <th>Bet Number</th>
-                                            <th>Total Amount</th>
-                                            <th>Total Bets</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>';
+$result = $conn->query($query);
 
-                                // Process query results and display in the table
-                                while ($row = $result->fetch_assoc()) {
-                                    $bet_number = $row['bet_number'];
-                                    $total_amount = $row['total_amount'];
-                                    $total_bets = $row['total_bets'];
+// Display data in a table
+echo '<table border="1">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Total Amount</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>';
 
-                                    echo '<tr>
-                                            <td>' . $bet_number . '</td>
-                                            <td>' . $total_amount . '</td>
-                                            <td>' . $total_bets . '</td>
-                                        </tr>';
-                                }
+// Process query results and display in the table
+while ($row = $result->fetch_assoc()) {
+    $user_id = $row['user_id'];
+    $total_amount = $row['total_amount'];
+    $phone_number = $row['phone'];
 
-                                echo '</tbody></table>';
+    echo '<tr>
+            <td>' . $user_id . '</td>
+            <td>' . $total_amount . '</td>
+            <td>' . $phone_number . '</td>
+          </tr>';
+}
 
-                
+echo '</tbody></table>';
 
 // Close the database connection
 $conn->close();
-
 ?>
