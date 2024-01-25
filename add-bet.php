@@ -19,7 +19,7 @@ $stmt->bind_result($baji_status); // Replace with actual column names
 // Check if there is a row with baji_status = $baji
 if ($stmt->fetch()) {
     // Check if baji_status is 0
-    if ($baji_status == 'open') {
+    if ($baji_status === 'open') {
         // Redirect to index.php
         header("Location: index.php");
         exit(); // Stop further execution
