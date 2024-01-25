@@ -177,7 +177,7 @@ $_SESSION['status'] = $status;
                                   </div>
                                 </div>
                               </div>
-                            </nav>
+                          </nav>
                       </div>
                   </div>
               </div>
