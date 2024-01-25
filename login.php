@@ -1,10 +1,13 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 
 // Check if the user is already logged in
 if (isset($_SESSION['user_id'])) {
-  header("Location: user-profile.php");
-  exit();
+    header("Location: user-profile.php");
+    exit();
 }
 
 require_once('database.php');
@@ -16,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password, user_status FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
-    $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status); // Fix the typo here
+    $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status);
 
     if ($stmt->fetch()) {
         if (password_verify($login_password, $hashed_password)) {
@@ -25,21 +28,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['full_name'] = $full_name;
                 $_SESSION['phone'] = $phone;
                 header("Location: user-profile.php");
-                exit(); // Add exit() after header to stop further execution
+                exit();
             } else {
-                echo "User is not active.";
+                $_SESSION['login_error'] = "User is not active.";
             }
         } else {
-            echo "Invalid password.";
+            $_SESSION['login_error'] = "Invalid password.";
         }
     } else {
-        echo "Invalid phone number.";
+        $_SESSION['login_error'] = "Invalid phone number.";
     }
 
     $stmt->close();
     $conn->close();
+
+    header("Location: login.php");
+    exit();
 }
 ?>
+
 
 
 
