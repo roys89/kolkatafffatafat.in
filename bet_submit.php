@@ -23,15 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Check if game_status is 1 for the provided $baji
+    // Check if baji_status is 1 for the provided $baji
     $checkGameStatusQuery = "SELECT baji_status FROM game_table WHERE baji = '$baji'";
     $gameStatusResult = $conn->query($checkGameStatusQuery);
 
     if ($gameStatusResult && $gameStatusResult->num_rows > 0) {
         $row = $gameStatusResult->fetch_assoc();
-        $gameStatus = $row['game_status'];
+        $gameStatus = $row['baji_status'];
 
-        // Check if game_status is 1
+        // Check if baji_status is 1
         if ($gameStatus == 1) {
             // Check if wallet balance is sufficient
             $checkBalanceQuery = "SELECT wallet_bal FROM user_data WHERE user_id = '$userId'";
