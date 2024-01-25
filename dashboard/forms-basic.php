@@ -197,7 +197,7 @@
                                         include '../database.php';
                                         // Fetch user IDs from the user_data table
                                         $result = $conn->query("SELECT phone FROM user_data");
-                                            echo "<option selected>Select Baji</option>";
+                                            echo "<option selected>Select User</option>";
                                         // Display user IDs in the dropdown
                                         while ($row = $result->fetch_assoc()) {
 
