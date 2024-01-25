@@ -12,12 +12,14 @@ $_SESSION['slot_id'] = $slotId;
 $_SESSION['baji'] = $baji;
 $_SESSION['status'] = $status;
 
-// Check if status is 1
-if ($status !== 1) {
-    // Page content goes here
+// Check if status is not equal to 1
+if ($status != 1) {
+    // Redirect to index.php or any other page
     header("Location: index.php");
+    exit(); // Stop further execution
 }
 ?>
+
 
 
 <!DOCTYPE html>
