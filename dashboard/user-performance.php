@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($stmt->execute()) {
         echo '<script>alert("Registration successful!");</script>';
-        header("Location: dashboard/forms-basic.php");
+        
     } else {
         echo "Error updating user status: " . $stmt->error;
     }
