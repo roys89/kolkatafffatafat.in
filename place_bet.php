@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 $gameType = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
 // Retrieve data from SESSION parameters
 $slotId = isset($_SESSION['slot_id']) ? $_SESSION['slot_id'] : '';
-$status = isset($_SESSION['status']) ? $_SESSION['status'] : '';
+$game_status = isset($_SESSION['game_status']) ? $_SESSION['game_status'] : '';
 $baji = isset($_SESSION['baji']) ? $_SESSION['baji'] : '';
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
 $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
@@ -185,7 +185,7 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
       </div>
       <!-- header end -->
       <p>Slot ID: <?php echo $slotId; ?></p>
-      <p>Status: <?php echo $status; ?></p>
+      <p>Game Status: <?php echo $game_status; ?></p>
       <p>Baji: <?php echo $baji; ?></p>
       <p>userId: <?php echo $userId; ?></p>
       <p>gameType: <?php echo $gameType; ?></p>

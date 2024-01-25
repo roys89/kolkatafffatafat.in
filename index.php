@@ -197,7 +197,7 @@ include "database.php";
             $result = $conn->query($query);
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
-                $url = "add-bet.php?slot_id=" . urlencode($row['slot_id']) . "&baji=" . urlencode($row['baji']) . "&user_status=" . urlencode($row['user_status']);
+                $url = "add-bet.php?slot_id=" . urlencode($row['slot_id']) . "&baji=" . urlencode($row['baji']) . "&game_status=" . urlencode($row['game_status']);
                     ?>
               <div class="leaderboard-table">
                 <table class="table" id="game_table">
