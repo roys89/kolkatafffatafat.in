@@ -12,7 +12,7 @@ $userChoice = $_POST['baji'];
 $column1 = $_POST['single_result'];
 // Get other input fields as needed
 
-// Validate and sanitize user input here
+// Validate and sanitize user input here (consider using prepared statements)
 
 // Initialize a variable to check if both queries are successful
 $success = true;
@@ -30,12 +30,12 @@ if (!$conn->query($sqlGameTable)) {
 }
 
 // Update user_table
-$sqlUserTable = "UPDATE user_data
+$sqlUserTable = "UPDATE user_table
                  SET wallet_bal = wallet_bal + (9 * amount)
                  WHERE user_id IN (
                      SELECT user_id
                      FROM bet_table
-                     WHERE bet_number = '$column1'
+                     WHERE bet_number = '$column1' AND baji = '$userChoice'
                  )";
 
 if (!$conn->query($sqlUserTable)) {
