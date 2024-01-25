@@ -5,20 +5,34 @@ include "database.php";
 // Retrieve data from URL parameters
 $slotId = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
 $baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
-$status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
 
 // Save parameters in session
 $_SESSION['slot_id'] = $slotId;
 $_SESSION['baji'] = $baji;
-$_SESSION['status'] = $status;
 
 // Check if status is not equal to 1
-if ($status != 1) {
-    // Redirect to index.php or any other page
-    header("Location: index.php");
-    exit(); // Stop further execution
+$stmt = $conn->prepare("SELECT baji_status FROM game_table WHERE baji = ?");
+$stmt->bind_param("s", $baji);
+$stmt->execute();
+$stmt->bind_result($baji_status); // Replace with actual column names
+
+// Check if there is a row with baji_status = $baji
+if ($stmt->fetch()) {
+    // Check if baji_status is 0
+    if ($baji_status == 0) {
+        // Redirect to index.php
+        header("Location: index.php");
+        exit(); // Stop further execution
+    } else {
+        $_SESSION['baji_status'] = $baji_status;
+    }
 }
+
+$stmt->close();
+$conn->close();
 ?>
+
+
 
 
 
