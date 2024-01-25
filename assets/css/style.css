@@ -286,7 +286,21 @@ ul {
   position: relative;
 }
 
-
+.header .logo {
+  background: -webkit-linear-gradient(110deg, #eb3349, #f45c43);
+  position: absolute;
+  top: -15px;
+  width: 140px;
+  left: 50%;
+  padding: 15px;
+  padding-bottom: 70px;
+  padding-top: 30px;
+  z-index: 55;
+  border-radius: 0 0 100px 100px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 38px -24px #b4b8bd;
+  border-bottom: 1px solid rgbA(#fff, 1);
+}
 
 .header .logo a {
   display: inline-block;
