@@ -182,7 +182,7 @@ $_SESSION['status'] = $status;
                   </div>
               </div>
           </div>
-        </div>
+        </div>  
       </div>
       <!-- header end -->
     
