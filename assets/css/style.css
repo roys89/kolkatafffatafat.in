@@ -6432,8 +6432,8 @@ ul {
     content: "";
     right: -10%;
     top: 0;
-    width: 130%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     background: -webkit-linear-gradient(120deg, #eb3349, #f45c43);
     z-index: -1;
     transform: skewX(20deg);
