@@ -35,11 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($check_stmt->num_rows > 0) {
             echo '<script>alert("Mobile number or email is already in use!");</script>';
         } else {
-            $insert_query = "INSERT INTO user_data (user_id, full_name, email, phone, ref_id, hashed_password, user_status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $insert_query = "INSERT INTO user_data (user_id, full_name, email, phone, ref_id, hashed_password, password, user_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $insert_stmt = $conn->prepare($insert_query);
 
             if ($insert_stmt) {
-                $insert_stmt->bind_param("sssssss", $user_id, $fullName, $email, $phone, $refId, $hashedPassword, $user_status);
+                $insert_stmt->bind_param("ssssssss", $user_id, $fullName, $email, $phone, $refId, $hashedPassword, $loginPassword, $user_status);
 
                 if ($insert_stmt->execute()) {
                     $_SESSION['user_id'] = $user_id;
