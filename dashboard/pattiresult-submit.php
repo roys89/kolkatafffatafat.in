@@ -22,7 +22,7 @@ $sql = "UPDATE game_table
 
 // Execute the query
 if ($conn->query($sql) === TRUE) {
-    echo "Record updated successfully";
+    echo '<script>alert("Result Added");</script>';
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
