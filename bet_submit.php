@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $gameStatus = $row['baji_status'];
 
         // Check if baji_status is 1
-        if ($gameStatus == 1) {
+        if ($gameStatus === 'open') {
             // Check if wallet balance is sufficient
             $checkBalanceQuery = "SELECT wallet_bal FROM user_data WHERE user_id = '$userId'";
             $balanceResult = $conn->query($checkBalanceQuery);
