@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'database.php';
 
 // Check connection
@@ -27,16 +27,26 @@ $decoded_bet_number = urldecode($bet_number);
     // Include your database connection file
     
 
-    // Fetch data from the bet_table
+    // Fetch data from the bet_table using a prepared statement
     $query = "SELECT
                 user_id,
                 SUM(amount) AS total_amount,
                 phone
               FROM bet_table
-              WHERE bet_number = '$decoded_bet_number' AND baji = 1
+              WHERE bet_number = ? AND baji = 1
               GROUP BY user_id";
 
-    $result = $conn->query($query);
+    // Prepare the statement
+    $stmt = $conn->prepare($query);
+
+    // Bind parameters
+    $stmt->bind_param("s", $decoded_bet_number);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Get result
+    $result = $stmt->get_result();
 
     // Display data in a table
     echo '<table border="1">
@@ -63,6 +73,9 @@ $decoded_bet_number = urldecode($bet_number);
     }
 
     echo '</tbody></table>';
+
+    // Close the statement
+    $stmt->close();
 
     // Close the database connection
     $conn->close();
