@@ -198,77 +198,88 @@
                 </div>
             </div>
             <!-- container-fluid -->
-            <?php
-                // Check if the 'bet_number' parameter is present in the URL
-                if (isset($_GET['bet_number'])) {
-                    // Retrieve the 'bet_number' parameter from the URL
-                    $decoded_bet_number = urldecode($_GET['bet_number']);
+            <div class="col-span-12 card 2xl:col-span-12">
+                <div class="card-body">
+                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
+                                <div class="2xl:col-span-3">
+                                    <h6 class="text-15">Single Bets</h6> 
+                                </div><!--end col-->
+                            </div><!--end grid-->
+                    <div class="overflow-x-auto">
+                                <?php
+                                    // Check if the 'bet_number' parameter is present in the URL
+                                    if (isset($_GET['bet_number'])) {
+                                        // Retrieve the 'bet_number' parameter from the URL
+                                        $decoded_bet_number = urldecode($_GET['bet_number']);
 
-                    // Include your database connection file
-                    include '../database.php';
+                                        // Include your database connection file
+                                        include '../database.php';
 
-                    // Check connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
+                                        // Check connection
+                                        if ($conn->connect_error) {
+                                            die("Connection failed: " . $conn->connect_error);
+                                        }
 
-                    // Fetch data from the bet_table using a prepared statement
-                    $query = "SELECT
-                                user_id,
-                                SUM(amount) AS total_amount,
-                                phone
-                            FROM bet_table
-                            WHERE bet_number = ? AND baji = 1
-                            GROUP BY user_id";
+                                        // Fetch data from the bet_table using a prepared statement
+                                        $query = "SELECT
+                                                    user_id,
+                                                    SUM(amount) AS total_amount,
+                                                    phone
+                                                FROM bet_table
+                                                WHERE bet_number = ? AND baji = 1
+                                                GROUP BY user_id";
 
-                    // Prepare the statement
-                    $stmt = $conn->prepare($query);
+                                        // Prepare the statement
+                                        $stmt = $conn->prepare($query);
 
-                    // Bind parameters
-                    $stmt->bind_param("s", $decoded_bet_number);
+                                        // Bind parameters
+                                        $stmt->bind_param("s", $decoded_bet_number);
 
-                    // Execute the statement
-                    $stmt->execute();
+                                        // Execute the statement
+                                        $stmt->execute();
 
-                    // Get result
-                    $result = $stmt->get_result();
+                                        // Get result
+                                        $result = $stmt->get_result();
 
-                    // Display data in a table
-                    echo '<table class="w-full whitespace-nowrap">
-                            <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                <tr>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">User ID</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone Number</th>
-                                </tr>
-                            </thead>';
+                                        // Display data in a table
+                                        echo '<table class="w-full whitespace-nowrap">
+                                                <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                                    <tr>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">User ID</th>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone Number</th>
+                                                    </tr>
+                                                </thead>';
 
-                    // Process query results and display in the table
-                    while ($row = $result->fetch_assoc()) {
-                        $user_id = $row['user_id'];
-                        $total_amount = $row['total_amount'];
-                        $phone_number = $row['phone'];
+                                        // Process query results and display in the table
+                                        while ($row = $result->fetch_assoc()) {
+                                            $user_id = $row['user_id'];
+                                            $total_amount = $row['total_amount'];
+                                            $phone_number = $row['phone'];
 
-                        echo '  <tbody>
-                                <tr>
-                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $user_id . '</td>
-                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
-                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $phone_number . '</td>
-                                </tr>
-                                </tbody>';
-                    }
+                                            echo '  <tbody>
+                                                    <tr>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $user_id . '</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $phone_number . '</td>
+                                                    </tr>
+                                                    </tbody>';
+                                        }
 
-                    echo '</tbody></table>';
+                                        echo '</tbody></table>';
 
-                    // Close the statement
-                    $stmt->close();
+                                        // Close the statement
+                                        $stmt->close();
 
-                    // Close the database connection
-                    $conn->close();
-                } else {
-                    echo 'No "bet_number" parameter found in the URL.';
-                }
-                ?>
+                                        // Close the database connection
+                                        $conn->close();
+                                    } else {
+                                        echo 'No "bet_number" parameter found in the URL.';
+                                    }
+                                    ?>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- End Page-content -->
