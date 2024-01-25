@@ -212,7 +212,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets (Baji 1)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
@@ -283,7 +283,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets (Baji 2)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
@@ -354,7 +354,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets  (Baji 3)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
@@ -425,7 +425,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets  (Baji 4)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
@@ -496,7 +496,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets  (Baji 5)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
@@ -567,7 +567,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets  (Baji 6)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
@@ -638,7 +638,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets  (Baji 7)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
@@ -708,7 +708,7 @@ if ($conn->connect_error) {
                 <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single Bets  (Baji 8)</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                     <div class="overflow-x-auto">
