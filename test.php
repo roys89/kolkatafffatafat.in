@@ -7,7 +7,7 @@ if ($conn->connect_error) {
 }
 
 // Assuming $bet_number is a PHP variable containing the bet number from the URL
-
+$decoded_bet_number = urldecode($bet_number);
 
 // Fetch data from the bet_table
 $query = "SELECT
@@ -15,7 +15,7 @@ $query = "SELECT
             SUM(amount) AS total_amount,
             phone
           FROM bet_table
-          WHERE bet_number = '1' AND baji = 1
+          WHERE bet_number = '$decoded_bet_number' AND baji = 1
           GROUP BY user_id";
 
 $result = $conn->query($query);
