@@ -50,8 +50,7 @@ if (!$conn->query($sqlUserTable)) {
 // Commit the transaction if both queries are successful, otherwise, rollback
 if ($success) {
     $conn->commit();
-    echo '<script>alert("Result Added");</script>';
-    header("Location: dashboard/forms-basic.php");
+    echo '<script>alert("Update Successful!"); window.location.href = document.referrer;</script>';
 } else {
     $conn->rollback();
     echo "Error: " . $sqlGameTable . "<br>" . $conn->error;
