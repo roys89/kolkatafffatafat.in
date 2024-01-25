@@ -15,8 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ss", $status, $phone);
     
     if ($stmt->execute()) {
-        echo '<script>alert("Registration successful!");</script>';
-        header("Location: /dashboard/forms-basic.php");
+        echo '<script>alert("Update Successful!"); window.location.href = document.referrer;</script>';
     } else {
         echo "Error updating user status: " . $stmt->error;
     }
