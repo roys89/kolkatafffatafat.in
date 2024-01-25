@@ -11,6 +11,14 @@ if ($conn->connect_error) {
 $query = "UPDATE game_table SET baji_status = 'close' WHERE baji = 2";
 $result = $conn->query($query);
 
+if (!$result) {
+    // If the query fails, output the error message
+    die("Query failed: " . $conn->error);
+} else {
+    // Output a success message or any other relevant information
+    echo "Records updated successfully.";
+}
+
 // Close the database connection
 $conn->close();
 ?>
