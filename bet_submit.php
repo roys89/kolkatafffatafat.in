@@ -45,8 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($walletBal >= $amount) {
                     $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
                     $sql2 = "UPDATE user_data SET wallet_bal = wallet_bal - $amount  WHERE user_id = '$userId'";
+                    $sql3 = "INSERT INTO master_bet (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
 
-                    if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
+                    if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE) {
                         echo json_encode(['success' => true, 'message' => 'Data inserted successfully']);
                     } else {
                         echo json_encode(['success' => false, 'message' => 'Error: ' . $conn->error]);
