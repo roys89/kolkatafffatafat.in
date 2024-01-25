@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 $gameType = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
 // Retrieve data from SESSION parameters
 $slotId = isset($_SESSION['slot_id']) ? $_SESSION['slot_id'] : '';
-$game_status = isset($_SESSION['game_status']) ? $_SESSION['game_status'] : '';
+$baji_status = isset($_SESSION['baji_status']) ? $_SESSION['baji_status'] : '';
 $baji = isset($_SESSION['baji']) ? $_SESSION['baji'] : '';
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
 $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
