@@ -51,6 +51,7 @@ if (!$conn->query($sqlUserTable)) {
 if ($success) {
     $conn->commit();
     echo '<script>alert("Result Added");</script>';
+    header("Location: dashboard/forms-basic.php");
 } else {
     $conn->rollback();
     echo "Error: " . $sqlGameTable . "<br>" . $conn->error;

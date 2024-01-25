@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ss", $status, $phone);
     
     if ($stmt->execute()) {
-        echo "User status updated successfully.";
+        echo '<script>alert("Registration successful!");</script>';
+        header("Location: dashboard/forms-basic.php");
     } else {
         echo "Error updating user status: " . $stmt->error;
     }
