@@ -1,3 +1,4 @@
+
 <?php
 // Include your database connection file
 include '../database.php';
@@ -15,7 +16,7 @@ $column1 = $_POST['single_result'];
 // Validate and sanitize user input here
 
 // Build the SQL query
-$sql = "UPDATE your_table_name
+$sql = "UPDATE game_table
         SET single_result = '$column1'
         WHERE baji = '$userChoice'";
 
@@ -28,4 +29,4 @@ if ($conn->query($sql) === TRUE) {
 
 // Close the database connection
 $conn->close();
-?>
+?> 
