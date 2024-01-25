@@ -271,8 +271,6 @@ if ($conn->connect_error) {
                                         // Close the statement
                                         $stmt->close();
 
-                                        // Close the database connection
-                                        $conn->close();
                                     } else {
                                         echo 'No "bet_number" parameter found in the URL.';
                                     }
