@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "database.php";
+
 // Retrieve data from URL parameters
 $slotId = isset($_GET['slot_id']) ? urldecode($_GET['slot_id']) : 'Default Value';
 $baji = isset($_GET['baji']) ? urldecode($_GET['baji']) : 'Default Value';
@@ -10,7 +11,14 @@ $status = isset($_GET['status']) ? urldecode($_GET['status']) : 'Default Value';
 $_SESSION['slot_id'] = $slotId;
 $_SESSION['baji'] = $baji;
 $_SESSION['status'] = $status;
+
+// Check if status is 1
+if ($status !== 1) {
+    // Page content goes here
+    header("Location: index.php");
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
