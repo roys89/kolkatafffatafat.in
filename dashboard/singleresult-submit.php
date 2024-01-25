@@ -30,7 +30,7 @@ if (!$conn->query($sqlGameTable)) {
 }
 
 // Update user_table
-$sqlUserTable = "UPDATE user_table
+$sqlUserTable = "UPDATE user_data
                  SET wallet_bal = wallet_bal + (9 * amount)
                  WHERE user_id IN (
                      SELECT user_id
