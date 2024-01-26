@@ -12,7 +12,7 @@ $phone = $_POST['phone'];
 $amount = $_POST['amount'];
 
 // Use prepared statements to prevent SQL injection
-$sql = "UPDATE user_data SET wallet_bal = amount + ? WHERE phone = ?";
+$sql = "UPDATE user_data SET wallet_bal = wallet_bal + ? WHERE phone = ?";
 
 $stmt = $conn->prepare($sql);
 
