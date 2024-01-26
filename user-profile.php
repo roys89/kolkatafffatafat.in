@@ -52,7 +52,7 @@ $conn->close();
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="assets/css/owl.carousel.css">
     <!-- stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style1.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
