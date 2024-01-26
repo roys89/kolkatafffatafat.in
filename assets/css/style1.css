@@ -287,14 +287,14 @@ ul {
 }
 
 .header .logo {
-  background: -webkit-linear-gradient(110deg, #ffffff, #f45c43);
+  background: -webkit-linear-gradient(110deg, #eb3349, #f45c43);
   position: absolute;
   top: -15px;
-  width: 140px;
+  width: 95px;
   left: 50%;
-  padding: 15px;
+  padding: 11px;
   padding-bottom: 70px;
-  padding-top: 30px;
+  padding-top: 13px;
   z-index: 55;
   border-radius: 0 0 100px 100px;
   transform: translateX(-50%);
