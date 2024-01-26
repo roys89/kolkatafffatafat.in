@@ -22,7 +22,10 @@ $conn->begin_transaction();
 
 // Update game_table
 $sqlGameTable = "UPDATE game_table
-                 SET single_result = '$column1'
+                 SET patti_result = '$column1',
+                     single_result = (SELECT SUM('$column1') 
+                                      FROM bet_table
+                                      WHERE bet_number = '$column1' AND baji = '$userChoice')
                  WHERE baji = '$userChoice'";
 
 if (!$conn->query($sqlGameTable)) {
@@ -31,7 +34,7 @@ if (!$conn->query($sqlGameTable)) {
 
 // Update user_table
 $sqlUserTable = "UPDATE user_data
-                 SET wallet_bal = wallet_bal + (9 * (
+                 SET wallet_bal = wallet_bal + (10 * (
                      SELECT SUM(amount)
                      FROM bet_table
                      WHERE bet_number = '$column1' AND baji = '$userChoice'
@@ -41,7 +44,6 @@ $sqlUserTable = "UPDATE user_data
                      FROM bet_table
                      WHERE bet_number = '$column1' AND baji = '$userChoice'
                  )";
-
 
 if (!$conn->query($sqlUserTable)) {
     $success = false;
