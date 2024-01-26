@@ -272,7 +272,7 @@ include "database.php";
                     <tr>
                       <td>
                         <span class="single-data green">
-                          10 ka 900
+                          10 ka 90
                         </span>
                       </td>
                       <td>
