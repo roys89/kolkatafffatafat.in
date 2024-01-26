@@ -207,33 +207,7 @@ $conn->close();
       </div>
       <!-- header end -->
     
-    <!-- breadcrumb begin -->
-    <div class="breadcrumb-betipsta">
-        <img class="shape" src="assets/img/statics/statics-bg.png" alt="">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-7">
-                    <div class="part-text">
-                        <h2 class="title">Create a Tips</h2>
-                        <ul>
-                            <li>
-                                <a href='index.php'>Home</a>
-                            </li>
-                            <li>
-                                Create a tips
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="part-img">
-                        <img src="#" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb end -->
+    
 
     <!-- add tips begin -->
     <div class="add-tips">
