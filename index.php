@@ -172,12 +172,6 @@ include "database.php";
       <!-- leaderboard begin  -->
       <div class="leaderboard">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-10">
-              <div class="section-title">
-              </div>
-            </div>
-          </div>
           
           <div class="row justify-content-center">
             <h5>
