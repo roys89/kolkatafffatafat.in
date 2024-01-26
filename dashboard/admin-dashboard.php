@@ -19,7 +19,7 @@ if (!isset($_SESSION['admin_id'])) {
     <meta charset="utf-8">
     <title>Kolkata FF Live Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta content="Minimal Admin & Dashboard Template" name="description">
+    <meta content="KOlkata FF Admin Dashboard" name="description">
     <meta content="Themesdesign" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
