@@ -185,6 +185,9 @@ include "database.php";
               while ($row = $result->fetch_assoc()) {
                 $url = "add-bet.php?slot_id=" . urlencode($row['slot_id']) . "&baji=" . urlencode($row['baji']);
                     ?>
+                    <h5>
+              Kolkata FF (Baji 1)
+            </h5>
               <div class="leaderboard-table">
                 <table class="table" id="game_table">
                   <thead>
