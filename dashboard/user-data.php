@@ -373,7 +373,7 @@ if (!isset($_SESSION['admin_id'])) {
                                 }
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
-                                $query = "SELECT full_name, phone, password, wallet_bal, user_status FROM user_table;";
+                                $query = "SELECT full_name, phone, password, wallet_bal, user_status FROM user_data;";
 
                                 $result = $conn->query($query);  
 
