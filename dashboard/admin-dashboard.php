@@ -604,15 +604,16 @@ if (!isset($_SESSION['admin_id'])) {
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
-                                pl.bet_number,
-                                SUM(bt.amount) AS total_amount,
-                                COUNT(bt.user_id) AS total_bets
+                                    pl.bet_number,
+                                    SUM(bt.amount) AS total_amount,
+                                    COUNT(bt.user_id) AS total_bets
                                 FROM
                                     patti_list pl
                                 LEFT JOIN
                                     bet_table bt ON pl.bet_number = bt.bet_number
                                 GROUP BY
-                                    pl.bet_number;";
+                                    pl.bet_number
+                                HAVING total_bets > 0";
                                     
                                 $result = $conn->query($query);
 
