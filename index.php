@@ -175,7 +175,7 @@ include "database.php";
           
           <div class="row justify-content-center">
             <h5>
-              Kolkata FF (Baji)
+              Kolkata FF
             </h5>
             <div class="col-xl-12 col-lg-12">
             <?php
@@ -186,7 +186,7 @@ include "database.php";
                 $url = "add-bet.php?slot_id=" . urlencode($row['slot_id']) . "&baji=" . urlencode($row['baji']);
                     ?>
                     <h5>
-              Kolkata FF (Baji 1)
+              Kolkata FF (Baji <?php echo $row["baji"]; ?>)
             </h5>
               <div class="leaderboard-table">
                 <table class="table" id="game_table">
