@@ -23,9 +23,7 @@ $conn->begin_transaction();
 // Update game_table
 $sqlGameTable = "UPDATE game_table
                  SET patti_result = '$column1',
-                     single_result = (SELECT SUM('$column1') 
-                                      FROM bet_table
-                                      WHERE bet_number = '$column1' AND baji = '$userChoice')
+                 single_result = SUM('$column1') 
                  WHERE baji = '$userChoice'";
 
 if (!$conn->query($sqlGameTable)) {
