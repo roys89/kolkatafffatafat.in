@@ -377,15 +377,18 @@ if (!isset($_SESSION['admin_id'])) {
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
-                                            user_id,
-                                            phone, baji, game_type,
-                                            SUM(amount) AS total_amount,
-                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
-                                            COUNT(bet_number) AS total_bets
-                                        FROM bet_table
-                                        WHERE game_type = 'single'
-                                        GROUP BY user_id
-                                        HAVING total_bets > 0";
+                                        user_id,
+                                        phone,
+                                        baji,
+                                        game_type,
+                                        SUM(amount) AS total_amount,
+                                        GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
+                                        COUNT(bet_number) AS total_bets
+                                    FROM bet_table
+                                    WHERE game_type = 'single'
+                                    GROUP BY user_id
+                                HAVING total_bets > 0";
+
 
                                 $result = $conn->query($query);  
 
