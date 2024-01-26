@@ -293,33 +293,7 @@ include "database.php";
 
 
 
-      <!-- newsletter begin -->
-      <div class="newsletter">
-        <div class="part-img">
-          <img src="assets/img/newsletter.png" alt="">
-        </div>
-        <div class="container">
-          <div class="row justify-content-between">
-            <div class="col-xl-7 col-lg-7 d-xl-flex d-lg-flex d-block align-items-center">
-              <div class="newsletter-area">
-                <div class="part-text">
-                  <h3 class="sub-title">Get Always Update News</h3>
-                  <h2>Kolkata Fatafat Newsletter</h2>
-                </div>
-                <div class="part-form">
-                  <form>
-                    <input type="email" placeholder="Enter your email address here...@">
-                    <button type="submit">
-                      <img src="assets/img/icon/rocket.png" alt="">
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- newsletter end -->
+     
 
 
 
