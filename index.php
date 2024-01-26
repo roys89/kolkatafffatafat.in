@@ -146,6 +146,10 @@ include "database.php";
                                           <a class='nav-link' href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
                                           </a>
                                         </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='user-profile.php'>Profile
+                                          </a>
+                                        </li>
                                         <li class="nav-item dropdown">
                                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           User
