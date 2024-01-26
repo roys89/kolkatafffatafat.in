@@ -140,7 +140,7 @@ include "database.php";
                                     <div class="col-xl-5 col-lg-5">
                                       <ul class="navbar-nav">
                                         <li class="nav-item">
-                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_patti-list/'>Kolkata FF Patti List</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_patti-list/'>Patti List</a>
                                         </li>
                                         <li class="nav-item">
                                           <a class='nav-link' href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
