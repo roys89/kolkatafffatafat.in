@@ -11,13 +11,26 @@ if ($conn->connect_error) {
 $phone = $_POST['phone'];
 $amount = $_POST['amount'];
 
-// Update the user's amount in the database, replace 'amount_column' with the actual column name in your user table
-$sql = "UPDATE user_data SET amount = amount + $amount WHERE phone = $phone";
+// Use prepared statements to prevent SQL injection
+$sql = "UPDATE user_data SET amount = amount + ? WHERE phone = ?";
 
-if ($conn->query($sql) === TRUE) {
-    echo '<script>alert("Update Successful!"); window.location.href = document.referrer;</script>';
+$stmt = $conn->prepare($sql);
+
+if ($stmt) {
+    // Bind parameters
+    $stmt->bind_param("is", $amount, $phone);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo '<script>alert("Update Successful!"); window.location.href = document.referrer;</script>';
+    } else {
+        echo "Error updating amount: " . $stmt->error;
+    }
+
+    // Close the statement
+    $stmt->close();
 } else {
-    echo "Error updating amount: " . $conn->error;
+    echo "Error preparing statement: " . $conn->error;
 }
 
 // Close the database connection
