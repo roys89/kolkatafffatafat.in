@@ -308,6 +308,7 @@ ul {
 
 .header .logo a img {
   width: 100%;
+  height: 50%;
 }
 
 .header .header-bottom .mainmenu .navbar {
@@ -1509,7 +1510,7 @@ ul {
 
 .bookmakers .single-bookmaker .bookmaker-logo {
   width: 130px;
-  height: 90px;
+  height: 50px;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-end;
