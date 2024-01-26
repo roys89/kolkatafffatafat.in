@@ -377,18 +377,14 @@ if (!isset($_SESSION['admin_id'])) {
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
-                                        user_id,
-                                        phone,
-                                        baji,
-                                        game_type,
-                                        SUM(amount) AS total_amount,
-                                        GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
-                                        COUNT(bet_number) AS total_bets
-                                    FROM bet_table
-                                    WHERE game_type = 'single'
-                                    GROUP BY user_id
-                                HAVING total_bets > '0'";
-
+                                            user_id,
+                                            phone, baji, game_type,
+                                            SUM(amount) AS total_amount,
+                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
+                                            COUNT(bet_number) AS total_bets
+                                        FROM bet_table
+                                        WHERE game_type = 'single'
+                                        GROUP BY user_id";
 
                                 $result = $conn->query($query);  
 
@@ -457,17 +453,14 @@ if (!isset($_SESSION['admin_id'])) {
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
-                                    user_id,
-                                    phone,
-                                    baji,
-                                    game_type,
-                                    SUM(amount) AS total_amount,
-                                    GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
-                                    COUNT(bet_number) AS total_bets
-                                FROM bet_table
-                                WHERE game_type = 'patti'
-                                GROUP BY user_id
-                                HAVING total_amount > 0";
+                                            user_id,
+                                            phone, baji, game_type,
+                                            SUM(amount) AS total_amount,
+                                            GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
+                                            COUNT(bet_number) AS total_bets
+                                        FROM bet_table
+                                        WHERE game_type = 'patti'
+                                        GROUP BY user_id";
 
                                 $result = $conn->query($query);  
 
@@ -529,7 +522,7 @@ if (!isset($_SESSION['admin_id'])) {
                         <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="2xl:col-span-3">
-                                    <h6 class="text-15">Single Bets</h6> 
+                                    <h6 class="text-15">Single List</h6> 
                                 </div><!--end col-->
                             </div><!--end grid-->
                             <div class="overflow-x-auto">
@@ -545,7 +538,9 @@ if (!isset($_SESSION['admin_id'])) {
                                 LEFT JOIN
                                     bet_table bt ON sl.bet_number = bt.bet_number
                                 GROUP BY
-                                    sl.bet_number;";
+                                    sl.bet_number
+                                HAVING total_bets > 0";
+                    
                                     
                                 $result = $conn->query($query);
 
@@ -617,7 +612,8 @@ if (!isset($_SESSION['admin_id'])) {
                                 LEFT JOIN
                                     bet_table bt ON pl.bet_number = bt.bet_number
                                 GROUP BY
-                                    pl.bet_number;";
+                                    pl.bet_number;
+                                    HAVING total_bets > 0";
                                     
                                 $result = $conn->query($query);
 
