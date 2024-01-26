@@ -358,53 +358,77 @@ if (!isset($_SESSION['admin_id'])) {
                         </div>
                     </div><!--end col-->
 
-                   
+                    <!-- container-fluid -->
+                        <div class="col-span-12 card 2xl:col-span-12">
+                            <div class="card-body">
+                                        <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
+                                            <div class="2xl:col-span-3">
+                                                <h6 class="text-15">Single Bets (Baji 1)</h6> 
+                                            </div><!--end col-->
+                                        </div><!--end grid-->
+                                <div class="overflow-x-auto">
+                                            <?php
+                                                // Check if the 'bet_number' parameter is present in the URL
+                                                if (isset($_GET['bet_number'])) {
 
-        <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.8)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">        
-            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+                                                    // Fetch data from the bet_table using a prepared statement
+                                                    $query = "SELECT
+                                                                user_id,
+                                                                SUM(amount) AS total_amount,
+                                                                phone
+                                                            FROM bet_table
+                                                            WHERE bet_number = ? AND baji = 1 AND game_type= 'single'
+                                                            GROUP BY user_id";
 
-                <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
-                    <div class="grow">
-                        <h5 class="text-16">Add Result</h5>
-                    </div>
-                    <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
-                        <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
-                            <a href="#!" class="text-slate-400 dark:text-zink-200">Forms</a>
-                        </li>
-                        <li class="text-slate-700 dark:text-zink-100">
-                            Add Result
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="add-result.php" method="post">
-                                <div class="mb-3">
-                                    <label for="inputText" class="inline-block mb-2 text-base font-medium">Result <span class="text-red-500">*</span></label>
-                                    <input type="text" id="single_result" name="single_result" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" required>
+                                                    // Prepare the statement
+                                                    $stmt = $conn->prepare($query);
+
+                                                    // Bind parameters
+                                                    $stmt->bind_param("s", $decoded_bet_number);
+
+                                                    // Execute the statement
+                                                    $stmt->execute();
+
+                                                    // Get result
+                                                    $result = $stmt->get_result();
+
+                                                    // Display data in a table
+                                                    echo '<table class="w-full whitespace-nowrap">
+                                                            <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                                                <tr>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">User ID</th>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone Number</th>
+                                                                </tr>
+                                                            </thead>';
+
+                                                    // Process query results and display in the table
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        $user_id = $row['user_id'];
+                                                        $total_amount = $row['total_amount'];
+                                                        $phone_number = $row['phone'];
+
+                                                        echo '  <tbody>
+                                                                <tr>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $user_id . '</td>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $phone_number . '</td>
+                                                                </tr>
+                                                                </tbody>';
+                                                    }
+
+                                                    echo '</tbody></table>';
+
+                                                    // Close the statement
+                                                    $stmt->close();
+
+                                                } else {
+                                                    echo 'No "bet_number" parameter found in the URL.';
+                                                }
+                                                ?>
                                 </div>
-                                <div class="mb-3">
-                                    <select id="baji" name="baji" class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
-                                        <option selected>Select Baji</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                        <option value="3">6</option>
-                                        <option value="1">7</option>
-                                        <option value="2">8</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Submit</button>
-                            </form>
+                            </div>
                         </div>
-                    </div><!--end card-->
-                </div><!--end grid-->
-            </div>
-            <!-- container-fluid -->
-        </div>
 
 
                  
