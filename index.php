@@ -22,7 +22,7 @@ include "database.php";
       <!-- Owl Carousel -->
       <link rel="stylesheet" href="assets/css/owl.carousel.css">
       <!-- stylesheet -->
-      <link rel="stylesheet" href="assets/css/style2.css">
+      <link rel="stylesheet" href="assets/css/style1.css">
       <!-- responsive -->
       <link rel="stylesheet" href="assets/css/responsive.css">
   </head>
