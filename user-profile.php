@@ -130,7 +130,7 @@ $conn->close();
           <div class="container">
             <div class="row d-xl-none d-lg-none d-flex">
               <div class="col-8">
-                <a class='mobile-logo' href='https://kolkatafatafat.help/'>
+                <a class='mobile-logo' href='index.php'>
                   <img src="assets/img/logo.png" alt="">
                   Kolkata Fatafat
                 </a>
