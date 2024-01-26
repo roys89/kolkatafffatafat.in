@@ -612,8 +612,7 @@ if (!isset($_SESSION['admin_id'])) {
                                 LEFT JOIN
                                     bet_table bt ON pl.bet_number = bt.bet_number
                                 GROUP BY
-                                    pl.bet_number;
-                                    HAVING total_bets > 0";
+                                    pl.bet_number;";
                                     
                                 $result = $conn->query($query);
 
