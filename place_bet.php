@@ -206,11 +206,11 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                         <form class="dynamic-form" onsubmit="submitForm(event)">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
-                                    <label for="fullName">Amount</label>
+                                    <label for="fullName">Enter Amount</label>
                                     <input type="text" id="amount" name="amount" placeholder="Enter the bet amount">
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
-                                    <label for="phoneNo">Number</label>
+                                    <label for="phoneNo">Enter Number</label>
                                     <input type="text" id="bet_number" name="bet_number" placeholder="Enter the number you want to bet on">
                                 </div>
                             </div>
