@@ -200,40 +200,14 @@ $conn->close();
       </div>
       <!-- header end -->
 
-    <!-- breadcrumb begin -->
-    <div class="breadcrumb-betipsta">
-        <img class="shape" src="assets/img/statics/statics-bg-2.png" alt="">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-7">
-                    <div class="part-text">
-                        <h2 class="title">User Profile</h2>
-                        <ul>
-                            <li>
-                                <a href='index.php'>Home</a>
-                            </li>
-                            <li>
-                                User Profile
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="part-img">
-                        <img src="#" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb end -->
+
 
     <!-- User Profile begin -->
     <div class="tipster-datails">
         <div class="primary-step">
             <div class="container">
                 <div class="title-cover">
-                    <h3 class="part-title style-1">Tipster Portfolio</h3>
+                    <h3 class="part-title style-1">User Profile</h3>
                 </div>
                 <div class="profile-step">
                     <div class="row justify-content-between">

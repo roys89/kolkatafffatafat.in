@@ -181,15 +181,15 @@ include "database.php";
           <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-8 col-md-10">
               <div class="section-title">
-                <h4 class="sub-title">
+                <!-- <h4 class="sub-title">
                   KOLKATA FF LIVE
-                </h4>
+                </h4> -->
               </div>
             </div>
           </div>
           <div class="row justify-content-center">
             <h5>
-              Kolkata FF (Baji 1)
+              Kolkata FF (Baji)
             </h5>
             <div class="col-xl-12 col-lg-12">
             <?php
