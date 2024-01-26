@@ -57,25 +57,12 @@ $sqlUserTable = "UPDATE user_data
                      WHERE bet_number = '$column1' AND baji = '$userChoice'
                  )";
 
-$sqlUserTable2 = "UPDATE user_data
-                SET wallet_bal = wallet_bal + (10 * (
-                    SELECT SUM(amount)
-                    FROM bet_table
-                    WHERE bet_number = '$column2' AND baji = '$userChoice'
-                ))
-                WHERE user_id IN (
-                    SELECT user_id
-                    FROM bet_table
-                    WHERE bet_number = '$column2' AND baji = '$userChoice'
-                )";
 
 
 if (!$conn->query($sqlUserTable)) {
     $success = false;
 }
-if (!$conn->query($sqlUserTable2)) {
-    $success = false;
-}
+
 
 
 // Commit the transaction if both queries are successful, otherwise, rollback
