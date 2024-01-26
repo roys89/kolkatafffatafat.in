@@ -31,7 +31,7 @@ if (!$conn->query($sqlGameTable)) {
 
 // Update user_table
 $sqlUserTable = "UPDATE user_data
-                 SET wallet_bal = wallet_bal + (100 * (
+                 SET wallet_bal = wallet_bal + (10 * (
                      SELECT SUM(amount)
                      FROM bet_table
                      WHERE bet_number = '$column1' AND baji = '$userChoice'

@@ -279,7 +279,7 @@ $conn->close();
                                     <li>
                                         <a href="<?php echo $url1; ?>">
                                             <span class="prediction-amount">
-                                               10-900
+                                               100-900
                                             </span>
                                             <span class="match-odds">Bet</span>
                                         </a>
@@ -317,7 +317,7 @@ $conn->close();
                                     <li>
                                         <a href="<?php echo $url2; ?>">
                                             <span class="prediction-amount">
-                                                100-10000
+                                                100-1000
                                             </span>
                                             <span class="match-odds">Bet</span>
                                         </a>
