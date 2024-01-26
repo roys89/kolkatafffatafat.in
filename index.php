@@ -209,6 +209,7 @@ include "database.php";
                       <th scope="col">Bet</th>
                     </tr>
                   </thead>
+                  
                   <tbody>
                     <tr>
                       <td>
