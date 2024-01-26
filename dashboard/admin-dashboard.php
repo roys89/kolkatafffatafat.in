@@ -385,7 +385,7 @@ if (!isset($_SESSION['admin_id'])) {
                                         FROM bet_table
                                         WHERE game_type = 'single'
                                         GROUP BY user_id
-                                        HAVING total_amount > 0";
+                                        HAVING total_bets > 0";
 
                                 $result = $conn->query($query);  
 
