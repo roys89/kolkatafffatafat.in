@@ -64,7 +64,7 @@ include "database.php";
               <div class="col-xl-2 col-lg-2 d-xl-block d-lg-block d-none">
                 <div class="logo">
                     <a href='index.php'>
-                        
+                        <img src="assets/img/logo1.png" alt="">
                     </a>
                 </div>
               </div>
