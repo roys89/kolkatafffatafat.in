@@ -194,11 +194,8 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                 <div class="col-xl-8 col-lg-8 col-md-10">
                   <div class="section-title">
                     <h4 class="sub-title">
-                      Contact With Us
+                      Place bet here
                     </h4>
-                    <h2>Get in touch with Authority</h2>
-                    <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
-                      and offers from leading bookmakers! See how it works!</p>
                   </div>
                 </div>
               </div>
@@ -210,11 +207,11 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <label for="fullName">Amount</label>
-                                    <input type="number" id="amount" name="amount" placeholder="Enter the bet amount">
+                                    <input type="text" id="amount" name="amount" placeholder="Enter the bet amount">
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <label for="phoneNo">Number</label>
-                                    <input type="number" id="bet_number" name="bet_number" placeholder="Enter the number you want to bet on">
+                                    <input type="text" id="bet_number" name="bet_number" placeholder="Enter the number you want to bet on">
                                 </div>
                             </div>
                             <button class="submit-btn" type="submit">Submit</button>
