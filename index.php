@@ -178,15 +178,7 @@ include "database.php";
               </div>
             </div>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-10">
-              <div class="section-title">
-                <!-- <h4 class="sub-title">
-                  KOLKATA FF LIVE
-                </h4> -->
-              </div>
-            </div>
-          </div>
+          
           <div class="row justify-content-center">
             <h5>
               Kolkata FF (Baji)
@@ -209,7 +201,7 @@ include "database.php";
                       <th scope="col">Bet</th>
                     </tr>
                   </thead>
-                  
+
                   <tbody>
                     <tr>
                       <td>
