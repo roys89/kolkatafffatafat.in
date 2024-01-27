@@ -402,7 +402,7 @@ if (!isset($_SESSION['admin_id'])) {
                                                         
                                                         echo '  <tbody>
                                                                     <tr>
-                                                                        <td class="baji-link px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="#">' . $row['baji'] . '</a></td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="#">' . $row['baji'] . '</a></td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_amount'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_numbers'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bets'] . '</td>
@@ -438,38 +438,6 @@ if (!isset($_SESSION['admin_id'])) {
                             </div>
                         </div>
                     </div><!--end col-->
-
-                                                <?php
-                                                // Include your database connection file
-                                                include '../database.php';
-
-                                                if (isset($_POST['baji'])) {
-                                                    $baji = $_POST['baji'];
-
-                                                    // Perform a query to fetch additional details
-                                                    $query = "SELECT user_id, amount FROM bet_table WHERE baji = '$baji'";
-                                                    $result = $conn->query($query);
-
-                                                    if ($result->num_rows > 0) {
-                                                        echo '<table class="table">'; // Replace with your table HTML structure
-                                                        echo '<thead><tr><th>User ID</th><th>Amount</th></tr></thead><tbody>';
-
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo '<tr><td>' . $row['user_id'] . '</td><td>' . $row['amount'] . '</td></tr>';
-                                                        }
-
-                                                        echo '</tbody></table>';
-                                                    } else {
-                                                        echo 'No details found';
-                                                    }
-                                                }
-
-                                                // Close the database connection
-                                                $conn->close();
-                                                ?>
-
-
-
                 </div><!--end grid-->
             </div>
             <!-- container-fluid -->
@@ -708,33 +676,6 @@ if (!isset($_SESSION['admin_id'])) {
 
 <!-- App js -->
 <script src="assets/js/app.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Attach click event to elements with class 'baji-link'
-        $('.baji-link').on('click', function(e) {
-            e.preventDefault();
-            
-            // Get the baji value from the clicked element
-            var baji = $(this).text();
-
-            // Make an AJAX request to fetch additional details
-            $.ajax({
-                type: 'POST',
-                url: 'get_details.php', // Replace with the actual URL that fetches details
-                data: { baji: baji },
-                success: function(response) {
-                    // Display the details in a modal or another container on the page
-                    $('#detailsModalBody').html(response);
-                    $('#detailsModal').modal('show'); // Assuming you are using Bootstrap modal
-                },
-                error: function(error) {
-                    console.error('Error fetching details:', error);
-                }
-            });
-        });
-    });
-</script>
 
 </body>
 
