@@ -376,10 +376,7 @@ if (!isset($_SESSION['admin_id'])) {
                                     }
 
                                     // Query to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT tt.*, ud.phone, ud.wallet_bal
-                                                FROM transaction_table tt
-                                                JOIN user_data ud ON tt.user_id = ud.user_id
-                                                ORDER BY tt.timestamp DESC";
+                                    $query = "SELECT * FROM transaction_table ORDER BY timestamp DESC;                                    ";
 
                                     $result = $conn->query($query);
 
