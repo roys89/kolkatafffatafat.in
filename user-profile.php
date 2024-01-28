@@ -297,9 +297,9 @@ $stmt->close();
             <div class="col-xl-12 col-lg-12">
             <?php
             $query = "SELECT * FROM bet_table WHERE user_id=  $user_id";
-            $result = $conn->query($query);
-            if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
+            $result1 = $conn->query($query);
+            if ($result1->num_rows > 0) {
+              while ($row = $result1->fetch_assoc()) {
                   ?>
               <div class="leaderboard-table">
                 <table class="table">
