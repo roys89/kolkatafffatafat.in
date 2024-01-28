@@ -18,13 +18,21 @@ if ($conn->connect_error) {
 
 // Retrieve user data from the database based on the session information
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT * FROM user_data WHERE user_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
-$stmt->close();
+$userSql = "SELECT * FROM user_data WHERE user_id = ?";
+$userStmt = $conn->prepare($userSql);
+$userStmt->bind_param("i", $user_id);
+$userStmt->execute();
+$userResult = $userStmt->get_result();
+$user = $userResult->fetch_assoc();
+$userStmt->close();
+
+// Retrieve bet details from the bet_table for the logged-in user
+$betSql = "SELECT * FROM bet_table WHERE user_id = ?";
+$betStmt = $conn->prepare($betSql);
+$betStmt->bind_param("i", $user_id);
+$betStmt->execute();
+$betResult = $betStmt->get_result();
+$betStmt->close();
 $conn->close();
 ?>
 
@@ -287,51 +295,31 @@ $conn->close();
         </div>
         
         
-      <!-- leaderboard begin  -->
-      <?php
-// Include your database connection file
-include '../database.php';
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Replace $user_id with the actual user_id you want to fetch data for
-$user_id = 123; // Example user_id
-
-// Query to fetch data from bet_table for a specific user_id
-$query = "SELECT * FROM bet_table WHERE user_id = $user_id";
-$result = $conn->query($query);
-
-if ($result->num_rows > 0) {
+        <h2>Bet Details:</h2>
+<?php
+if ($betResult->num_rows > 0) {
     echo '<table border="1">
             <thead>
                 <tr>
                     <th>Bet ID</th>
-                    <th>User ID</th>
                     <th>Bet Amount</th>
                     <th>Result</th>
                 </tr>
             </thead>
             <tbody>';
 
-    while ($row = $result->fetch_assoc()) {
+    while ($betRow = $betResult->fetch_assoc()) {
         echo '<tr>
-                <td>' . $row['bet_id'] . '</td>
-                <td>' . $row['user_id'] . '</td>
-                <td>' . $row['bet_amount'] . '</td>
-                <td>' . $row['result'] . '</td>
+                <td>' . $betRow['bet_id'] . '</td>
+                <td>' . $betRow['bet_amount'] . '</td>
+                <td>' . $betRow['result'] . '</td>
               </tr>';
     }
 
     echo '</tbody></table>';
 } else {
-    echo "No data found for user with ID: $user_id";
+    echo "No bet details found for the user.";
 }
-
-// Close the database connection
-$conn->close();
 ?>
 
         
