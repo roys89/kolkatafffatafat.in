@@ -10,10 +10,10 @@
 <?php
 
 // Retrieve parameters from the URL
-$tran_id = $_GET['tran_id'] ?? null;
-$user_id = $_GET['user_id'] ?? null;
-$transaction_request = $_GET['transaction_request'] ?? null;
-$status = $_GET['status'] ?? null;
+$tran_id = $_GET['tran_id'] ?? '';
+$user_id = $_GET['user_id'] ?? '';
+$transaction_request = isset($_GET['transaction_request']) ? (int)$_GET['transaction_request'] : 0; // Ensure it's an integer
+$status = $_GET['status'] ?? '';
 ?>
 
 <h1>Transaction ID: <?php echo $tran_id; ?></h1>
