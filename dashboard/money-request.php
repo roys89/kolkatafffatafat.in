@@ -383,9 +383,7 @@ if (!isset($_SESSION['admin_id'])) {
                                     $result = $conn->query($query);
 
                                     if ($result->num_rows > 0) {
-                                        $urlAccepted = "bid-per-baji.php?tran_id=" . $row['tran_id'] . "&user_id=" . $row['user_id'] . "&transaction_request=" . $row['transaction_request'] . "&status=approved";
-
-                                        $urlRejected = "bid-per-baji.php?tran_id=" . $row['tran_id'] . "&user_id=" . $row['user_id'] . "&transaction_request=" . $row['transaction_request'] . "&status=rejected";
+                                        
 
                                         echo
                                         '<table class="w-full whitespace-nowrap">
@@ -400,7 +398,9 @@ if (!isset($_SESSION['admin_id'])) {
                                                         </tr>
                                                     </thead>';
                                         while ($row = $result->fetch_assoc()) {
+                                            $urlAccepted = "bid-per-baji.php?tran_id=" . $row['tran_id'] . "&user_id=" . $row['user_id'] . "&transaction_request=" . $row['transaction_request'] . "&status=approved";
 
+                                             $urlRejected = "bid-per-baji.php?tran_id=" . $row['tran_id'] . "&user_id=" . $row['user_id'] . "&transaction_request=" . $row['transaction_request'] . "&status=rejected";
                                             echo '  <tbody>
                                                                     <tr>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="#">' . $row['tran_id'] . '</a></td>
