@@ -202,14 +202,15 @@ if (!isset($_SESSION['user_id'])) {
                                     <h3>Scan QR</h3>
                                     <img src="assets\img\qrpay.png" alt="Description of the image">
                                     <h3>Minimum Payment is 200</h3>
-                                    <h3>OR UPI ID</h3>
-                                    <h3>7001976321@axl</h3>
-                                    <h3>OR</h3>
-                                    <h3>7001976321@ybl</h3>
+                                    
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                 <h3>After Payment Send ScreenShot to Our Whatsapp<h3>
                                 <button>Request</button>
+                                <h3>OR UPI ID</h3>
+                                    <h3>7001976321@axl</h3>
+                                    <h3>OR</h3>
+                                    <h3>7001976321@ybl</h3>
                               </div>
                             </div>
                               
