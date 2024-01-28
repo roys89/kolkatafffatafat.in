@@ -5,8 +5,8 @@ $phone = $_GET['phone'] ?? '';
 $transaction_request = isset($_GET['transaction_request']) ? (int)$_GET['transaction_request'] : 0; // Ensure it's an integer
 $status = $_GET['status'] ?? '';
 
-// Check if status is 'approved'
-if ($status === 'approved') {
+// Check if status is 'approved' or 'rejected'
+if ($status === 'approved' || $status === 'rejected') {
     // Include your database connection file
     include '../database.php';
 
@@ -20,8 +20,8 @@ if ($status === 'approved') {
     $updateWalletQuery->bind_param("di", $transaction_request, $phone);
     $updateWalletQuery->execute();
 
-    $updateStatusQuery = $conn->prepare("UPDATE transaction_table SET transaction_status = 'approved' WHERE tran_id = ?");
-    $updateStatusQuery->bind_param("i", $tran_id);
+    $updateStatusQuery = $conn->prepare("UPDATE transaction_table SET transaction_status = ? WHERE tran_id = ?");
+    $updateStatusQuery->bind_param("si", $status, $tran_id);
     $updateStatusQuery->execute();
 
     // Close the prepared statements and the database connection
