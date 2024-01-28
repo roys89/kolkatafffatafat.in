@@ -25,7 +25,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 $stmt->close();
-$conn->close();
 ?>
 
 
@@ -297,34 +296,35 @@ $conn->close();
             </h5>
             <div class="col-xl-12 col-lg-12">
             <?php
-            $query = "SELECT * FROM bet_table";
+            $query = "SELECT * FROM bet_table WHERE user_id=  $user_id";
             $result = $conn->query($query);
             if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
                   ?>
-              <div>
+              <div class="leaderboard-table">
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Bet Number</th>
-                      <th>Amount</th>
-                      <th>Game Type</th>
+                      <th scope="col">Bet Number</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Game Type</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr>
                       <td>
-                        <span >
+                        <span class="single-data">
                         <?php echo $row["bet_number"]; ?>
                         </span>
                       </td>
                       <td>
-                        <span >
+                        <span class="profit">
                         <?php echo $row["amount"]; ?>
                         </span>
                       </td>
                       <td>
-                        <span >
+                        <span class="profit">
                         <?php echo $row["game_type"]; ?>
                         </span>
                       </td>
@@ -333,6 +333,7 @@ $conn->close();
                 </table>
               </div>
               <?php
+                }
             } else {
               echo 'No products found.';
                    } 
@@ -340,7 +341,7 @@ $conn->close();
             </div>
           </div>
         </div>
-
+      </div>
         
 
         
