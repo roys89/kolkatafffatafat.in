@@ -15,7 +15,7 @@ if ($status === 'approved' || $status === 'rejected') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $updateStatusQuery = $conn->prepare("UPDATE transection_debit SET debit_status = ? WHERE tran_id = ?");
+    $updateStatusQuery = $conn->prepare("UPDATE transaction_debit SET debit_status = ? WHERE trandr_id  = ?");
     $updateStatusQuery->bind_param("si", $status, $tran_id);
     $updateStatusQuery->execute();
 
