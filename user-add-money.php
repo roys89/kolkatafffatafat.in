@@ -208,12 +208,10 @@ if (!isset($_SESSION['user_id'])) {
                                     <h3>7001976321@ybl</h3>
                                 </div>
                             </div>
-                            <div class="row">
                               <div class="col-xl-6 col-lg-6">
                                 <h3>After Payment Send ScreenShot to Our Whatsapp<h3>
-                                <button class="submit-btn" type="submit">Request</button>
+                                <button>Request</button>
                               </div>
-                            </div>
                     </div>
                 </div>
             </div>
