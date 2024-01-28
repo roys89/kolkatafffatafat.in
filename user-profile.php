@@ -288,7 +288,7 @@ $conn->close();
         
         
       <!-- leaderboard begin  -->
-      <div class="leaderboard">
+ 
         <div class="container">
           
           <div class="row justify-content-center">
@@ -342,7 +342,7 @@ $conn->close();
             </div>
           </div>
         </div>
-      </div>
+
         
 
         
