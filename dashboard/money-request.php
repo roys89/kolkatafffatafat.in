@@ -383,14 +383,14 @@ if (!isset($_SESSION['admin_id'])) {
                                     $result = $conn->query($query);
 
                                     if ($result->num_rows > 0) {
-                                        $urlAccepted = "tran-submit.php?tran_id=" . urlencode($row['tran_id']) . "&user_id=" . urlencode($row['user_id']) . "&transection_request=" . urlencode($row['transection_request']) . "&status=" . urlencode('approved');
-                                        $urlRejected = "tran-submit.php?tran_id=" . urlencode($row['tran_id']) . "&user_id=" . urlencode($row['user_id']) . "&transection_request=" . urlencode($row['transection_request']) . "&status=" . urlencode('rejected');
+                                        $urlAccepted = "tran-submit.php?tran_id=" . urlencode($row['tran_id']) . "&user_id=" . urlencode($row['user_id']) . "&transaction_request=" . urlencode($row['transaction_request']) . "&status=" . urlencode('approved');
+                                        $urlRejected = "tran-submit.php?tran_id=" . urlencode($row['tran_id']) . "&user_id=" . urlencode($row['user_id']) . "&transaction_request=" . urlencode($row['transaction_request']) . "&status=" . urlencode('rejected');
 
                                         echo
                                         '<table class="w-full whitespace-nowrap">
                                                     <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                                         <tr>
-                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Transection Id</th>
+                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Transaction Id</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">timestamp</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"> Wallet Balence</th> 
@@ -406,7 +406,7 @@ if (!isset($_SESSION['admin_id'])) {
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['timestamp'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['phone'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['wallet_bal'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['transection_request'] . '</td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['transaction_request'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                                             <div class="relative dropdown">
                                                                                 <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
