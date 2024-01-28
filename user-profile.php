@@ -303,15 +303,12 @@ $conn->close();
           
           <div class="row justify-content-center">
             <h5>
-              Kolkata FF
+            Your Bids
             </h5>
             <div class="col-xl-12 col-lg-12">
             <?php
             if ($betResult->num_rows > 0) {
-              echo '<h5>
-              Kolkata FF (Baji <?php echo $row["baji"]; ?>)
-            </h5>
-              <div class="leaderboard-table">
+              echo '<div class="leaderboard-table">
                 <table class="table" id="game_table">
                   <thead>
                     <tr>
