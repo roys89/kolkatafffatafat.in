@@ -411,7 +411,7 @@ if (!isset($_SESSION['admin_id'])) {
                                             echo '  <tbody>
                                                                     <tr>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="#">' . $row['trandr_id'] . '</a></td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['timestamp'] . '</td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['dr_timestamp'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['phone'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['wallet_bal'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['debit_amount'] . '</td>
