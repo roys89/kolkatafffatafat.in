@@ -289,7 +289,57 @@ $conn->close();
         
       <!-- leaderboard begin  -->
  
-        
+        <div class="container">
+          
+          <div class="row justify-content-center">
+            <h5>
+              Kolkata FF
+            </h5>
+            <div class="col-xl-12 col-lg-12">
+            <?php
+            $query = "SELECT * FROM bet_table";
+            $result = $conn->query($query);
+            if ($result->num_rows > 0) {
+                  ?>
+              <div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Bet Number</th>
+                      <th>Amount</th>
+                      <th>Game Type</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span >
+                        <?php echo $row["bet_number"]; ?>
+                        </span>
+                      </td>
+                      <td>
+                        <span >
+                        <?php echo $row["amount"]; ?>
+                        </span>
+                      </td>
+                      <td>
+                        <span >
+                        <?php echo $row["game_type"]; ?>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <?php
+            } else {
+              echo 'No products found.';
+                   } 
+            ?>
+            </div>
+          </div>
+        </div>
 
         
 
