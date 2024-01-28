@@ -2,12 +2,12 @@
 
 // Retrieve parameters from the URL
 $tran_id = $_GET['tran_id'] ?? null;
-$user_id = $_GET['user_id'] ?? null;
+$phone = $_GET['phone'] ?? null;
 $transaction_request = $_GET['transaction_request'] ?? null;
 $status = $_GET['status'] ?? null;
 
 // Check if status is 'approved'
-if ($status === 'approved' && $tran_id && $user_id && $transaction_request !== null) {
+if ($status === 'approved' && $tran_id && $phone && $transaction_request !== null) {
     // Include your database connection file
     include '../database.php';
 
@@ -18,7 +18,7 @@ if ($status === 'approved' && $tran_id && $user_id && $transaction_request !== n
     }
 
     // Update wallet_bal in user_data table
-    $updateWalletQuery = "UPDATE user_data SET wallet_bal = wallet_bal + $transaction_request WHERE user_id = $user_id";
+    $updateWalletQuery = "UPDATE user_data SET wallet_bal = wallet_bal + $transaction_request WHERE phone = $phone";
     if ($conn->query($updateWalletQuery) === TRUE) {
         echo '<script>console.log("Wallet update successful!");</script>';
     } else {
