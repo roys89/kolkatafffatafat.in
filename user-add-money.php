@@ -195,8 +195,7 @@ if (!isset($_SESSION['user_id'])) {
               </div>
             <div class="row no-gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12">
-                    <div class="contact-form">
-                       
+  
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <h3>Scan QR</h3>
@@ -212,7 +211,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <h3>After Payment Send ScreenShot to Our Whatsapp<h3>
                                 <button>Request</button>
                               </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
