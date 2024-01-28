@@ -376,7 +376,9 @@ if (!isset($_SESSION['admin_id'])) {
                                     }
 
                                     // Query to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT * FROM transaction_table;                                    ";
+                                    $query = "SELECT tt.*, ud.wallet_bal
+                                    FROM transaction_table tt
+                                    JOIN user_data ud ON tt.user_id = ud.user_id";
 
                                     $result = $conn->query($query);
 
