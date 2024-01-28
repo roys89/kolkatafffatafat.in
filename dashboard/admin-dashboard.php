@@ -8,6 +8,29 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
+// Include your database connection file
+include '../database.php';
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch total wallet_bal from user_data
+$userDataQuery = "SELECT SUM(wallet_bal) AS total_wallet_bal FROM user_data";
+$userDataResult = $conn->query($userDataQuery);
+$totalWalletBal = $userDataResult->fetch_assoc()['total_wallet_bal'];
+
+// Fetch total number of phones from user_data
+$phoneCountQuery = "SELECT COUNT(DISTINCT phone) AS total_phones FROM user_data";
+$phoneCountResult = $conn->query($phoneCountQuery);
+$totalPhones = $phoneCountResult->fetch_assoc()['total_phones'];
+
+// Fetch total amount from bet_table
+$betAmountQuery = "SELECT SUM(amount) AS total_amount FROM bet_table";
+$betAmountResult = $conn->query($betAmountQuery);
+$totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
+
 ?>
 
 <!DOCTYPE html>
@@ -218,34 +241,37 @@ if (!isset($_SESSION['admin_id'])) {
                 </div>
 
                 <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">1111</h5>
-                                <p class="card-text">werfdgh</p>
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo number_format($totalWalletBal, 2); ?></h5>
+                                    <p class="card-text">Wallet Balance </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">1111</h5>
-                                <p class="card-text">werfdgh</p>
+                        <!-- Card 2 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $totalPhones; ?></h5>
+                                    <p class="card-text">Users</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">1111</h5>
-                                <p class="card-text">werfdgh</p>
+                        <!-- Card 3 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo number_format($totalAmount, 2); ?></h5>
+                                    <p class="card-text">Bet Placed Amount</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
 
                 <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
@@ -402,13 +428,7 @@ if (!isset($_SESSION['admin_id'])) {
                             </div><!--end grid-->
                             <div class="overflow-x-auto">
                             <?php
-                                // Include your database connection file
-                                include '../database.php';
-
-                                // Check connection
-                                if ($conn->connect_error) {
-                                    die("Connection failed: " . $conn->connect_error);
-                                }
+                                
 
                                 // Query to fetch data for each unique user_id with game_type as "single"
                                 $query = "SELECT
