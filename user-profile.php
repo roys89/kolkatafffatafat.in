@@ -297,7 +297,7 @@ $conn->close();
             </h5>
             <div class="col-xl-12 col-lg-12">
             <?php
-            $query = "SELECT * FROM bet_table WHERE user_id=  $user_id";
+            $query = "SELECT * FROM bet_table";
             $result = $conn->query($query);
             if ($result->num_rows > 0) {
                   ?>
