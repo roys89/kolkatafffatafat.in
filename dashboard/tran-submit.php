@@ -20,8 +20,8 @@ if ($status === 'approved' && $tran_id && $user_id && $transaction_request !== n
     $updateWalletQuery = "UPDATE user_data SET wallet_bal = wallet_bal + $transaction_request WHERE user_id = $user_id";
     $conn->query($updateWalletQuery);
 
-    // Update transection_status in transaction_table
-    $updateStatusQuery = "UPDATE transaction_table SET transection_status = 'approved' WHERE tran_id = $tran_id";
+    // Update transaction_status in transaction_table
+    $updateStatusQuery = "UPDATE transaction_table SET transaction_status = 'approved' WHERE tran_id = $tran_id";
     $conn->query($updateStatusQuery);
 
     // Close the database connection
