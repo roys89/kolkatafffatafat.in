@@ -188,14 +188,15 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="col-xl-8 col-lg-8 col-md-10">
                   <div class="section-title">
                     <h4 class="sub-title">
-                      Place bet here
+                      Add Money
                     </h4>
                   </div>
                 </div>
               </div>
             <div class="row no-gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12">
-  
+                    <div class="contact-form">
+                       
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
                                     <h3>Scan QR</h3>
@@ -206,12 +207,14 @@ if (!isset($_SESSION['user_id'])) {
                                     <h3>OR</h3>
                                     <h3>7001976321@ybl</h3>
                                 </div>
-                            </div>
-                              <div class="col-xl-6 col-lg-6">
+                                <div class="col-xl-6 col-lg-6">
                                 <h3>After Payment Send ScreenShot to Our Whatsapp<h3>
                                 <button>Request</button>
                               </div>
-                    
+                            </div>
+                              
+                          </div>
+                    </div>
                 </div>
             </div>
         </div>
