@@ -243,7 +243,7 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                 <div class="container mt-5">
                     <div class="row">
                         <!-- Card 1 -->
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo number_format($totalWalletBal, 2); ?></h5>
@@ -253,7 +253,7 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                         </div>
 
                         <!-- Card 2 -->
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $totalPhones; ?></h5>
@@ -263,7 +263,7 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                         </div>
 
                         <!-- Card 3 -->
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo number_format($totalAmount, 2); ?></h5>
