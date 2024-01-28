@@ -15,17 +15,22 @@ if ($status === 'approved' || $status === 'rejected') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Use prepared statements to prevent SQL injection
-    $updateWalletQuery = $conn->prepare("UPDATE user_data SET wallet_bal = wallet_bal + ? WHERE phone = ?");
-    $updateWalletQuery->bind_param("di", $transaction_request, $phone);
-    $updateWalletQuery->execute();
-
     $updateStatusQuery = $conn->prepare("UPDATE transaction_table SET transaction_status = ? WHERE tran_id = ?");
     $updateStatusQuery->bind_param("si", $status, $tran_id);
     $updateStatusQuery->execute();
 
-    // Close the prepared statements and the database connection
-    $updateWalletQuery->close();
+    // Check if status is 'approved' to update wallet balance
+    if ($status === 'approved') {
+        // Use prepared statements to prevent SQL injection
+        $updateWalletQuery = $conn->prepare("UPDATE user_data SET wallet_bal = wallet_bal + ? WHERE phone = ?");
+        $updateWalletQuery->bind_param("di", $transaction_request, $phone);
+        $updateWalletQuery->execute();
+
+        // Close the prepared statement for updating wallet balance
+        $updateWalletQuery->close();
+    }
+
+    // Close the prepared statement for updating transaction status and the database connection
     $updateStatusQuery->close();
     $conn->close();
 
