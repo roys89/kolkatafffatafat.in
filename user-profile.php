@@ -295,35 +295,73 @@ $conn->close();
         </div>
         
         
-        <h2>Bet Details:</h2>
-<?php
-if ($betResult->num_rows > 0) {
-    echo '<table border="1">
-            <thead>
-                <tr>
-                    <th>Bet ID</th>
-                    <th>Bet Amount</th>
-                    <th>Result</th>
-                </tr>
-            </thead>
-            <tbody>';
 
-    while ($betRow = $betResult->fetch_assoc()) {
-        echo '<tr>
-                <td>' . $betRow['bet_number'] . '</td>
-                <td>' . $betRow['amount'] . '</td>
-                <td>' . $betRow['baji'] . '</td>
-                <td>' . $betRow['game_type'] . '</td>
-              </tr>';
-    }
 
-    echo '</tbody></table>';
-} else {
-    echo "No bet details found for the user.";
-}
-?>
+ <!-- leaderboard begin  -->
+ <div class="leaderboard">
+        <div class="container">
+          
+          <div class="row justify-content-center">
+            <h5>
+              Kolkata FF
+            </h5>
+            <div class="col-xl-12 col-lg-12">
+            <?php
+            if ($betResult->num_rows > 0) {
+              echo '<h5>
+              Kolkata FF (Baji <?php echo $row["baji"]; ?>)
+            </h5>
+              <div class="leaderboard-table">
+                <table class="table" id="game_table">
+                  <thead>
+                    <tr>
+                      <th scope="col">bet_number</th>
+                      <th scope="col">amount</th>
+                      <th scope="col">baji</th>
+                      <th scope="col">game_type</th>
+                    </tr>
+                  </thead>
 
-        
+                  <tbody>';
+                  while ($betRow = $betResult->fetch_assoc()) {
+                    echo '
+                    <tr>
+                      <td>
+                        <span class="single-data">
+                        ' . $betRow['bet_number'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $betRow['amount'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $betRow['baji'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $betRow['game_type'] . '
+                        </span>
+                      </td>
+                    </tr>';
+                  }
+                  echo '
+                  </tbody>
+                </table>
+              </div>
+              ';
+                }
+             else {
+              echo 'No products found.';
+                   } 
+            ?>
+            </div>
+          </div>
+        </div>
+      </div>       
 
         
     </div>
