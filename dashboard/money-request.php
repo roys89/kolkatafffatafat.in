@@ -401,7 +401,7 @@ if (!isset($_SESSION['admin_id'])) {
                                         while ($row = $result->fetch_assoc()) {
                                             $urlAccepted = "tran-submit.php?tran_id=" . $row['tran_id'] . "&phone=" . $row['phone'] . "&transaction_request=" . $row['transaction_request'] . "&status=approved";
 
-                                            $urlAccepted = "tran-submit.php?tran_id=" . $row['tran_id'] . "&phone=" . $row['phone'] . "&transaction_request=" . $row['transaction_request'] . "&status=rejected";
+                                            $urlRejected = "tran-submit.php?tran_id=" . $row['tran_id'] . "&phone=" . $row['phone'] . "&transaction_request=" . $row['transaction_request'] . "&status=rejected";
 
                                             echo '  <tbody>
                                                                     <tr>
