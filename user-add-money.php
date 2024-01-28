@@ -231,7 +231,7 @@ $conn->close();
               </div>
               <div class="col-xl-6 col-lg-6">
                 <h3>After Payment Send ScreenShot to Our Whatsapp<h3>
-                    <a class="button-link" href="https://wa.me/919907722651?text=My%20payment%20Screenshot%20User%20<?php echo $row['phone']; ?>,%20Kindly%20Update">
+                    <a class="button-link" href="https://wa.me/919907722651?text=My%20payment%20Screenshot%20User%20<?php echo $user['phone']; ?>,%20Kindly%20Update">
                       <button>Send</button>
                     </a>
 
