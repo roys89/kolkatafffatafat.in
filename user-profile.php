@@ -310,9 +310,10 @@ if ($betResult->num_rows > 0) {
 
     while ($betRow = $betResult->fetch_assoc()) {
         echo '<tr>
-                <td>' . $betRow['bet_id'] . '</td>
-                <td>' . $betRow['bet_amount'] . '</td>
-                <td>' . $betRow['result'] . '</td>
+                <td>' . $betRow['bet_number'] . '</td>
+                <td>' . $betRow['amount'] . '</td>
+                <td>' . $betRow['baji'] . '</td>
+                <td>' . $betRow['game_type'] . '</td>
               </tr>';
     }
 
