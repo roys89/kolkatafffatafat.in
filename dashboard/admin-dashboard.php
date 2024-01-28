@@ -259,7 +259,7 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                                             <p class="card-text">Bet Placed Amount</p>
                                     </div>
                                 </div>
-                    </div><!--end grid-->
+                </div><!--end grid-->
                 
 
                 <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
