@@ -300,7 +300,6 @@ $conn->close();
             $query = "SELECT * FROM bet_table WHERE user_id=  $user_id";
             $result = $conn->query($query);
             if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
                   ?>
               <div class="leaderboard-table">
                 <table class="table">
@@ -334,7 +333,6 @@ $conn->close();
                 </table>
               </div>
               <?php
-                }
             } else {
               echo 'No products found.';
                    } 
