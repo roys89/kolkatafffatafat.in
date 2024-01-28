@@ -251,7 +251,7 @@ $conn->close();
                                 </ul>
 
                                 <div class="act-buttons">
-                                    <a href="#" class="follow">Add <i class="far fa-bell"></i></a>
+                                    <a href="user-add-money.php" class="follow">Add <i class="far fa-bell"></i></a>
                                    <a href="#" class="subscribe">Withdrow<i class="far fa-eye"></i></a>
                                 </div>
                             </div>
