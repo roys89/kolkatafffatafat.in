@@ -376,7 +376,7 @@ if (!isset($_SESSION['admin_id'])) {
                                     }
 
                                     // Query to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT full_name, phone, password, wallet_bal, user_status FROM user_data;";
+                                    $query = "SELECT full_name, phone, password, wallet_bal, user_status, credit, debit, total_bet FROM user_data;";
 
                                     $result = $conn->query($query);
 
@@ -391,6 +391,9 @@ if (!isset($_SESSION['admin_id'])) {
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Password</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Wallet Balence</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">User Status</th>
+                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Credit</th>
+                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Debit</th>
+                                                            <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bet / Day</th>
                                                         </tr>
                                                     </thead>';
                                         while ($row = $result->fetch_assoc()) {
@@ -402,6 +405,9 @@ if (!isset($_SESSION['admin_id'])) {
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['password'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['wallet_bal'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['user_status'] . '</td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['credit'] . '</td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['debit'] . '</td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bet'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                                             <div class="relative dropdown">
                                                                                 <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
