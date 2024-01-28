@@ -381,9 +381,9 @@ if (!isset($_SESSION['admin_id'])) {
                                     }
 
                                     // Query to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT tt.*, ud.wallet_bal
-                                    FROM transaction_table tt
-                                    JOIN user_data ud ON tt.user_id = ud.user_id";
+                                    $query = "SELECT td.*, ud.wallet_bal
+                                    FROM transection_debit tt
+                                    JOIN user_data ud ON td.user_id = ud.user_id";
 
                                     $result = $conn->query($query);
 
@@ -404,18 +404,18 @@ if (!isset($_SESSION['admin_id'])) {
                                                         </tr>
                                                     </thead>';
                                         while ($row = $result->fetch_assoc()) {
-                                            $urlAccepted = "tran-submit.php?tran_id=" . $row['tran_id'] . "&phone=" . $row['phone'] . "&transaction_request=" . $row['transaction_request'] . "&status=approved";
+                                            $urlAccepted = "tran-submit.php?trandr_id=" . $row['trandr_id'] . "&phone=" . $row['phone'] . "&debit_amount=" . $row['debit_amount'] . "&status=approved";
 
-                                            $urlRejected = "tran-submit.php?tran_id=" . $row['tran_id'] . "&phone=" . $row['phone'] . "&transaction_request=" . $row['transaction_request'] . "&status=rejected";
+                                            $urlRejected = "tran-submit.php?trandr_id=" . $row['trandr_id'] . "&phone=" . $row['phone'] . "&debit_amount=" . $row['debit_amount'] . "&status=rejected";
 
                                             echo '  <tbody>
                                                                     <tr>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="#">' . $row['tran_id'] . '</a></td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="#">' . $row['trandr_id'] . '</a></td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['timestamp'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['phone'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['wallet_bal'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['transaction_request'] . '</td>
-                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['transaction_status'] . '</td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['debit_amount'] . '</td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['debit_status'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                                             <div class="relative dropdown">
                                                                                 <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
@@ -439,7 +439,7 @@ if (!isset($_SESSION['admin_id'])) {
                                     }
 
                                     // Close the database connection
-
+                                    $conn->close();
                                     ?>
                                 </div>
                             </div>
