@@ -1,18 +1,12 @@
 <?php
+// Assuming you have a session with the user's information after login
 session_start();
-// Check if the user is already logged in
+
+// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-  header("Location: login.php");
-  exit();
+    header("Location: login.php");
+    exit();
 }
-// Retrieve data from URL parameters
-$gameType = isset($_GET['game_type']) ? urldecode($_GET['game_type']) : 'Default Value';
-// Retrieve data from SESSION parameters
-$slotId = isset($_SESSION['slot_id']) ? $_SESSION['slot_id'] : '';
-$baji_status = isset($_SESSION['baji_status']) ? $_SESSION['baji_status'] : '';
-$baji = isset($_SESSION['baji']) ? $_SESSION['baji'] : '';
-$userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
-$phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +18,7 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kolkata Fatafat Live - Place Bet</title>
+    <title>Kolkata Fatafat Live - Add Money</title>
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- bootstrap -->
@@ -130,7 +124,6 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                   <div class="col-xl-12 col-lg-12">
                       <div class="mainmenu">
                           <nav class="navbar navbar-expand-lg">
-                            
                               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div class="scalaction">
                                   <div class="row">
@@ -201,22 +194,15 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
               </div>
             <div class="row no-gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12">
-                <button class="add-btn" onclick="addForm()">Add More</button>
-                    <div class="contact-form" id="formContainer">
-                        <form class="dynamic-form" onsubmit="submitForm(event)">
+                        <form action="withdraw-back.php" method="post">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6">
-                                    <label for="phoneNo">Enter Number</label>
-                                    <input type="number" id="bet_number" name="bet_number" placeholder="Enter the number you want to bet on" min="0" required>
-                                </div>
-                                <div class="col-xl-6 col-lg-6">
-                                    <label for="fullName">Enter Amount</label>
-                                    <input type="number" id="amount" name="amount" placeholder="Enter the bet amount" min="10" required>
+                                    <label for="addamount">Amount</label>
+                                    <input type="number" id="add_amount" name="add_amount" placeholder="Enter the number you want to bet on" min="0" required>
                                 </div>
                             </div>
-                            <button class="submit-btn" type="submit">Submit</button>
+                            <button class="submit-btn" type="submit">Request</button>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
@@ -328,68 +314,7 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
         </div>
       </div>
       <!-- copyright footer end -->
-      <script>
-    function addForm() {
-        // Clone the template form
-        var templateForm = document.querySelector('.dynamic-form');
-        var newForm = templateForm.cloneNode(true);
-
-        // Clear the input values in the cloned form
-        newForm.reset();
-
-        // Append the cloned form to the container
-        document.getElementById('formContainer').appendChild(newForm);
-    }
-
-    function submitForm(event) {
-        event.preventDefault();
-
-        // Get the form data
-        var formData = new FormData(event.target);
-
-        // Get three PHP variables from the page
-        var slotId = '<?php echo urldecode($slotId); ?>';
-        var baji = '<?php echo urldecode($baji); ?>';
-        var gameType = '<?php echo urldecode($gameType); ?>';
-        var userId = '<?php echo urldecode($userId); ?>';
-        var phone = '<?php echo urldecode($phone); ?>';
-
-        // Append PHP variables to the form data
-        formData.append('slot_id', slotId);
-        formData.append('baji', baji);
-        formData.append('game_type', gameType);
-        formData.append('user_id', userId);
-        formData.append('phone', phone);
-
-        // Perform an asynchronous request to your PHP script (replace 'your_script.php' with the actual script)
-        fetch('bet_submit.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json()) // assuming the PHP script returns JSON
-        .then(data => {
-            console.log(data);
-
-            // Check if the submission was successful before removing the form
-            if (data.success) {
-                // Remove the submitted form from the DOM
-                $(event.target).remove();
-                // Display an alert after successful submission
-                alert('Form submitted successfully!');
-            } else {
-                // Display an alert with the error message if the submission failed
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => {
-            // Display an alert with the error message if there is a fetch error
-            console.error('Error:', error);
-            alert('Fetch error: ' + error.message);
-        });
-    }
-</script>
-
-
+      
     <!-- jquery -->
     <script src="assets/js/jquery.js"></script>
     <!-- propper js -->

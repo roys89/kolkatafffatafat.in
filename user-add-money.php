@@ -196,15 +196,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="row no-gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="contact-form">
-                        <form action="add-money-back.php" method="post">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6">
-                                    <label for="addamount">Amount</label>
-                                    <input type="number" id="add_amount" name="add_amount" placeholder="Enter the number you want to bet on" min="0" required>
-                                </div>
-                            </div>
-                            <button class="submit-btn" type="submit">Request</button>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
