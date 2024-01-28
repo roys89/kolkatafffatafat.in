@@ -383,7 +383,7 @@ if (!isset($_SESSION['admin_id'])) {
                                     $result = $conn->query($query);
 
                                     if ($result->num_rows > 0) {
-                                        $urlAccepted = "tran-submit.php?tran_id=" . urlencode($row['tran_id']) . "&user_id=" . urlencode($row['user_id']) . "&transaction_request=" . urlencode($row['transaction_request']) . "&status=" . urlencode('approved');
+                                        $urlAccepted = "bid-per-baji.php?tran_id=" . urlencode($row['tran_id']) . "&user_id=" . urlencode($row['user_id']) . "&transaction_request=" . urlencode($row['transaction_request']) . "&status=" . urlencode('approved');
                                         $urlRejected = "tran-submit.php?tran_id=" . urlencode($row['tran_id']) . "&user_id=" . urlencode($row['user_id']) . "&transaction_request=" . urlencode($row['transaction_request']) . "&status=" . urlencode('rejected');
 
                                         echo
