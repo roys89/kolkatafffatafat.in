@@ -1,6 +1,6 @@
 <?php
 // Retrieve parameters from the URL
-$tran_id = $_GET['tran_id'] ?? '';
+$tran_id = $_GET['trandr_id'] ?? '';
 $phone = $_GET['phone'] ?? '';
 $debit_amount = isset($_GET['debit_amount']) ? (int)$_GET['debit_amount'] : 0; // Ensure it's an integer
 $status = $_GET['status'] ?? '';
