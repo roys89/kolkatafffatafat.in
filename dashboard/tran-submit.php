@@ -9,7 +9,7 @@ $status = $_GET['status'] ?? null;
 // Check if status is 'approved'
 if ($status === 'approved' && $tran_id && $user_id && $transaction_request !== null) {
     // Include your database connection file
-    include 'database.php';
+    include '../database.php';
 
     // Check connection
     if ($conn->connect_error) {
