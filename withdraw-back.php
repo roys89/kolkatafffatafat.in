@@ -43,6 +43,6 @@ $insertTransactionQuery->close();
 $conn->close();
 
 // Redirect to a success page or perform other actions
-echo '<script>alert("Transaction request submitted successfully!"); window.location.href = "success.php";</script>';
+echo '<script>alert("Transaction request submitted successfully!"); window.location.href = document.referrer;</script>';
 exit();
 ?>
