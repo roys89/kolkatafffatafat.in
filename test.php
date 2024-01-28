@@ -12,7 +12,7 @@ include 'database.php'; // Include your database connection file
 
 // Retrieve parameters from the URL
 $tran_id = $_GET['tran_id'] ?? '';
-$user_id = $_GET['user_id'] ?? '';
+$user_id = $_GET['phone'] ?? '';
 $transaction_request = isset($_GET['transaction_request']) ? (int)$_GET['transaction_request'] : 0; // Ensure it's an integer
 $status = $_GET['status'] ?? '';
 

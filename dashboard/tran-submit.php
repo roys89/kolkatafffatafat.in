@@ -1,7 +1,7 @@
 <?php
 // Retrieve parameters from the URL
 $tran_id = $_GET['tran_id'] ?? '';
-$user_id = $_GET['user_id'] ?? '';
+$phone = $_GET['phone'] ?? '';
 $transaction_request = isset($_GET['transaction_request']) ? (int)$_GET['transaction_request'] : 0; // Ensure it's an integer
 $status = $_GET['status'] ?? '';
 
@@ -16,8 +16,8 @@ if ($status === 'approved') {
     }
 
     // Use prepared statements to prevent SQL injection
-    $updateWalletQuery = $conn->prepare("UPDATE user_data SET wallet_bal = wallet_bal + ? WHERE user_id = ?");
-    $updateWalletQuery->bind_param("di", $transaction_request, $user_id);
+    $updateWalletQuery = $conn->prepare("UPDATE user_data SET wallet_bal = wallet_bal + ? WHERE phone = ?");
+    $updateWalletQuery->bind_param("di", $transaction_request, $phone);
     $updateWalletQuery->execute();
 
     $updateStatusQuery = $conn->prepare("UPDATE transaction_table SET transaction_status = 'approved' WHERE tran_id = ?");
