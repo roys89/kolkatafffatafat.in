@@ -2,7 +2,7 @@
 // Retrieve parameters from the URL
 $tran_id = $_GET['tran_id'] ?? '';
 $user_id = $_GET['user_id'] ?? '';
-$transaction_request = $_GET['transaction_request'] ?? '';
+$transaction_request = isset($_GET['transaction_request']) ? (int)$_GET['transaction_request'] : 0; // Ensure it's an integer
 $status = $_GET['status'] ?? '';
 
 // Check if status is 'approved'
