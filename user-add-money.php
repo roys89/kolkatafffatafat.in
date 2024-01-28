@@ -196,7 +196,24 @@ if (!isset($_SESSION['user_id'])) {
             <div class="row no-gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="contact-form">
-                        
+                       
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <h3>Scan QR</h3>
+                                    <img src="assets\img\qrpay.png" alt="Description of the image">
+                                    <h3>Minimum Payment is 200</h3>
+                                    <h3>OR UPI ID</h3>
+                                    <h3>7001976321@axl</h3>
+                                    <h3>OR</h3>
+                                    <h3>7001976321@ybl</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xl-6 col-lg-6">
+                                <h3>After Payment Send ScreenShot to Our Whatsapp<h3>
+                                <button class="submit-btn" type="submit">Request</button>
+                              </div>
+                            </div>
                     </div>
                 </div>
             </div>
