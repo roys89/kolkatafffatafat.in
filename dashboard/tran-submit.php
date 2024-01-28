@@ -28,10 +28,10 @@ if ($status === 'approved' && $tran_id && $user_id && $transaction_request !== n
     $conn->close();
 
     // Redirect to a success page or perform other actions
-    header("Location: success.php");
+    echo '<script>alert("Update Successful!"); window.location.href = document.referrer;</script>';
     exit();
 } else {
     // Invalid parameters or status, handle accordingly
-    header("Location: error.php");
+    echo '<script>alert("Update failed!"); window.location.href = document.referrer;</script>';
     exit();
 }
