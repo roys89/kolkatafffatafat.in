@@ -25,6 +25,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 $stmt->close();
+$conn->close();
 ?>
 
 
@@ -287,61 +288,52 @@ $stmt->close();
         
         
       <!-- leaderboard begin  -->
- 
-        <div class="container">
-          
-          <div class="row justify-content-center">
-            <h5>
-              Kolkata FF
-            </h5>
-            <div class="col-xl-12 col-lg-12">
-            <?php
-            $query = "SELECT * FROM bet_table WHERE user_id=  $user_id";
-            $result1 = $conn->query($query);
-            if ($result1->num_rows > 0) {
-              while ($row = $result1->fetch_assoc()) {
-                  ?>
-              <div class="leaderboard-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Bet Number</th>
-                      <th scope="col">Amount</th>
-                      <th scope="col">Game Type</th>
-                    </tr>
-                  </thead>
+      <?php
+// Include your database connection file
+include '../database.php';
 
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data">
-                        <?php echo $row["bet_number"]; ?>
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                        <?php echo $row["amount"]; ?>
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                        <?php echo $row["game_type"]; ?>
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <?php
-                }
-            } else {
-              echo 'No products found.';
-                   } 
-            ?>
-            </div>
-          </div>
-        </div>
-      </div>
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Replace $user_id with the actual user_id you want to fetch data for
+$user_id = 123; // Example user_id
+
+// Query to fetch data from bet_table for a specific user_id
+$query = "SELECT * FROM bet_table WHERE user_id = $user_id";
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+    echo '<table border="1">
+            <thead>
+                <tr>
+                    <th>Bet ID</th>
+                    <th>User ID</th>
+                    <th>Bet Amount</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+    while ($row = $result->fetch_assoc()) {
+        echo '<tr>
+                <td>' . $row['bet_id'] . '</td>
+                <td>' . $row['user_id'] . '</td>
+                <td>' . $row['bet_amount'] . '</td>
+                <td>' . $row['result'] . '</td>
+              </tr>';
+    }
+
+    echo '</tbody></table>';
+} else {
+    echo "No data found for user with ID: $user_id";
+}
+
+// Close the database connection
+$conn->close();
+?>
+
         
 
         
