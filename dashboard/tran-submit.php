@@ -7,7 +7,7 @@ $transaction_request = $_GET['transaction_request'] ?? null;
 $status = $_GET['status'] ?? null;
 
 // Check if status is 'approved'
-if ($status === 'approved' && $tran_id && $phone && $transaction_request !== null) {
+if ($status === 'approved') {
     // Include your database connection file
     include '../database.php';
 
@@ -44,4 +44,3 @@ if ($status === 'approved' && $tran_id && $phone && $transaction_request !== nul
     echo '<script>alert("Update failed!"); window.location.href = document.referrer;</script>';
     exit();
 }
-
