@@ -14,24 +14,24 @@ function updateWalletBalance($user_id, $amount) {
 // Function to update transaction status in transaction_table
 function updateTransactionStatus($tran_id, $status) {
     global $conn;
-    // Assuming 'transection_status' is the column name in transaction_table
-    $query = "UPDATE transaction_table SET transection_status = '$status' WHERE tran_id = $tran_id";
+    // Assuming 'transaction_status' is the column name in transaction_table
+    $query = "UPDATE transaction_table SET transaction_status = '$status' WHERE tran_id = $tran_id";
     $result = $conn->query($query);
     return $result;
 }
 
 // Check if the required parameters are set in the URL
-if (isset($_GET['tran_id'], $_GET['user_id'], $_GET['transection_request'], $_GET['status'])) {
+if (isset($_GET['tran_id'], $_GET['user_id'], $_GET['transaction_request'], $_GET['status'])) {
     // Get values from the URL
     $tran_id = $_GET['tran_id'];
     $user_id = $_GET['user_id'];
-    $transection_request = $_GET['transection_request'];
+    $transaction_request = $_GET['transaction_request'];
     $status = $_GET['status'];
 
     // Check if the status is "approved"
     if ($status === 'approved') {
         // Update wallet balance
-        $walletUpdateResult = updateWalletBalance($user_id, $transection_request);
+        $walletUpdateResult = updateWalletBalance($user_id, $transaction_request);
 
         // Update transaction status
         $statusUpdateResult = updateTransactionStatus($tran_id, $status);
