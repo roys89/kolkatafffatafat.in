@@ -494,6 +494,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if either "single" or "patti" has data
     if ($resultSingle->num_rows > 0 || $resultPatti->num_rows > 0) {
+        // Display results for "single"
         echo '<h3>Single</h3>';
         echo '<table class="w-full whitespace-nowrap">
                 <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
@@ -502,8 +503,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
                     </tr>
                 </thead>';
-
-        // Display results for "single"
         while ($row = $resultSingle->fetch_assoc()) {
             $bet_number = $row['bet_number'];
             $total_amount = $row['total_amount'];
@@ -516,13 +515,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                 </tbody>';
         }
-        
+        echo '</table>';
+
         // Display results for "patti"
+        echo '<h3>Patti</h3>';
+        echo '<table class="w-full whitespace-nowrap">
+                <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                    <tr>
+                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Number</th>
+                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
+                    </tr>
+                </thead>';
         while ($row = $resultPatti->fetch_assoc()) {
             $bet_number = $row['bet_number'];
             $total_amount = $row['total_amount'];
             $url2 = 'patti-overview.php?bet_number=' . urlencode($bet_number);
-                
+
             echo '<tbody>
                     <tr>
                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="' . $url2 . '">' . $bet_number . '</a></td>
@@ -530,7 +538,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                 </tbody>';
         }
-
         echo '</table>';
     } else {
         echo "No data found";
@@ -542,6 +549,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 
                                 </div>
                             </div>
