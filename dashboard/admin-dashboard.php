@@ -494,6 +494,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if either "single" or "patti" has data
     if ($resultSingle->num_rows > 0 || $resultPatti->num_rows > 0) {
+        echo '<h3>Single</h3>';
         echo '<table class="w-full whitespace-nowrap">
                 <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                     <tr>
@@ -515,7 +516,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </tr>
                 </tbody>';
         }
-
+        echo '<h3>Patti</h3>';
         // Display results for "patti"
         while ($row = $resultPatti->fetch_assoc()) {
             $bet_number = $row['bet_number'];
