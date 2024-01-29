@@ -426,12 +426,12 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                                             <select name="baji" id="baji">
                                                 <option value="1">Baji 1</option>
                                                 <option value="2">Baji 2</option>
-                                                <option value="3">Baji 1</option>
-                                                <option value="4">Baji 2</option>
-                                                <option value="5">Baji 1</option>
-                                                <option value="6">Baji 2</option>
-                                                <option value="7">Baji 1</option>
-                                                <option value="8">Baji 2</option>
+                                                <option value="3">Baji 3</option>
+                                                <option value="4">Baji 4</option>
+                                                <option value="5">Baji 5</option>
+                                                <option value="6">Baji 6</option>
+                                                <option value="7">Baji 7</option>
+                                                <option value="8">Baji 8</option>
                                                 <!-- Add options for Baji 3 to Baji 8 -->
                                             </select>
                                             <input type="submit" value="Submit">
