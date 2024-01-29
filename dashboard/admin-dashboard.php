@@ -434,8 +434,7 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                                 LEFT JOIN
                                     bet_table bt ON sl.bet_number = bt.bet_number
                                 GROUP BY
-                                    sl.bet_number
-                                HAVING total_bets > 0";
+                                    sl.bet_number";
                     
                                     
                                 $result = $conn->query($query);
