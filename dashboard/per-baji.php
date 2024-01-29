@@ -376,7 +376,7 @@ $baji = urldecode($_GET['baji']);
                                     }
 
                                     // Use a prepared statement to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT * FROM bet_table WHERE baji = ?";
+                                    $query = "SELECT * FROM bet_table WHERE baji = ? AND ";
                                     $stmt = $conn->prepare($query);
 
                                     // Check if the statement was prepared successfully
@@ -390,29 +390,29 @@ $baji = urldecode($_GET['baji']);
                                         // Get the result set
                                         $result = $stmt->get_result();
 
-                                        if ($result->num_rows > 0) {
-                                            echo '<table class="w-full whitespace-nowrap">
-                <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                <tr>
-                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Timestamp</th>
-                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
-                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Bet No.</th>
-                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Amount</th>
-                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Game Type</th>
-                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Result Status</th>
-            </tr>
-                </thead>';
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo '<tbody>
-            <tr>
-            <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bid_timestamp'] . '</td>
-            <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['phone'] . '</td>
-            <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_number'] . '</td>
-            <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['amount'] . '</td>
-            <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
-            <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['result_status'] . '</td>
-        </tr>
-                  </tbody>';
+                                                                                            if ($result->num_rows > 0) {
+                                                                                                echo '<table class="w-full whitespace-nowrap">
+                                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                                                    <tr>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Timestamp</th>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Bet No.</th>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Amount</th>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Game Type</th>
+                                                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Result Status</th>
+                                                                </tr>
+                                                                    </thead>';
+                                                                                                while ($row = $result->fetch_assoc()) {
+                                                                                                    echo '<tbody>
+                                                                <tr>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bid_timestamp'] . '</td>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['phone'] . '</td>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_number'] . '</td>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['amount'] . '</td>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
+                                                                <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['result_status'] . '</td>
+                                                            </tr>
+                                                                    </tbody>';
                                             }
                                             echo '</table>';
                                         } else {
@@ -432,6 +432,85 @@ $baji = urldecode($_GET['baji']);
                                 </div>
                             </div>
                         </div><!--end col-->
+
+                        
+                        <div class="col-span-12 card 2xl:col-span-12">
+                            <div class="card-body">
+                                <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
+                                    <div class="2xl:col-span-3">
+                                        <h6 class="text-15">Single Bets</h6>
+                                    </div><!--end col-->
+                                </div><!--end grid-->
+                                <div class="overflow-x-auto">
+                                    <?php
+                                    // Include your database connection file
+                                    include '../database.php';
+
+                                    // Check connection
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+
+                                    // Use a prepared statement to fetch data for each unique user_id with game_type as "single"
+                                    $query = "SELECT * FROM bet_table WHERE baji = ?";
+                                    $stmt = $conn->prepare($query);
+
+                                    // Check if the statement was prepared successfully
+                                    if ($stmt) {
+                                        // Bind the parameter
+                                        $stmt->bind_param("s", $baji);
+
+                                        // Execute the statement
+                                        $stmt->execute();
+
+                                        // Get the result set
+                                        $result = $stmt->get_result();
+
+                                                                                if ($result->num_rows > 0) {
+                                                                                    echo '<table class="w-full whitespace-nowrap">
+                                                        <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                                        <tr>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Timestamp</th>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Bet No.</th>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Amount</th>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Game Type</th>
+                                                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Result Status</th>
+                                                    </tr>
+                                                        </thead>';
+                                                                                    while ($row = $result->fetch_assoc()) {
+                                                                                        echo '<tbody>
+                                                    <tr>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bid_timestamp'] . '</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['phone'] . '</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_number'] . '</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['amount'] . '</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['result_status'] . '</td>
+                                                </tr>
+                                                        </tbody>';
+                                            }
+                                            echo '</table>';
+                                        } else {
+                                            echo "No data found";
+                                        }
+
+                                        // Close the statement
+                                        $stmt->close();
+                                    } else {
+                                        echo "Prepared statement error: " . $conn->error;
+                                    }
+
+                                    // Close the database connection
+                                    $conn->close();
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div><!--end col-->
+
+
+
                     </div><!--end grid-->
                 </div>
                 <!-- container-fluid -->
