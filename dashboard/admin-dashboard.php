@@ -431,7 +431,7 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                                                 <option value="5">Baji 5</option>
                                                 <option value="6">Baji 6</option>
                                                 <option value="7">Baji 7</option>
-                                                <option value="8">Baji 8</option>
+                                                <option value="8">Baji </option>
                                                 <!-- Add options for Baji 3 to Baji 8 -->
                                             </select>
                                             <input type="submit" value="Submit">
@@ -441,110 +441,60 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                                     </div><!--end col-->
                                 </div><!--end grid-->
                                 <div class="overflow-x-auto">
-                                    <?php
-                                    // Assuming you have a database connection
-                                    include 'database.php';
-
-                                    // Check if the form is submitted
-                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                        // Get the selected baji value
-                                        $selectedBaji = $_POST['baji'];
-
-                                        // Query to fetch data for each unique user_id with the selected game_type (baji)
-                                        $query = "SELECT
-                sl.bet_number,
-                SUM(bt.amount) AS total_amount,
-                COUNT(bt.user_id) AS total_bets
-            FROM
-                single_list sl
-            LEFT JOIN
-                bet_table bt ON sl.bet_number = bt.bet_number
-            WHERE
-                bt.baji = ?  -- Assuming 'game_type' is the column that represents the baji
-            GROUP BY
-                sl.bet_number
-            HAVING total_bets > 0";
-
-                                        // Using a prepared statement to avoid SQL injection
-                                        $stmt = $conn->prepare($query);
-                                        $stmt->bind_param("s", $selectedBaji);
-                                        $stmt->execute();
-                                        $result = $stmt->get_result();
-
-                                        if ($result->num_rows > 0) {
-                                            echo '<table class="w-full whitespace-nowrap">
-                <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                    <tr>
-                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Number</th>
-                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
-                    </tr>
-                </thead>';
-
-                                            while ($row = $result->fetch_assoc()) {
-                                                $bet_number = $row['bet_number'];
-                                                $total_amount = $row['total_amount'];
-                                                $total_bets = $row['total_bets'];
-                                                $url = 'single-overview.php?bet_number=' . urlencode($bet_number);
-
-                                                echo '<tbody>
-                    <tr>
-                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="' . $url . '">' . $bet_number . '</a></td>
-                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
-                    </tr>
-                </tbody>';
-                                            }
-
-                                            echo '</table>';
-                                        } else {
-                                            echo "No data found";
-                                        }
-
-                                        $stmt->close();
-                                        $conn->close();
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-
-                            <div class="card-body">
-                                <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-6">
-                                    <div class="2xl:col-span-3">
-                                        <h6 class="text-15">Patti List</h6>
-                                    </div><!--end col-->
-                                </div><!--end grid-->
-                                <div class="overflow-x-auto">
                                 <?php
-                                    // Assuming you have a database connection
-                                    include 'database.php';
+// Assuming you have a database connection
+include 'database.php';
 
-                                    // Check if the form is submitted
-                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                        // Get the selected baji value
-                                        $selectedBaji = $_POST['baji'];
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the selected baji value
+    $selectedBaji = $_POST['baji'];
 
-                                        // Query to fetch data for each unique user_id with the selected game_type (baji)
-                                        $query = "SELECT
-                pl.bet_number,
-                SUM(bt.amount) AS total_amount,
-                COUNT(bt.user_id) AS total_bets
-            FROM
-            patti_list pl
-            LEFT JOIN
-                bet_table bt ON pl.bet_number = bt.bet_number
-            WHERE
-                bt.baji = ?  -- Assuming 'game_type' is the column that represents the baji
-            GROUP BY
-                pl.bet_number
-            HAVING total_bets > 0";
+    // Query for "single"
+    $singleQuery = "SELECT
+                        sl.bet_number,
+                        SUM(bt.amount) AS total_amount,
+                        COUNT(bt.user_id) AS total_bets
+                    FROM
+                        single_list sl
+                    LEFT JOIN
+                        bet_table bt ON sl.bet_number = bt.bet_number
+                    WHERE
+                        bt.baji = ?
+                    GROUP BY
+                        sl.bet_number
+                    HAVING total_bets > 0";
 
-                                        // Using a prepared statement to avoid SQL injection
-                                        $stmt = $conn->prepare($query);
-                                        $stmt->bind_param("s", $selectedBaji);
-                                        $stmt->execute();
-                                        $result = $stmt->get_result();
+    // Using a prepared statement to avoid SQL injection
+    $stmtSingle = $conn->prepare($singleQuery);
+    $stmtSingle->bind_param("s", $selectedBaji);
+    $stmtSingle->execute();
+    $resultSingle = $stmtSingle->get_result();
 
-                                        if ($result->num_rows > 0) {
-                                            echo '<table class="w-full whitespace-nowrap">
+    // Query for "patti"
+    $pattiQuery = "SELECT
+                        pl.bet_number,
+                        SUM(bt.amount) AS total_amount,
+                        COUNT(bt.user_id) AS total_bets
+                    FROM
+                        patti_list pl
+                    LEFT JOIN
+                        bet_table bt ON pl.bet_number = bt.bet_number
+                    WHERE
+                        bt.baji = ?
+                    GROUP BY
+                        pl.bet_number
+                    HAVING total_bets > 0";
+
+    // Using a prepared statement to avoid SQL injection
+    $stmtPatti = $conn->prepare($pattiQuery);
+    $stmtPatti->bind_param("s", $selectedBaji);
+    $stmtPatti->execute();
+    $resultPatti = $stmtPatti->get_result();
+
+    // Check if either "single" or "patti" has data
+    if ($resultSingle->num_rows > 0 || $resultPatti->num_rows > 0) {
+        echo '<table class="w-full whitespace-nowrap">
                 <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                     <tr>
                         <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Number</th>
@@ -552,31 +502,49 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                     </tr>
                 </thead>';
 
-                                            while ($row = $result->fetch_assoc()) {
-                                                $bet_number = $row['bet_number'];
-                                                $total_amount = $row['total_amount'];
-                                                $total_bets = $row['total_bets'];
-                                                $url = 'single-overview.php?bet_number=' . urlencode($bet_number);
+        // Display results for "single"
+        while ($row = $resultSingle->fetch_assoc()) {
+            $bet_number = $row['bet_number'];
+            $total_amount = $row['total_amount'];
+            $url = 'single-overview.php?bet_number=' . urlencode($bet_number);
 
-                                                echo '<tbody>
+            echo '<tbody>
                     <tr>
                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="' . $url . '">' . $bet_number . '</a></td>
                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
                     </tr>
                 </tbody>';
-                                            }
+        }
 
-                                            echo '</table>';
-                                        } else {
-                                            echo "No data found";
-                                        }
+        // Display results for "patti"
+        while ($row = $resultPatti->fetch_assoc()) {
+            $bet_number = $row['bet_number'];
+            $total_amount = $row['total_amount'];
+            $url2 = 'patti-overview.php?bet_number=' . urlencode($bet_number);
 
-                                        $stmt->close();
-                                        $conn->close();
-                                    }
-                                    ?>
+            echo '<tbody>
+                    <tr>
+                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="' . $url2 . '">' . $bet_number . '</a></td>
+                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
+                    </tr>
+                </tbody>';
+        }
+
+        echo '</table>';
+    } else {
+        echo "No data found";
+    }
+
+    // Close statements and connection
+    $stmtSingle->close();
+    $stmtPatti->close();
+    $conn->close();
+}
+?>
+
                                 </div>
                             </div>
+
                         </div><!--end col-->
                     </div><!--end grid-->
                 </div>
