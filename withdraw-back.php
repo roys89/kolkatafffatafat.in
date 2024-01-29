@@ -20,10 +20,10 @@ if ($conn->connect_error) {
 // Get user information from the session
 $user_id = $_SESSION['user_id'];
 $phone = $_SESSION['phone'];
-$selection1 = $_SESSION['selection1'];
 
 // Get form data (example: add_amount)
 $add_amount = $_POST['add_amount'] ?? '';
+$selection1 = $_POST['selection1'] ?? '';
 
 // Validate the form data (you might want to add more validation here)
 if (!is_numeric($add_amount) || $add_amount < 500) {
@@ -32,8 +32,8 @@ if (!is_numeric($add_amount) || $add_amount < 500) {
 }
 
 // Check if wallet_bal is sufficient
-$userDataQuery = $conn->prepare("SELECT wallet_bal FROM user_data WHERE user_id = ?");
-$userDataQuery->bind_param("i", $user_id);
+$userDataQuery = $conn->prepare("SELECT wallet_bal FROM user_data WHERE phone = ?");
+$userDataQuery->bind_param("i", $phone);
 $userDataQuery->execute();
 $userDataQuery->bind_result($wallet_bal);
 
