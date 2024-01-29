@@ -200,6 +200,14 @@ if (!isset($_SESSION['user_id'])) {
                                     <label for="addamount">Amount</label>
                                     <input type="number" id="add_amount" name="add_amount" placeholder="Enter the number you want to bet on" min="0" required>
                                 </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <label for="addamount">Select UPI App</label>
+                                    <select id="selection1" name="selection1">
+                                        <option value="phonePe">phone Pe</option>
+                                        <option value="googlePey">google Pey</option>
+                                        <option value="paytm">paytm</option>
+                                    </select>
+                                </div>
                             </div>
                             <button class="submit-btn" type="submit">Request</button>
                         </form>
