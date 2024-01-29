@@ -1,57 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaction Details</title>
-</head>
-<body>
-
 <?php
-include 'database.php'; // Include your database connection file
+                                    // Assuming you have a database connection
+                                    include 'database.php';
 
-// Retrieve parameters from the URL
-$tran_id = $_GET['tran_id'] ?? '';
-$user_id = $_GET['phone'] ?? '';
-$transaction_request = isset($_GET['transaction_request']) ? (int)$_GET['transaction_request'] : 0; // Ensure it's an integer
-$status = $_GET['status'] ?? '';
+                                    // Check if the form is submitted
+                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                        // Get the selected baji value
+                                        $selectedBaji = $_POST['baji'];
 
-// Check if status is 'approved'
-if ($status === 'approved' && $tran_id && $user_id && $transaction_request !== null) {
-    // Use prepared statements to prevent SQL injection
-    $updateWalletQuery = $conn->prepare("UPDATE user_data SET wallet_bal = wallet_bal + ? WHERE user_id = ?");
-    $updateWalletQuery->bind_param("di", $transaction_request, $user_id);
-    $updateWalletQuery->execute();
+                                        // Query to fetch data for each unique user_id with the selected game_type (baji)
+                                        $query = "SELECT
+                pl.bet_number,
+                SUM(bt.amount) AS total_amount,
+                COUNT(bt.user_id) AS total_bets
+            FROM
+            patti_list pl
+            LEFT JOIN
+                bet_table bt ON pl.bet_number = bt.bet_number
+            WHERE
+                bt.baji = ?  -- Assuming 'game_type' is the column that represents the baji
+            GROUP BY
+                pl.bet_number
+            HAVING total_bets > 0";
 
-    // Close the prepared statement
-    $updateWalletQuery->close();
+                                        // Using a prepared statement to avoid SQL injection
+                                        $stmt = $conn->prepare($query);
+                                        $stmt->bind_param("s", $selectedBaji);
+                                        $stmt->execute();
+                                        $result = $stmt->get_result();
 
-    // Fetch updated data from user_data table
-    $userDataQuery = "SELECT * FROM user_data WHERE user_id = ?";
-    $userDataStmt = $conn->prepare($userDataQuery);
-    $userDataStmt->bind_param("i", $user_id);
-    $userDataStmt->execute();
-    $userDataResult = $userDataStmt->get_result();
-    $userData = $userDataResult->fetch_assoc();
+                                        if ($result->num_rows > 0) {
+                                            echo '<table class="w-full whitespace-nowrap">
+                <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                    <tr>
+                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Number</th>
+                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
+                    </tr>
+                </thead>';
 
-    // Close the prepared statement
-    $userDataStmt->close();
+                                            while ($row = $result->fetch_assoc()) {
+                                                $bet_number = $row['bet_number'];
+                                                $total_amount = $row['total_amount'];
+                                                $total_bets = $row['total_bets'];
+                                                $url = 'single-overview.php?bet_number=' . urlencode($bet_number);
 
-    // Display the updated data
-    echo '<h1>Transaction ID: ' . $tran_id . '</h1>';
-    echo '<h1>User ID: ' . $user_id . '</h1>';
-    echo '<h1>Transaction Request: ' . $transaction_request . '</h1>';
-    echo '<h1>Status: ' . $status . '</h1>';
-    echo '<h1>Updated Wallet Balance: ' . $userData['wallet_bal'] . '</h1>';
-} else {
-    // Invalid parameters or status, handle accordingly
-    echo '<script>alert("Update failed!"); window.location.href = document.referrer;</script>';
-}
+                                                echo '<tbody>
+                    <tr>
+                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="' . $url . '">' . $bet_number . '</a></td>
+                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $total_amount . '</td>
+                    </tr>
+                </tbody>';
+                                            }
 
-// Close the database connection
-$conn->close();
-?>
+                                            echo '</table>';
+                                        } else {
+                                            echo "No data found";
+                                        }
 
-</body>
-</html>
-
+                                        $stmt->close();
+                                        $conn->close();
+                                    }
+                                    ?>
