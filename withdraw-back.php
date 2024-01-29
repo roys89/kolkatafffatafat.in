@@ -54,7 +54,7 @@ $userDataQuery->close();
 $currentDate = date('Y-m-d');
 
 // Check total debit amount for the day
-$totalDebitQuery = $conn->prepare("SELECT SUM(debit_amount) FROM transaction_debit WHERE phone = ? AND DATE(timestamp) = ?");
+$totalDebitQuery = $conn->prepare("SELECT SUM(debit_amount) FROM transaction_debit WHERE phone = ? AND dr_timestamp = ?");
 $totalDebitQuery->bind_param("ss", $phone, $currentDate);
 $totalDebitQuery->execute();
 $totalDebitQuery->bind_result($totalDebit);
