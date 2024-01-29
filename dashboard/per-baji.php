@@ -1,12 +1,7 @@
 <?php
-// Assuming you have a session with the user's information after login
-session_start();
+
 $baji = urldecode($_GET['baji']);
-// Check if the user is logged in
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: admin-login.php");
-    exit();
-}
+
 
 ?>
 
