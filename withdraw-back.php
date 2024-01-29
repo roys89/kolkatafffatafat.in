@@ -54,7 +54,7 @@ $credit_unicode = bin2hex(random_bytes(16));
 
 // Insert the new transaction into the transaction_table
 $insertTransactionQuery = $conn->prepare("INSERT INTO transaction_debit (user_id, phone, debit_amount, debit_status, debit_unicode, type) VALUES (?, ?, ?, 'pending', ?, ?)");
-$insertTransactionQuery->bind_param("isdss", $user_id, $phone, $add_amount, $credit_unicode, $selection1);
+$insertTransactionQuery->bind_param("ssdss", $user_id, $phone, $add_amount, $credit_unicode, $selection1);
 $insertTransactionQuery->execute();
 
 // Check if the transaction was inserted successfully
