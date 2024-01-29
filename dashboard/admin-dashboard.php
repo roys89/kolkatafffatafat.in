@@ -431,7 +431,7 @@ $totalAmount = $betAmountResult->fetch_assoc()['total_amount'];
                                                 <option value="5">Baji 5</option>
                                                 <option value="6">Baji 6</option>
                                                 <option value="7">Baji 7</option>
-                                                <option value="8">Baji </option>
+                                                <option value="8">Baji 8</option>
                                                 <!-- Add options for Baji 3 to Baji 8 -->
                                             </select>
                                             <input type="submit" value="Submit">
@@ -522,14 +522,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $bet_number = $row['bet_number'];
             $total_amount = $row['total_amount'];
             $url2 = 'patti-overview.php?bet_number=' . urlencode($bet_number);
-            echo '<h3>Patti</h3>';
-        echo '<table class="w-full whitespace-nowrap">
-                <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                    <tr>
-                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Number</th>
-                        <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Amount</th>
-                    </tr>
-                </thead>';
                 
             echo '<tbody>
                     <tr>
