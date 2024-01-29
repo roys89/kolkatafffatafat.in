@@ -376,7 +376,7 @@ $baji = urldecode($_GET['baji']);
                                     }
 
                                     // Use a prepared statement to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT * FROM bet_table WHERE baji = ? AND ";
+                                    $query = "SELECT * FROM bet_table WHERE baji = ? AND game_type = 'single'";
                                     $stmt = $conn->prepare($query);
 
                                     // Check if the statement was prepared successfully
@@ -452,7 +452,7 @@ $baji = urldecode($_GET['baji']);
                                     }
 
                                     // Use a prepared statement to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT * FROM bet_table WHERE baji = ?";
+                                    $query = "SELECT * FROM bet_table WHERE baji = ? AND game_type = 'patti'";
                                     $stmt = $conn->prepare($query);
 
                                     // Check if the statement was prepared successfully
