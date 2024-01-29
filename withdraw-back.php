@@ -49,6 +49,32 @@ if ($userDataQuery->fetch()) {
 
 $userDataQuery->close();
 
+
+// Get the current date
+$currentDate = date('Y-m-d');
+
+// Check total debit amount for the day
+$totalDebitQuery = $conn->prepare("SELECT SUM(debit_amount) FROM transaction_debit WHERE phone = ? AND DATE(timestamp) = ?");
+$totalDebitQuery->bind_param("ss", $phone, $currentDate);
+$totalDebitQuery->execute();
+$totalDebitQuery->bind_result($totalDebit);
+
+if ($totalDebitQuery->fetch()) {
+    // Set a maximum debit amount per day (e.g., 10000)
+    $maxDebitPerDay = 10000;
+
+    if (($totalDebit + $add_amount) > $maxDebitPerDay) {
+        echo "Daily debit limit exceeded";
+        exit();
+    }
+} else {
+    echo "Failed to check daily debit limit";
+    exit();
+}
+
+$totalDebitQuery->close();
+
+
 // Generate a random credit_unicode value (you might want to customize this)
 $credit_unicode = bin2hex(random_bytes(16));
 
