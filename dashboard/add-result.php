@@ -18,7 +18,10 @@ function sumOfDigits($number) {
         $sum += (int)$numberAsString[$i];
     }
 
-    return $sum;
+    // Get the last digit of the sum
+    $lastDigit = $sum % 10;
+
+    return $lastDigit;
 }
 // Get user input from the form
 $userChoice = $_POST['baji'];
