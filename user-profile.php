@@ -316,6 +316,7 @@ $conn->close();
                       <th scope="col">amount</th>
                       <th scope="col">baji</th>
                       <th scope="col">game_type</th>
+                      <th scope="col">Result</th>
                     </tr>
                   </thead>
 
