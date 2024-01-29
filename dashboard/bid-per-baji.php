@@ -382,7 +382,7 @@ if (!isset($_SESSION['admin_id'])) {
 
                                     // Query to fetch data for each unique user_id with game_type as "single"
                                     $query = "SELECT
-                                            phone, baji, game_type,
+                                            phone, baji, game_type, bid_timestamp,
                                             SUM(amount) AS total_amount,
                                             GROUP_CONCAT(bet_number ORDER BY bet_number ASC) AS bet_numbers,
                                             COUNT(bet_number) AS total_bets
@@ -408,6 +408,7 @@ if (!isset($_SESSION['admin_id'])) {
                                             echo '  <tbody>
                                                                     <tr>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="#">' . $row['baji'] . '</a></td>
+                                                                        <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bid_timestamp'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_amount'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bet_numbers'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bets'] . '</td>
