@@ -343,6 +343,11 @@ $conn->close();
                         ' . $betRow['game_type'] . '
                         </span>
                       </td>
+                      <td>
+                        <span class="profit">
+                        ' . $betRow['result_status'] . '
+                        </span>
+                      </td>
                     </tr>';
                   }
                   echo '
