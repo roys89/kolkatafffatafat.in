@@ -124,7 +124,7 @@ include "database.php";
                                           <a class='nav-link' href='index.php'>Home </a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/ff_lucky_number/'>FF Lucky Number</a>
+                                          <a class='nav-link' href='https://kolkatafatafat.help/'>Result</a>
                                         </li>
                                         <li class="nav-item">
                                           <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
