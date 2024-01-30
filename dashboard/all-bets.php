@@ -408,6 +408,7 @@ $baji = urldecode($_GET['baji']);
                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['amount'] . '</td>
                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['game_type'] . '</td>
                     <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['result_status'] . '</td>
+                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['bid_timestamp'] . '</td>
                 </tr>
             </tbody>';
                                         }
