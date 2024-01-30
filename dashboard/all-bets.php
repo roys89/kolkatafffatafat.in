@@ -381,7 +381,7 @@ $baji = urldecode($_GET['baji']);
                                     }
 
                                     // Use a prepared statement to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT * FROM bet_table ORDER BY baji DESC";
+                                    $query = "SELECT * FROM master_bet ORDER BY baji DESC";
 
                                     // Execute the query
                                     $result = $conn->query($query);

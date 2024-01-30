@@ -159,7 +159,7 @@ $conn->close();
                             <a class='nav-link' href='index.php'>Home </a>
                           </li>
                           <li class="nav-item">
-                            <a class='nav-link' href='https://kolkatafatafat.help/index.php/ff_lucky_number/'>FF Lucky Number</a>
+                            <a class='nav-link' href='https://kolkatafatafat.help/'>Result</a>
                           </li>
                           <li class="nav-item">
                             <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
@@ -231,7 +231,7 @@ $conn->close();
               </div>
               <div class="col-xl-6 col-lg-6">
                 <h3>After Payment Send ScreenShot to Our Whatsapp<h3>
-                    <a class="" href="https://wa.me/919907722651?text=My%20payment%20Screenshot%20User%20<?php echo $user['phone']; ?>,%20Kindly%20Update" target="_blank">
+                    <a class="" href="https://wa.me/917001976321?text=My%20payment%20Screenshot%20User%20<?php echo $user['phone']; ?>,%20Kindly%20Update" target="_blank">
                       <button>Send</button>
                     </a>
 
