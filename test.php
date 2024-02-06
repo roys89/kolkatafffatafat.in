@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Time Display</title>
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server Time Display</title>
 </head>
 <body>
-    <h1>Server Time:</h1>
-    <p id="server-time"></p>
 
+<div id="serverTime"></div>
 
-    <script>document.addEventListener('DOMContentLoaded', function() {
-    // Fetch server time from a server-side script (e.g., PHP)
-    fetch('test2.php')
-        .then(response => response.json())
-        .then(data => {
-            // Update the HTML element with the server time
-            document.getElementById('server-time').textContent = data.serverTime;
-        })
-        .catch(error => {
-            console.error('Error fetching server time:', error);
-        });
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Make an AJAX request to the PHP script
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      // Parse the JSON response
+      var response = JSON.parse(xhr.responseText);
+      
+      // Display the server time
+      document.getElementById("serverTime").innerText = "Server Time: " + response.serverTime;
+    }
+  };
+  xhr.open("GET", "test2.php", true);
+  xhr.send();
 });
 </script>
+
 </body>
 </html>
