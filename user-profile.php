@@ -35,12 +35,12 @@ $betResult = $betStmt->get_result();
 $betStmt->close();
 
 // Retrieve transaction details from the transaction_debit for the logged-in user
-$transactionSql = "SELECT * FROM transaction_debit WHERE user_id = ?";
-$transactionStmt = $conn->prepare($transactionSql);
-$transactionStmt->bind_param("i", $user_id);
-$transactionStmt->execute();
-$transactionResult = $transactionStmt->get_result();
-$transactionStmt->close();
+$transactiondrSql = "SELECT * FROM transaction_debit WHERE user_id = ?";
+$transactiondrStmt = $conn->prepare($transactiondrSql);
+$transactiondrStmt->bind_param("i", $user_id);
+$transactiondrStmt->execute();
+$transactiondrResult = $transactiondrStmt->get_result();
+$transactiondrStmt->close();
 
 $conn->close();
 ?>
@@ -388,7 +388,7 @@ $conn->close();
           </h5>
           <div class="col-xl-12 col-lg-12">
             <?php
-            if ($transactionResult->num_rows > 0) {
+            if ($transactiondrResult->num_rows > 0) {
               echo '<div class="leaderboard-table">
                 <table class="table" id="game_table">
                   <thead>
@@ -402,32 +402,32 @@ $conn->close();
                   </thead>
 
                   <tbody>';
-              while ($trasactionRow = $transactionResult->fetch_assoc()) {
+              while ($transactiondrRow = $transactiondrResult->fetch_assoc()) {
                 echo '
                     <tr>
                       <td>
                         <span class="single-data">
-                        ' . $trasactionRow['user_id'] . '
+                        ' . $transactiondrRow['user_id'] . '
                         </span>
                       </td>
                       <td>
                         <span class="profit">
-                        ' . $trasactionRow['debit_amount'] . '
+                        ' . $transactiondrRow['debit_amount'] . '
                         </span>
                       </td>
                       <td>
                         <span class="profit">
-                        ' . $trasactionRow['debit_status'] . '
+                        ' . $transactiondrRow['debit_status'] . '
                         </span>
                       </td>
                       <td>
                         <span class="profit">
-                        ' . $trasactionRow['type'] . '
+                        ' . $transactiondrRow['type'] . '
                         </span>
                       </td>
                       <td>
                         <span class="profit">
-                        ' . $trasactionRow['dr_timestamp'] . '
+                        ' . $transactiondrRow['dr_timestamp'] . '
                         </span>
                       </td>
                     </tr>';
