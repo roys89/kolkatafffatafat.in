@@ -27,13 +27,32 @@ $user = $userResult->fetch_assoc();
 $userStmt->close();
 
 // Retrieve bet details from the bet_table for the logged-in user
-$betSql = "SELECT * FROM bet_table WHERE user_id = ?";
+$betSql = "SELECT *,
+    CASE 
+        WHEN result_status = 'win' AND game_type = 'single' THEN amount * 9.5
+        WHEN result_status = 'win' AND game_type = 'patti' THEN amount * 12
+        ELSE amount
+    END AS modified_amount
+FROM master_bet
+WHERE user_id = ?";
 $betStmt = $conn->prepare($betSql);
 $betStmt->bind_param("i", $user_id);
 $betStmt->execute();
 $betResult = $betStmt->get_result();
+
+// Fetch and display the results
+
+    echo "Bet ID: " . $row['bet_id'] . "<br>";
+    echo "Original Amount: " . $row['amount'] . "<br>";
+    echo "Modified Amount: " . $row['modified_amount'] . "<br>";
+    // Add other columns as needed
+
+    // Output additional information or formatting as required
+    echo "<hr>";
+
+
 $betStmt->close();
-$conn->close();
+
 ?>
 
 
@@ -255,7 +274,7 @@ $conn->close();
                       </td>
                       <td>
                         <span class="profit">
-                        ' . $betRow['amount'] . '
+                        ' . $betRow['modified_amount'] . '
                         </span>
                       </td>
                       <td>
