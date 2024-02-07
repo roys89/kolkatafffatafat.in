@@ -40,17 +40,6 @@ $betStmt->bind_param("i", $user_id);
 $betStmt->execute();
 $betResult = $betStmt->get_result();
 
-// Fetch and display the results
-
-    echo "Bet ID: " . $row['bet_id'] . "<br>";
-    echo "Original Amount: " . $row['amount'] . "<br>";
-    echo "Modified Amount: " . $row['modified_amount'] . "<br>";
-    // Add other columns as needed
-
-    // Output additional information or formatting as required
-    echo "<hr>";
-
-
 $betStmt->close();
 
 ?>
@@ -257,6 +246,7 @@ $betStmt->close();
                     <tr>
                       <th scope="col">bet_number</th>
                       <th scope="col">amount</th>
+                      <th scope="col">Status</th>
                       <th scope="col">baji</th>
                       <th scope="col">game_type</th>
                       <th scope="col">Result</th>
@@ -275,6 +265,11 @@ $betStmt->close();
                       <td>
                         <span class="profit">
                         ' . $betRow['modified_amount'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $betRow['crdr'] . '
                         </span>
                       </td>
                       <td>
