@@ -147,7 +147,7 @@ include "database.php";
                                           </a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='user-profile.php'>My bid
+                                          <a class='nav-link' href='user-bet.php'>My bid
                                           </a>
                                         </li>
                                         <li class="nav-item dropdown">
