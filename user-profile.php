@@ -34,22 +34,6 @@ $betStmt->execute();
 $betResult = $betStmt->get_result();
 $betStmt->close();
 
-// Retrieve transaction details from the transaction_debit for the logged-in user
-$transactiondrSql = "SELECT * FROM transaction_debit WHERE user_id = ?";
-$transactiondrStmt = $conn->prepare($transactiondrSql);
-$transactiondrStmt->bind_param("i", $user_id);
-$transactiondrStmt->execute();
-$transactiondrResult = $transactiondrStmt->get_result();
-$transactiondrStmt->close();
-
-// Retrieve transaction details from the transaction_table for the logged-in user
-$transactioncrSql = "SELECT * FROM transaction_table WHERE user_id = ?";
-$transactioncrStmt = $conn->prepare($transactioncrSql);
-$transactioncrStmt->bind_param("i", $user_id);
-$transactioncrStmt->execute();
-$transactioncrResult = $transactioncrStmt->get_result();
-$transactioncrStmt->close();
-
 $conn->close();
 ?>
 
