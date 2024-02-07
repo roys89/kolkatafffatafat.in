@@ -49,12 +49,13 @@ if ($userDataQuery->fetch()) {
 
 $userDataQuery->close();
 
-// Get the current date and time
-$currentDateTime = date('Y-m-d H:i:s');
+
+// Get the current date
+$currentDate = date('Y-m-d');
 
 // Check total debit amount for the day
-$totalDebitQuery = $conn->prepare("SELECT SUM(debit_amount) FROM transaction_debit WHERE phone = ? AND dr_timestamp LIKE ?");
-$totalDebitQuery->bind_param("ss", $phone, "%$currentDateTime%");
+$totalDebitQuery = $conn->prepare("SELECT SUM(debit_amount) FROM transaction_debit WHERE phone = ? AND dr_timestamp = ?");
+$totalDebitQuery->bind_param("ss", $phone, $currentDate);
 $totalDebitQuery->execute();
 $totalDebitQuery->bind_result($totalDebit);
 
@@ -73,12 +74,13 @@ if ($totalDebitQuery->fetch()) {
 
 $totalDebitQuery->close();
 
+
 // Generate a random credit_unicode value (you might want to customize this)
 $credit_unicode = bin2hex(random_bytes(16));
 
 // Insert the new transaction into the transaction_table
-$insertTransactionQuery = $conn->prepare("INSERT INTO transaction_debit (user_id, phone, debit_amount, debit_status, debit_unicode, type, dr_timestamp) VALUES (?, ?, ?, 'pending', ?, ?, ?)");
-$insertTransactionQuery->bind_param("ssdsss", $user_id, $phone, $add_amount, $credit_unicode, $selection1, $currentDateTime);
+$insertTransactionQuery = $conn->prepare("INSERT INTO transaction_debit (user_id, phone, debit_amount, debit_status, debit_unicode, type) VALUES (?, ?, ?, 'pending', ?, ?)");
+$insertTransactionQuery->bind_param("ssdss", $user_id, $phone, $add_amount, $credit_unicode, $selection1);
 $insertTransactionQuery->execute();
 
 // Check if the transaction was inserted successfully
