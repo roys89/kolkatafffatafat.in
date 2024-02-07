@@ -27,7 +27,7 @@ $user = $userResult->fetch_assoc();
 $userStmt->close();
 
 // Retrieve bet details from the bet_table for the logged-in user
-$Sql = "SELECT * FROM bet_table WHERE user_id = ?";
+$betSql = "SELECT * FROM bet_table WHERE user_id = ?";
 $betStmt = $conn->prepare($betSql);
 $betStmt->bind_param("i", $user_id);
 $betStmt->execute();
@@ -44,6 +44,7 @@ $transactionStmt->close();
 
 $conn->close();
 ?>
+
 
 
 <!DOCTYPE html>
