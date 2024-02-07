@@ -221,7 +221,7 @@ include "database.php";
                         </span>
                       </td>
                       <td>
-                      <a href="<?php echo $url; ?>" class="buy-tips-btng">
+                      <a href="<?php echo $url; ?>" class="<?php echo $row["btn"]; ?>">
                       <?php echo $row["baji_status"]; ?>
                         </a>  
                       </td>
