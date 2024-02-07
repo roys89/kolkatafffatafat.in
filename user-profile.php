@@ -42,6 +42,14 @@ $transactiondrStmt->execute();
 $transactiondrResult = $transactiondrStmt->get_result();
 $transactiondrStmt->close();
 
+// Retrieve transaction details from the transaction_table for the logged-in user
+$transactioncrSql = "SELECT * FROM transaction_table WHERE user_id = ?";
+$transactioncrStmt = $conn->prepare($transactioncrSql);
+$transactioncrStmt->bind_param("i", $user_id);
+$transactioncrStmt->execute();
+$transactioncrResult = $transactioncrStmt->get_result();
+$transactioncrStmt->close();
+
 $conn->close();
 ?>
 
@@ -384,7 +392,7 @@ $conn->close();
 
         <div class="row justify-content-center">
           <h5>
-            Your Bids
+            Debit Amount
           </h5>
           <div class="col-xl-12 col-lg-12">
             <?php
@@ -393,11 +401,11 @@ $conn->close();
                 <table class="table" id="game_table">
                   <thead>
                     <tr>
-                      <th scope="col">bet_number</th>
-                      <th scope="col">amount</th>
-                      <th scope="col">baji</th>
-                      <th scope="col">game_type</th>
-                      <th scope="col">Result</th>
+                      <th scope="col">User ID</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Platfrom</th>
+                      <th scope="col">Time</th>
                     </tr>
                   </thead>
 
@@ -446,6 +454,72 @@ $conn->close();
       </div>
     </div>
 
+    <div class="leaderboard">
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <h5>
+            Credit Amount
+          </h5>
+          <div class="col-xl-12 col-lg-12">
+            <?php
+            if ($transactioncrResult->num_rows > 0) {
+              echo '<div class="leaderboard-table">
+                <table class="table" id="game_table">
+                  <thead>
+                    <tr>
+                    <th scope="col">Transaction ID</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Platfrom</th>
+                    <th scope="col">Time</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>';
+              while ($transactioncrRow = $transactioncrResult->fetch_assoc()) {
+                echo '
+                    <tr>
+                      <td>
+                        <span class="single-data">
+                        ' . $transactioncrRow['tran_id'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $transactioncrRow['user_id'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $transactioncrRow['transaction_request'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $transactioncrRow['transaction_status'] . '
+                        </span>
+                      </td>
+                      <td>
+                        <span class="profit">
+                        ' . $transactioncrRow['timestamp'] . '
+                        </span>
+                      </td>
+                    </tr>';
+              }
+              echo '
+                  </tbody>
+                </table>
+              </div>
+              ';
+            } else {
+              echo 'No products found.';
+            }
+            ?>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
   <!-- User Profile end -->
