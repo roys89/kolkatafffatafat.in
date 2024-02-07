@@ -379,7 +379,7 @@ $conn->close();
               </div>
               ';
             } else {
-              echo 'No products found.';
+              echo 'No Bet found.';
             }
             ?>
           </div>
@@ -446,7 +446,7 @@ $conn->close();
               </div>
               ';
             } else {
-              echo 'No products found.';
+              echo 'No Transactions found.';
             }
             ?>
           </div>
@@ -513,7 +513,7 @@ $conn->close();
               </div>
               ';
             } else {
-              echo 'No products found.';
+              echo 'No Transactions found.';
             }
             ?>
           </div>
