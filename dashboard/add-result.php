@@ -86,8 +86,8 @@ $sqlUpdateBetTable = "UPDATE bet_table
                       WHERE bet_number IN ('$column1', '$column2') AND baji = '$userChoice'";
 
 $sqlUpdateMasterBet = "UPDATE master_bet
-                       SET result_status = 'Win'
-                       WHERE bet_number IN ('$column1', '$column2') AND baji = '$userChoice'";
+                      SET result_status = 'Win', crdr = 'credit'
+                      WHERE bet_number IN ('$column1', '$column2') AND baji = '$userChoice'";
 
 if (!$conn->query($sqlUpdateBetTable)) {
     $success = false;
