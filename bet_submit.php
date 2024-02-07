@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $baji = $_POST['baji']; 
     $userId = $_POST['user_id']; 
     $phone = $_POST['phone']; 
+    $amountStatus = 'debit';
 
     include "database.php";
 
@@ -43,9 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Check if wallet balance is sufficient
                 if ($walletBal >= $amount) {
+                    // Debugging: Output values for inspection
+                    echo "Amount: $amount, Bet Number: $bet_number, Slot ID: $slotId, Baji: $baji, Game Type: $gameType, User ID: $userId, Phone: $phone";
+
                     $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
                     $sql2 = "UPDATE user_data SET wallet_bal = wallet_bal - $amount  WHERE user_id = '$userId'";
-                    $sql3 = "INSERT INTO master_bet (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
+                    $sql3 = "INSERT INTO master_bet (amount, crdr, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$amountStatus', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
+
+                    // Debugging: Output SQL queries for inspection
+                    echo "SQL 1: $sql<br>";
+                    echo "SQL 2: $sql2<br>";
+                    echo "SQL 3: $sql3<br>";
 
                     if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE) {
                         echo json_encode(['success' => true, 'message' => 'Data inserted successfully']);
