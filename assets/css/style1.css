@@ -879,7 +879,18 @@ ul {
 
 .leaderboard .leaderboard-table .table tbody tr td .buy-tips-btn {
   display: inline-block;
-  background: -webkit-linear-gradient(120deg, #3dc507, #3bee0f);
+  background: -webkit-linear-gradient(120deg, #eb3349, #f45c43);
+  color: #fff;
+  font-weight: 400;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px;
+  font-size: 14px;
+}
+
+.leaderboard .leaderboard-table .table tbody tr td .buy-tips-btng {
+  display: inline-block;
+  background: -webkit-linear-gradient(120deg, #0eec3f, #0ada14);
   color: #fff;
   font-weight: 400;
   height: 30px;
