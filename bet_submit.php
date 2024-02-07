@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $sql = "INSERT INTO bet_table (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
                     $sql2 = "UPDATE user_data SET wallet_bal = wallet_bal - $amount  WHERE user_id = '$userId'";
-                    $sql3 = "INSERT INTO master_bet (amount, crdr, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$amountStatus', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
+                    $sql3 = "INSERT INTO master_bet (amount, bet_number, slot_id, baji, game_type, user_id, phone) VALUES ('$amount', '$bet_number', '$slotId', '$baji', '$gameType', '$userId', '$phone')";
 
                     // Debugging: Output SQL queries for inspection
                     echo "SQL 1: $sql<br>";
