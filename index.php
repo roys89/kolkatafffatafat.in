@@ -44,18 +44,10 @@ include "database.php";
                   <ul>
                     <li>
                       <span class="icon">
-                        <i class="far fa-envelope"></i>
-                      </span>
-                      <span class="text">
-                        
-                      </span>
-                    </li>
-                    <li>
-                      <span class="icon">
                         <i class="fas fa-phone"></i>
                       </span>
                       <span class="text">
-                       
+                       Contact - 7001976321
                       </span>
                     </li>
                   </ul>
