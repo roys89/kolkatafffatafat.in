@@ -813,7 +813,6 @@ ul {
   background: #fff;
 }
 
-
 .leaderboard .leaderboard-table .table thead tr th {
   padding: 0 22px;
   height: 60px;
@@ -825,7 +824,7 @@ ul {
 }
 
 .leaderboard .leaderboard-table .table tbody tr {
-  background: #0af373;
+  background: #fff;
   border-radius: 5px;
   overflow: hidden;
 }
