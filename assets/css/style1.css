@@ -804,7 +804,7 @@ ul {
 .leaderboard .leaderboard-table .table {
   border-collapse: separate;
   border-spacing: 0 10px;
-  background: #0772dd;
+  background: #ebf2f9;
   padding: 20px 10px;
   margin-bottom: 30px;
 }
@@ -824,7 +824,7 @@ ul {
 }
 
 .leaderboard .leaderboard-table .table tbody tr {
-  background: #fff;
+  background: #0af373;
   border-radius: 5px;
   overflow: hidden;
 }
