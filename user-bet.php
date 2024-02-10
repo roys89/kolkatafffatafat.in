@@ -256,8 +256,9 @@ $betStmt->close();
 
                   <tbody>';
                             while ($betRow = $betResult->fetch_assoc()) {
+                                $rowColor = ($row['result_status'] == 'success') ? 'style="background-color: green;"' : '';
                                 echo '
-                    <tr>
+                    <tr $rowColor>
                         <td>
                         <span class="single-data">
                         ' . $betRow['bid_timestamp'] . '
