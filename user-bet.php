@@ -249,7 +249,6 @@ $betStmt->close();
                       <th scope="col">Amount</th>
                       <th scope="col">Status</th>
                       <th scope="col">Baji</th>
-                      <th scope="col">Game</th>
                       <th scope="col">Result</th>
                     </tr>
                   </thead>
@@ -282,11 +281,6 @@ $betStmt->close();
                       <td>
                         <span class="profit">
                         ' . $betRow['baji'] . '
-                        </span>
-                      </td>
-                      <td>
-                        <span class="profit">
-                        ' . $betRow['game_type'] . '
                         </span>
                       </td>
                       <td>
