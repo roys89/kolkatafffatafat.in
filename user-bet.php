@@ -244,11 +244,12 @@ $betStmt->close();
                 <table class="table" id="game_table">
                   <thead>
                     <tr>
-                      <th scope="col">bet_number</th>
-                      <th scope="col">amount</th>
+                        <th scope="col">Time</th>
+                      <th scope="col">Bet Number</th>
+                      <th scope="col">Amount</th>
                       <th scope="col">Status</th>
-                      <th scope="col">baji</th>
-                      <th scope="col">game_type</th>
+                      <th scope="col">Baji</th>
+                      <th scope="col">Game</th>
                       <th scope="col">Result</th>
                     </tr>
                   </thead>
@@ -257,6 +258,11 @@ $betStmt->close();
                             while ($betRow = $betResult->fetch_assoc()) {
                                 echo '
                     <tr>
+                        <td>
+                        <span class="single-data">
+                        ' . $betRow['bid_timestamp'] . '
+                        </span>
+                      </td>
                       <td>
                         <span class="single-data">
                         ' . $betRow['bet_number'] . '
