@@ -1,31 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Server Time Display</title>
-</head>
-<body>
+<?php
+include 'database.php';
 
-<div id="serverTime"></div>
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Make an AJAX request to the PHP script
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      // Parse the JSON response
-      var response = JSON.parse(xhr.responseText);
-      
-      // Display the server time
-      document.getElementById("serverTime").innerText = "Server Time: " + response.serverTime;
+// Fetch data from the database
+$sql = "SELECT * FROM master_bet";
+$result = $conn->query($sql);
+
+// Check if there is any result
+if ($result->num_rows > 0) {
+    echo '<table border="1">';
+    echo '<tr><th>ID</th><th>Name</th><th>Result Status</th></tr>';
+
+    // Loop through each row of data
+    while ($row = $result->fetch_assoc()) {
+        // Check if the result_status is "success"
+        $rowColor = ($row['result_status'] == 'success') ? 'style="background-color: green;"' : '';
+
+        // Display the data in a table row
+        echo "<tr $rowColor>";
+        echo "<td>" . $row['bid_timestamp'] . "</td>";
+        echo "<td>" . $row['phone'] . "</td>";
+        echo "<td>" . $row['result_status'] . "</td>";
+        echo "</tr>";
     }
-  };
-  xhr.open("GET", "test2.php", true);
-  xhr.send();
-});
-</script>
 
-</body>
-</html>
+    echo '</table>';
+} else {
+    echo 'No results found';
+}
+
+// Close the database connection
+$conn->close();
+?>
