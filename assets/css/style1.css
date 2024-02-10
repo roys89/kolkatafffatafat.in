@@ -824,7 +824,7 @@ ul {
 }
 
 .leaderboard .leaderboard-table .table tbody tr {
-  background: #00ff15;
+  background: #ffffff;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -854,6 +854,7 @@ ul {
 .leaderboard .leaderboard-table .table tbody tr td {
   border: none;
   text-align: center;
+  background-color: #00ff15;
   padding: 0 30px;
   height: 70px;
   vertical-align: middle;
