@@ -18,9 +18,10 @@ if ($result->num_rows > 0) {
     // Loop through each row of data
     while ($row = $result->fetch_assoc()) {
         // Check if the result_status is "success"
-        $rowColor = ($row['result_status'] == 'success') ? 'style="background-color: green;"' : '';
+        $rowColor = ($row['result_status'] == 'Win') ? 'style="background-color: green;"' : '';
 
         // Display the data in a table row
+        
         echo "<tr $rowColor>";
         echo "<td>" . $row['bid_timestamp'] . "</td>";
         echo "<td>" . $row['phone'] . "</td>";
