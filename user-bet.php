@@ -258,32 +258,32 @@ $betStmt->close();
                                 $rowColor = ($row['result_status'] == 'Win') ? 'style="background-color: #b4ffd8;"' : '';
                                 echo '
                     <tr >
-                        <td style="background-color: #b4ffd8;">
+                        <td ' . $rowColor . '>
                         <span class="single-data">
                         ' . $betRow['bid_timestamp'] . '
                         </span>
                       </td>
-                      <td $rowColor>
+                      <td ' . $rowColor . '>
                         <span class="single-data">
                         ' . $betRow['bet_number'] . '
                         </span>
                       </td>
-                      <td $rowColor>
+                      <td ' . $rowColor . '>
                         <span class="profit">
                         ' . $betRow['modified_amount'] . '
                         </span>
                       </td>
-                      <td>
+                      <td ' . $rowColor . '>
                         <span class="profit">
                         ' . $betRow['crdr'] . '
                         </span>
                       </td>
-                      <td $rowColor>
+                      <td ' . $rowColor . '>
                         <span class="profit">
                         ' . $betRow['baji'] . '
                         </span>
                       </td>
-                      <td $rowColor>
+                      <td ' . $rowColor . '>
                         <span class="profit">
                         ' . $betRow['result_status'] . '
                         </span>
