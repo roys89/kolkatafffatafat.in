@@ -254,42 +254,30 @@ $betStmt->close();
                   </thead>
 
                   <tbody>';
-                            while ($betRow = $betResult->fetch_assoc()) {
-                                $rowColor = ($row['result_status'] == 'Win') ? 'style="background-color: #b4ffd8;"' : '';
-                                echo '
-                    <tr >
-                        <td ' . $rowColor . '>
-                        <span class="single-data">
-                        ' . $betRow['bid_timestamp'] . '
-                        </span>
-                      </td>
-                      <td ' . $rowColor . '>
-                        <span class="single-data">
-                        ' . $betRow['bet_number'] . '
-                        </span>
-                      </td>
-                      <td ' . $rowColor . '>
-                        <span class="profit">
-                        ' . $betRow['modified_amount'] . '
-                        </span>
-                      </td>
-                      <td ' . $rowColor . '>
-                        <span class="profit">
-                        ' . $betRow['crdr'] . '
-                        </span>
-                      </td>
-                      <td ' . $rowColor . '>
-                        <span class="profit">
-                        ' . $betRow['baji'] . '
-                        </span>
-                      </td>
-                      <td ' . $rowColor . '>
-                        <span class="profit">
-                        ' . $betRow['result_status'] . '
-                        </span>
-                      </td>
-                    </tr>';
-                            }
+                  while ($betRow = $betResult->fetch_assoc()) {
+                    $rowColor = ($betRow['result_status'] == 'Win') ? 'style="background-color: #b4ffd8;"' : '';
+                    echo '
+                        <tr ' . $rowColor . '>
+                            <td>
+                                <span class="single-data">' . $betRow['bid_timestamp'] . '</span>
+                            </td>
+                            <td>
+                                <span class="single-data">' . $betRow['bet_number'] . '</span>
+                            </td>
+                            <td>
+                                <span class="profit">' . $betRow['modified_amount'] . '</span>
+                            </td>
+                            <td>
+                                <span class="profit">' . $betRow['crdr'] . '</span>
+                            </td>
+                            <td ' . $rowColor . '>
+                                <span class="profit">' . $betRow['baji'] . '</span>
+                            </td>
+                            <td ' . $rowColor . '>
+                                <span class="profit">' . $betRow['result_status'] . '</span>
+                            </td>
+                        </tr>';
+                }
                             echo '
                   </tbody>
                 </table>
