@@ -198,7 +198,7 @@ include "database.php";
 
                   <tbody>
                     <tr>
-                      <td style="background-color: #b4ffd8;">
+                      <td>
                         <span class="single-data">
                         <?php echo $row["closing_time"]; ?>
                         </span>
@@ -208,12 +208,12 @@ include "database.php";
                         <?php echo $row["single_result"]; ?>
                         </span>
                       </td>
-                      <td style="background-color: #b4ffd8;">
+                      <td>
                         <span class="profit">
                         <?php echo $row["patti_result"]; ?>
                         </span>
                       </td>
-                      <td style="background-color: #b4ffd8;">
+                      <td>
                       <a href="<?php echo $url; ?>" class="<?php echo $row["btn"]; ?>">
                       <?php echo $row["baji_status"]; ?>
                         </a>  
