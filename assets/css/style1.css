@@ -1,9 +1,3 @@
-/* =================================
- Temlate Name : Bidpa
- Author Name : autworks
- Date: 27/09/2020
- Version: 1.0
- =================================
 
 /* =================================
  css index
@@ -851,16 +845,7 @@ ul {
   font-size: 14px;
 }
 
-.leaderboard .leaderboard-table .table tbody tr td {
-  border: none;
-  text-align: center;
-  background-color: #ffffff;
-  padding: 0 30px;
-  height: 70px;
-  vertical-align: middle;
-  font-family: "Fira Sans", sans-serif;
-  color: #666;
-}
+
 
 .leaderboard .leaderboard-table .table tbody tr td a.tipster-pic {
   display: inline-block;
