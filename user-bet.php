@@ -255,7 +255,7 @@ $betStmt->close();
 
                   <tbody>';
                             while ($betRow = $betResult->fetch_assoc()) {
-                                $rowColor = ($row['result_status'] == 'Win') ? 'style="background: green;"' : '';
+                                $rowColor = ($row['result_status'] == 'Win') ? 'style="background-color: #00ff15;"' : '';
                                 echo '
                     <tr >
                         <td $rowColor>
