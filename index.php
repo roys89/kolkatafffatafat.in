@@ -213,7 +213,7 @@ include "database.php";
                         <?php echo $row["patti_result"]; ?>
                         </span>
                       </td>
-                      <td>
+                      <td style="background-color: #b4ffd8;">
                       <a href="<?php echo $url; ?>" class="<?php echo $row["btn"]; ?>">
                       <?php echo $row["baji_status"]; ?>
                         </a>  
