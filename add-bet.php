@@ -253,7 +253,7 @@ $conn->close();
                                     <li>
                                         <a href="<?php echo $url1; ?>">
                                             <span class="prediction-amount">
-                                               100-950
+                                               100-960
                                             </span>
                                             <span class="match-odds">Bet</span>
                                         </a>
