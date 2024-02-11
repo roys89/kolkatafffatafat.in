@@ -260,7 +260,7 @@ $betStmt->close();
                     if ($betRow['result_status'] == 'Win') {
                         $rowColor = 'style="background-color: #b4ffd8;"';
                     } elseif ($betRow['result_status'] == 'pending') {
-                        $rowColor = 'style="background-color: #ff6666;"';
+                        $rowColor = 'style="background-color: #ffaaaa;"';
                     }
                     echo '
                         <tr>
