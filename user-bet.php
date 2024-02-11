@@ -257,17 +257,17 @@ $betStmt->close();
                   while ($betRow = $betResult->fetch_assoc()) {
                     $rowColor = ($betRow['result_status'] == 'Win') ? 'style="background-color: #b4ffd8;"' : '';
                     echo '
-                        <tr ' . $rowColor . '>
-                            <td>
+                        <tr>
+                            <td ' . $rowColor . '>
                                 <span class="single-data">' . $betRow['bid_timestamp'] . '</span>
                             </td>
-                            <td>
+                            <td ' . $rowColor . '>
                                 <span class="single-data">' . $betRow['bet_number'] . '</span>
                             </td>
-                            <td>
+                            <td ' . $rowColor . '>
                                 <span class="profit">' . $betRow['modified_amount'] . '</span>
                             </td>
-                            <td>
+                            <td ' . $rowColor . '>
                                 <span class="profit">' . $betRow['crdr'] . '</span>
                             </td>
                             <td ' . $rowColor . '>
