@@ -263,12 +263,12 @@ $betStmt->close();
                         ' . $betRow['bid_timestamp'] . '
                         </span>
                       </td>
-                      <td>
+                      <td $rowColor>
                         <span class="single-data">
                         ' . $betRow['bet_number'] . '
                         </span>
                       </td>
-                      <td>
+                      <td $rowColor>
                         <span class="profit">
                         ' . $betRow['modified_amount'] . '
                         </span>
@@ -278,12 +278,12 @@ $betStmt->close();
                         ' . $betRow['crdr'] . '
                         </span>
                       </td>
-                      <td>
+                      <td $rowColor>
                         <span class="profit">
                         ' . $betRow['baji'] . '
                         </span>
                       </td>
-                      <td>
+                      <td $rowColor>
                         <span class="profit">
                         ' . $betRow['result_status'] . '
                         </span>
