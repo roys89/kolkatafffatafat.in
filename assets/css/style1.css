@@ -529,6 +529,8 @@ ul {
 
 .header .header-top .support-info ul li span {
   display: inline-block;
+      font-size: large;
+      color: aquamarine;
 }
 
 .header .header-top .support-info ul li span.icon {
