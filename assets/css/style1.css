@@ -3258,7 +3258,7 @@ ul {
   line-height: 26px;
   position: relative;
   z-index: 2;
-  color: #ff1818;
+  color: #ffffff;
   transition: all 0.3s ease-in;
 }
 
@@ -3269,7 +3269,7 @@ ul {
   top: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-linear-gradient(120deg, #eb3349, #f45c43);
+  background: -webkit-linear-gradient(120deg, #000000, #f45c43);
   z-index: -1;
   transition: all 0.3s ease-in;
   opacity: 0;
