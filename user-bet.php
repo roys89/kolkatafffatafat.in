@@ -197,10 +197,6 @@ $betStmt->close();
                                           <a class='nav-link' href='user-bet.php'>My Bid
                                           </a>
                                         </li>
-                                        <li class="nav-item">
-                                          <a class='nav-link' href='user-bet.php'>My bid
-                                          </a>
-                                        </li>
                                       </ul>
                                     </div>
                                   </div>
