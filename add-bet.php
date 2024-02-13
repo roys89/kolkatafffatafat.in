@@ -238,7 +238,7 @@ $conn->close();
                                 <span class="single-team">Play Now</span>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4">
+                        <!-- <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="time">
                                 <div>
                                     <span class="clock">10:30 am
@@ -246,16 +246,16 @@ $conn->close();
                                     <span class="date">10/20/2024</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-xl-5 col-lg-5 col-md-12">
                             <div class="prediction-sheet">
                                 <ul>
                                     <li>
                                         <a href="<?php echo $url1; ?>">
-                                            <span class="prediction-amount">
+                                            <!-- <span class="prediction-amount">
                                                100-960
-                                            </span>
-                                            <span class="match-odds">Bet</span>
+                                            </span> -->
+                                            <span class="match-odds">Place Bet</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -276,7 +276,7 @@ $conn->close();
                                 <span class="single-team">Play Now</span>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4">
+                        <!-- <div class="col-xl-3 col-lg-3 col-md-4">
                             <div class="time">
                                 <div>
                                     <span class="clock">10:30 am
@@ -284,16 +284,16 @@ $conn->close();
                                     <span class="date">10/20/2024</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-xl-5 col-lg-5 col-md-12">
                             <div class="prediction-sheet">
                                 <ul>
                                     <li>
                                         <a href="<?php echo $url2; ?>">
-                                            <span class="prediction-amount">
+                                            <!-- <span class="prediction-amount">
                                                 100-1200
-                                            </span>
-                                            <span class="match-odds">Bet</span>
+                                            </span> -->
+                                            <span class="match-odds">Place Bet</span>
                                         </a>
                                     </li>
                                 </ul>
