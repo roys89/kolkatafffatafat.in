@@ -48,7 +48,7 @@ include "database.php";
                         <i class="fas fa-phone"></i>
                       </span>
                       <span class="text">
-                       Contact - 7001976321
+                       Contact - 7001802248
                       </span>
                     </li>
                   </ul>
@@ -107,7 +107,6 @@ include "database.php";
                   <div class="col-xl-12 col-lg-12">
                       <div class="mainmenu">
                           <nav class="navbar navbar-expand-lg">
-                            
                               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <div class="scalaction">
                                   <div class="row">
@@ -120,10 +119,10 @@ include "database.php";
                                           <a class='nav-link' href='https://kolkatafatafat.help/'>Result</a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
+                                          <a class='nav-link' href='login.php'>LogIn</a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
+                                          <a class='nav-link' href='registration.php'>Sign Up</a>
                                         </li>
                                       </ul>
                                     </div>
@@ -133,24 +132,15 @@ include "database.php";
                                     <div class="col-xl-5 col-lg-5">
                                       <ul class="navbar-nav">
                                         <li class="nav-item">
-                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_patti-list/'>Patti List</a>
+                                          <a class='nav-link' href='user-profile.php'>Profile</a>
                                         </li>
                                         <li class="nav-item">
-                                          <a class='nav-link' href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
+                                          <a class='nav-link' href='user-bet.php'>My Bid
                                           </a>
                                         </li>
                                         <li class="nav-item">
                                           <a class='nav-link' href='user-bet.php'>My bid
                                           </a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          User
-                                          </a>
-                                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class='dropdown-item' href='login.php'>Login</a>
-                                            <a class='dropdown-item' href='registration.php'>Sign up</a>
-                                          </div>
                                         </li>
                                       </ul>
                                     </div>

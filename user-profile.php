@@ -158,54 +158,48 @@ $conn->close();
         <div class="row justify-content-center">
           <div class="col-xl-12 col-lg-12">
             <div class="mainmenu">
-              <nav class="navbar navbar-expand-lg">
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <div class="scalaction">
-                    <div class="row">
-                      <div class="col-xl-5 col-lg-5">
-                        <ul class="navbar-nav">
-                          <li class="nav-item active">
-                            <a class='nav-link' href='index.php'>Home </a>
-                          </li>
-                          <li class="nav-item">
-                            <a class='nav-link' href='https://kolkatafatafat.help/'>Result</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 d-xl-block d-lg-block d-none">
-                        <div class="space"></div>
-                      </div>
-                      <div class="col-xl-5 col-lg-5">
-                        <ul class="navbar-nav">
-                          <li class="nav-item">
-                            <a class='nav-link' href='https://kolkatafatafat.help/index.php/kolkataff_patti-list/'>Kolkata FF Patti List</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class='nav-link' href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
-                            </a>
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              User
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class='dropdown-item' href='login.php'>Login</a>
-                              <a class='dropdown-item' href='registration.php'>Sign up</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
+            <nav class="navbar navbar-expand-lg">
+                              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div class="scalaction">
+                                  <div class="row">
+                                    <div class="col-xl-5 col-lg-5">
+                                      <ul class="navbar-nav">
+                                        <li class="nav-item active">
+                                          <a class='nav-link' href='index.php'>Home </a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='https://kolkatafatafat.help/'>Result</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='login.php'>LogIn</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='registration.php'>Sign Up</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-2 d-xl-block d-lg-block d-none">
+                                      <div class="space"></div>
+                                    </div>
+                                    <div class="col-xl-5 col-lg-5">
+                                      <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='user-profile.php'>Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='user-bet.php'>My Bid
+                                          </a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class='nav-link' href='user-bet.php'>My bid
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </nav>
             </div>
           </div>
         </div>
