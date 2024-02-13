@@ -17,10 +17,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST["c_password"];
     $user_status = 'active';
 
+
+
+    function passtest($pass) {
+            if (!empty($pass)) { //check if string is empty
+                if (ctype_alnum($pass)) { //check if string is alphanumeric
+                    if (7 < strlen($pass)){ //check if string meets 8 or more characters
+                        if (strcspn($pass, '0123456789') != strlen($pass)){ //check if string has numbers
+                            if (strcspn($pass, 'abcdefghijklmnopqrstuvwxyz') != strlen($pass)) { //check if string has small letters
+                                if (strcspn($pass, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') != strlen($pass)) { //check if string has capital letters
+                                    return true; // Password passed
+                                }
+                                else {
+                                    return "<br />No capital letter";
+                                }
+                            }
+                            else {
+                                return "<br />No small letter";
+                            }
+                        }
+                        else {
+                            return "<br />No number";
+                        }
+                    }
+                    else {
+                        return "<br />Password is short";
+                    }
+                }
+                else {
+                    return "<br />Password has special character";
+                }
+            }
+            else {
+                return "<br />Password field is empty";
+            }
+        }
+
+        $functionResult = passtest($loginPassword);
+
+
+
+        if ($functionResult === true) {
+           
+         
+
     if ($loginPassword !== $confirm_password) {
         echo '<script>alert("Passwords do not match!");</script>';
         exit();
     }
+
+    
 
     $hashedPassword = password_hash($loginPassword, PASSWORD_DEFAULT);
 
@@ -58,6 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error preparing check statement: " . $conn->error;
     }
+
+} else {
+    // Execute code when the password doesn't pass the test
+    echo "Password failed: $functionResult";
+    // Additional code...
+} 
 }
 
 $conn->close();
@@ -318,59 +370,17 @@ $conn->close();
     <!-- footer begin -->
     <div class="footer">
         <a class='site-logo' href='index.php'>
-            <img src="assets/img/logo.png" alt="">
+          <img src="assets/img/logo.png" alt="">
         </a>
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-xl-4 col-lg-5 col-md-10">
                     <div class="about-widget">
                         <a class='site-title' href='index.php'>
-                            The Betipstar
+                            The Kolkata Fatafat Live
                         </a>
-                        <p>Betipstar offers you all the best online prediction from every corner of the planet with thousands of online prediction markets.</p>
-                        <div class="social">
-                            <ul>
-                                <li>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-pinterest-p"></i>
-                                    </a>
-                                    <a href="#" class="social-icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="support">
-                            <ul>
-                                <li>
-                                    <span class="icon">
-                                        <img src="assets/img/svg/email.svg" alt="">
-                                    </span>
-                                    <span class="text">
-                                        <span class="title">Mail Us</span>
-                                        <span class="descr">don't@reply.com</span>
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <img src="assets/img/svg/phone-call.svg" alt="">
-                                    </span>
-                                    <span class="text">
-                                        <span class="title">Get In Touch</span>
-                                        <span class="descr">+88 015 00 00 00</span>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
+                        <p>Text</p>
+                       
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
@@ -378,25 +388,7 @@ $conn->close();
                         <h3>Useful links</h3>
                         <ul>
                             <li>
-                                <a href="#">in-play</a>
-                            </li>
-                            <li>
-                                <a href="#">promotions</a>
-                            </li>
-                            <li>
-                                <a href="#">statics</a>
-                            </li>
-                            <li>
-                                <a href="#">results</a>
-                            </li>
-                            <li>
-                                <a href="#">predict now</a>
-                            </li>
-                            <li>
-                                <a href="#">game results</a>
-                            </li>
-                            <li>
-                                <a href="#">standings</a>
+                              <a href='https://kolkatafatafat.help/index.php/kolkataff_old_results/'>Kolkata FF Old Results</a>
                             </li>
                         </ul>
                     </div>
@@ -406,25 +398,8 @@ $conn->close();
                         <h3>Connect Us</h3>
                         <ul>
                             <li>
-                                <a href="#">about us</a>
-                            </li>
-                            <li>
-                                <a href="#">blog</a>
-                            </li>
-                            <li>
-                                <a href="#">blog details</a>
-                            </li>
-                            <li>
-                                <a href="#">service</a>
-                            </li>
-                            <li>
-                                <a href="#">contact us</a>
-                            </li>
-                            <li>
-                                <a href="#">team overview</a>
-                            </li>
-                            <li>
-                                <a href="#">schedule</a>
+                              <a href='https://kolkatafatafat.help/index.php/term-condition/'>Terms & Conditions
+                              </a>
                             </li>
                         </ul>
                     </div>
@@ -434,26 +409,9 @@ $conn->close();
                         <h3>probable Tips</h3>
                         <ul>
                             <li>
-                                <a href="#">football</a>
+                              <a href='https://kolkatafatafat.help/index.php/kolkataff_tips/'>Kolkata FF Tips</a>
                             </li>
                             <li>
-                                <a href="#">tennis</a>
-                            </li>
-                            <li>
-                                <a href="#">basketball</a>
-                            </li>
-                            <li>
-                                <a href="#">ice hockey</a>
-                            </li>
-                            <li>
-                                <a href="#">volleyball</a>
-                            </li>
-                            <li>
-                                <a href="#">badminton</a>
-                            </li>
-                            <li>
-                                <a href="#">baseball</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -493,8 +451,8 @@ $conn->close();
                 </div>
             </div>
         </div>
-    </div>
-    <!-- footer end -->
+      </div>
+      <!-- footer end -->
 
     <!-- copyright footer begin -->
     <div class="copyright-footer">
