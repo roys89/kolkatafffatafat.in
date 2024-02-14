@@ -469,10 +469,11 @@
             var sum = 0;
             for (var i = 0; i < inputNumber.length; i++) {
                 sum += parseInt(inputNumber[i]) || 0; // Convert each character to integer, handle non-numeric characters
+                var lastDigit = sum % 10;
             }
 
             // Display the digit sum in the result textbox
-            document.getElementById("single_result").value = sum;
+            document.getElementById("single_result").value = lastDigit;
         }
     </script>
 <script src='assets/libs/choices.js/public/assets/scripts/choices.min.js'></script>
