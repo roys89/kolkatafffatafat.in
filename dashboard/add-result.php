@@ -7,28 +7,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-function sumOfDigits($number) {
-    // Convert the number to a string to iterate through each digit
-    $numberAsString = (string)$number;
-
-    // Initialize a variable to store the sum
-    $sum = 0;
-
-    // Iterate through each digit and add it to the sum
-    for ($i = 0; $i < strlen($numberAsString); $i++) {
-        $sum += (int)$numberAsString[$i];
-    }
-
-    // Get the last digit of the sum
-    $lastDigit = $sum % 10;
-
-    return $lastDigit;
-}
 
 // Get user input from the form
 $userChoice = $_POST['baji'];
 $column1 = $_POST['patti_result'];
-$column2 = sumOfDigits($column1);
+$column2 = $_POST['single_result'];
 
 // Validate and sanitize user input here (consider using prepared statements)
 
