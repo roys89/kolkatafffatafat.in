@@ -27,7 +27,7 @@ function sumOfDigits($number) {
 
 // Get user input from the form
 $userChoice = $_POST['baji'];
-$column1 = $_POST['single_result'];
+$column1 = $_POST['patti_result'];
 $column2 = sumOfDigits($column1);
 
 // Validate and sanitize user input here (consider using prepared statements)
