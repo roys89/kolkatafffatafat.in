@@ -219,7 +219,7 @@ $conn->close();
                     <div class="row justify-content-between">
                         <div class="col-xl-1 col-lg-1 col-md-2">
                             <div class="part-icon">
-                                <i class="flaticon-football"></i>
+                                <img src="assets\img\dice.png" alt="">
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
@@ -257,7 +257,7 @@ $conn->close();
                     <div class="row justify-content-between">
                         <div class="col-xl-1 col-lg-1 col-md-2">
                             <div class="part-icon">
-                                <i class="flaticon-football"></i>
+                            <img src="assets\img\card-game.pngng" alt="">
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4">
