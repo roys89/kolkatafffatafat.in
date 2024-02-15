@@ -151,7 +151,60 @@ include "database.php";
         </div>
       </div>
       <!-- header end -->
-
+      <!-- tips begin -->
+      <div class="tips">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-8 col-md-9">
+              <div class="section-title">
+                <h4 class="sub-title">
+                  Latest Bets
+                </h4>
+                <h2>Today's All Active Bets</h2>
+                <!-- <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
+                  and offers from leading bookmakers! See how it works!</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="tips-table">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="single-data green">
+                          Single
+                        </span>
+                      </td>
+                      <td>
+                        <span class="single-data green">
+                          Patti
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="single-data green">
+                          100 ka 960
+                        </span>
+                      </td>
+                      <td>
+                        <span class="single-data green">
+                          100 ka 12000
+                        </span>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- tips end -->
+      
       <!-- leaderboard begin  -->
       <div class="leaderboard">
         <div class="container">
@@ -220,59 +273,7 @@ include "database.php";
       </div>
       <!-- leaderboard end  -->
       
-      <!-- tips begin -->
-      <div class="tips">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-9">
-              <div class="section-title">
-                <h4 class="sub-title">
-                  Latest Prediction Tips
-                </h4>
-                <h2>Today's all active tips</h2>
-                <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
-                  and offers from leading bookmakers! See how it works!</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-12 col-lg-12">
-              <div class="tips-table">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="single-data green">
-                          Single
-                        </span>
-                      </td>
-                      <td>
-                        <span class="single-data green">
-                          Patti
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="single-data green">
-                          100 ka 960
-                        </span>
-                      </td>
-                      <td>
-                        <span class="single-data green">
-                          100 ka 12000
-                        </span>
-                      </td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- tips end -->
+      
 
 
 
