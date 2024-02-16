@@ -158,9 +158,8 @@ include "database.php";
             <div class="col-xl-8 col-lg-8 col-md-9">
               <div class="section-title">
                 <h4 class="sub-title">
-                  Latest Bets
+                Today's All Active Bets
                 </h4>
-                <h2>Today's All Active Bets</h2>
                 <!-- <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
                   and offers from leading bookmakers! See how it works!</p> -->
               </div>
