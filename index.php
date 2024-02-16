@@ -154,17 +154,17 @@ include "database.php";
       <!-- tips begin -->
       <div class="tips">
         <div class="container">
-          <div class="row justify-content-center">
+          <!-- <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-8 col-md-9">
               <div class="section-title">
                 <h4 class="sub-title">
                 Today's All Active Bets
                 </h4>
-                <!-- <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
-                  and offers from leading bookmakers! See how it works!</p> -->
+                <p>Get probable winning tips from professional betting tipsters across  all sports<br/>
+                  and offers from leading bookmakers! See how it works!</p>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="col-xl-12 col-lg-12">
               <div class="tips-table">
