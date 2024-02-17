@@ -1,35 +1,41 @@
-
-
 <?php
-// Include your database connection file
-include '../database.php';
+// Handle the form submission and database storage
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $amount = $_POST['amount'];
+    $bet_number = $_POST['bet_number'];
+    $gameType = $_POST['game_type'];
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    // Additional condition to check if the amount does not exceed 5000
+    if ($amount > 5000) {
+        echo json_encode(['success' => false, 'message' => 'Amount cannot exceed 5000']);
+        exit; // Stop execution if the amount is too high
+    }
 
-// Get additional data from the FormData
-$slotId = $_POST['slot_id'];
-$baji = $_POST['baji'];
-$gameType = $_POST['game_type'];
-$userId = $_POST['user_id'];
-$phone = $_POST['phone'];
+    // Validation for $bet_number length based on $gameType
+    $maxBetNumberLength = ($gameType === 'patti') ? 3 : 1;
 
-// Get array data from FormData
-$betNumbers = $_POST['bet_number'];
-$amounts = $_POST['amount'];
+    if (strlen($bet_number) > $maxBetNumberLength) {
+        echo json_encode(['success' => false, 'message' => 'Invalid $bet_number length']);
+        exit;
+    }
 
-// Initialize a variable to check if all queries are successful
-$success = true;
+    // Extract URL parameters
+    $slotId = $_POST['slot_id'];
+    $baji = $_POST['baji']; 
+    $userId = $_POST['user_id']; 
+    $phone = $_POST['phone']; 
+    $amountStatus = 'debit';
+    $resultStatus = 'pending';
 
-// Start a transaction
-$conn->begin_transaction();
+    include "database.php";
 
-// Loop through each form entry and insert into the database
-for ($i = 0; $i < count($betNumbers); $i++) {
-    $betNumber = $betNumbers[$i];
-    $amount = $amounts[$i];
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Check if baji_status is 1 for the provided $baji
+    $checkGameStatusQuery = "SELECT baji_status FROM game_table WHERE baji = '$baji'";
+    $gameStatusResult = $conn->query($checkGameStatusQuery);
 
     if ($gameStatusResult && $gameStatusResult->num_rows > 0) {
         $row = $gameStatusResult->fetch_assoc();
@@ -71,16 +77,4 @@ for ($i = 0; $i < count($betNumbers); $i++) {
 
     $conn->close();
 }
-
-// Commit the transaction if all queries are successful, otherwise, rollback
-if ($success) {
-    $conn->commit();
-    echo json_encode(['status' => 'success', 'message' => 'Data inserted successfully.']);
-} else {
-    $conn->rollback();
-    echo json_encode(['status' => 'error', 'message' => 'Error inserting data.']);
-}
-
-// Close the database connection
-$conn->close();
 ?>
