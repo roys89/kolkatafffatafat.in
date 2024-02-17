@@ -389,23 +389,22 @@ if (!isset($_SESSION['admin_id'])) {
 
                                     $result = $conn->query($query);
 
-
                                     if ($result->num_rows > 0) {
                                         echo '<div class="mb-4">
-                                        <label for="filterPhone" class="mr-2">Filter by Phone:</label>
-                                        <input type="text" id="filterPhone" class="border p-1">
-                                        <label for="numRows" class="mx-2">Show:</label>
-                                        <select id="numRows" class="border p-1">
-                                            <option value="10">10 rows</option>
-                                            <option value="25">25 rows</option>
-                                            <option value="50">50 rows</option>
-                                            <option value="100">100 rows</option>
-                                        </select>
-                                    </div>';
+                                                <label for="filterPhone" class="mr-2">Filter by Phone:</label>
+                                                <input type="text" id="filterPhone" class="border p-1">
+                                                <label for="numRows" class="mx-2">Show:</label>
+                                                <select id="numRows" class="border p-1">
+                                                    <option value="10">10 rows</option>
+                                                    <option value="25">25 rows</option>
+                                                    <option value="50">50 rows</option>
+                                                    <option value="100">100 rows</option>
+                                                </select>
+                                            </div>';
 
-                                         echo '<table class="w-full whitespace-nowrap">
-                                                    <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                                        <tr>
+                                            echo '<table class="w-full whitespace-nowrap">
+                                            <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                                <tr>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Full Name</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Password</th>
@@ -415,11 +414,12 @@ if (!isset($_SESSION['admin_id'])) {
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Debit</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Total Bet / Day</th>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Activity</th>
-                                                        </tr>
-                                                    </thead>';
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        echo '<tbody class="data-row" data-phone="' . $row['phone'] . '">
-                                                                <tr>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>'; // Open tbody here
+                                        
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                echo '<tr class="data-row" data-phone="' . $row['phone'] . '">
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $row['phone'] . '</a></td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['full_name'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['password'] . '</td>
@@ -429,7 +429,7 @@ if (!isset($_SESSION['admin_id'])) {
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['debit'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['total_bet'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                                            <div class="relative dropdown">
+                                                                        <div class="relative dropdown">
                                                                                 <button id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center w-[30px] h-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20"><i data-lucide="more-horizontal" class="w-3 h-3"></i></button>
                                                                                 <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
                                                                                     <li>
@@ -442,21 +442,20 @@ if (!isset($_SESSION['admin_id'])) {
                                                                                         <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
                                                                                     </li>
                                                                                 </ul>
-                                                                            </div>
-                                                                        </td>
-                                                                        </tr>
-                                                                        </tbody>';
+                                                                                </div>
+                                                                                </td>
+                                                                            </tr>';
+                                                                    }
+                                                            
+                                                                    echo '</tbody></table>'; // Close tbody here
+                                                                } else {
+                                                                    echo "No data found";
                                                                 }
-
-                                        echo '</table>';
-                                    } else {
-                                        echo "No data found";
-                                    }
-
-                                    // Close the database connection
-
-                                    ?>
-                                </div>
+                                                            
+                                                                // Close the database connection
+                                                                $conn->close();
+                                                                ?>
+                                                            </div>
                             </div>
                         </div><!--end col-->
 
