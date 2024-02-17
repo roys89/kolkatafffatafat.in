@@ -45,7 +45,7 @@ $sqlUserTable = "UPDATE user_data
                  )";
 
 $sqlUserTable2 = "UPDATE user_data
-                SET wallet_bal = wallet_bal + (12 * (
+                SET wallet_bal = wallet_bal + (120 * (
                     SELECT SUM(amount)
                     FROM bet_table
                     WHERE bet_number = '$column2' AND baji = '$userChoice'
@@ -73,7 +73,7 @@ $sqlUpdateMasterBet = "UPDATE master_bet
                           crdr = 'credit',
                           win_amount = CASE 
                                          WHEN baji = '$userChoice' AND game_type = 'single' THEN amount * 9.6
-                                         WHEN baji = '$userChoice' AND game_type = 'patti' THEN amount * 12
+                                         WHEN baji = '$userChoice' AND game_type = 'patti' THEN amount * 120
                                          ELSE win_amount
                                       END
                       WHERE bet_number IN ('$column1', '$column2') 
