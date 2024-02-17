@@ -11,6 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit; // Stop execution if the amount is too high
     }
 
+    // Validation for $bet_number length based on $gameType
+    $maxBetNumberLength = ($gameType === 'patti') ? 3 : 1;
+
+    if (strlen($bet_number) > $maxBetNumberLength) {
+        echo json_encode(['success' => false, 'message' => 'Invalid $bet_number length']);
+        exit;
+    }
+
     // Extract URL parameters
     $slotId = $_POST['slot_id'];
     $baji = $_POST['baji']; 
