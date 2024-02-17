@@ -227,12 +227,12 @@ $betStmt->close();
                 <table class="table" id="game_table">
                   <thead>
                     <tr>
-                        <th scope="col">Time</th>
+                        <th scope="col">Baji</th>
                       <th scope="col">Bet Number</th>
                       <th scope="col">Amount</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Baji</th>
                       <th scope="col">Result</th>
+                      <th scope="col">Time</th>
                     </tr>
                   </thead>
 
@@ -245,10 +245,15 @@ $betStmt->close();
                     } elseif ($betRow['result_status'] == 'pending') {
                         $rowColor = 'style="background-color: #ffaaaa;"';
                     }
+
+                    // Format the timestamp to display only the date
+                    $formattedDate = date("Y-m-d", strtotime($betRow['bid_timestamp']));
+
                     echo '
                         <tr>
+                        
                             <td ' . $rowColor . '>
-                                <span class="single-data">' . $betRow['bid_timestamp'] . '</span>
+                            <span class="profit">' . $betRow['baji'] . '</span>
                             </td>
                             <td ' . $rowColor . '>
                                 <span class="single-data">' . $betRow['bet_number'] . '</span>
@@ -260,10 +265,10 @@ $betStmt->close();
                                 <span class="profit">' . $betRow['crdr'] . '</span>
                             </td>
                             <td ' . $rowColor . '>
-                                <span class="profit">' . $betRow['baji'] . '</span>
+                                <span class="profit">' . $betRow['result_status'] . '</span>
                             </td>
                             <td ' . $rowColor . '>
-                                <span class="profit">' . $betRow['result_status'] . '</span>
+                                <span class="single-data">' . $formattedDate . '</span>
                             </td>
                         </tr>';
                 }
