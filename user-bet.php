@@ -232,7 +232,7 @@ $betStmt->close();
                       <th scope="col">Amount</th>
                       <th scope="col">Status</th>
                       <th scope="col">Result</th>
-                      <th scope="col">Time</th>
+                      <th scope="col">Date</th>
                     </tr>
                   </thead>
 
