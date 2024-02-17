@@ -4612,6 +4612,21 @@ ul {
   transition: all 0.3s ease-in;
 }
 
+.contact .contact-form .add-btn {
+  background: -webkit-linear-gradient(120deg, #eb3349, #f45c43);
+  color: #fff;
+  text-transform: capitalize;
+  border: none;
+  height: 50px;
+  width: 130px;
+  font-size: 18px;
+  font-family: "Fira Sans", sans-serif;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
 .contact .contact-form form .submit-btn:hover {
   background: #444;
 }
