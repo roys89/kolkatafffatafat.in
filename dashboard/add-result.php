@@ -76,9 +76,7 @@ $sqlUpdateMasterBet = "UPDATE master_bet
                                          WHEN baji = '$userChoice' AND game_type = 'patti' THEN amount * 12
                                          ELSE win_amount
                                       END
-                      WHERE bet_number IN ('$column1', '$column2') 
-                          AND baji = '$userChoice";
-
+                      WHERE bet_number IN ('$column1', '$column2') AND baji = '$userChoice'";
 
 
 if (!$conn->query($sqlUpdateBetTable)) {
