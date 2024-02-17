@@ -77,8 +77,7 @@ $sqlUpdateMasterBet = "UPDATE master_bet
                                          ELSE win_amount
                                       END
                       WHERE bet_number IN ('$column1', '$column2') 
-                          AND baji = '$userChoice'
-                          AND bid_timestamp = NOW()";
+                          AND baji = '$userChoice";
 
 
 
