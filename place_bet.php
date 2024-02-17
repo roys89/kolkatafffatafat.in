@@ -204,8 +204,9 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                                 </div>
                             </div>
                             <button class="submit-btn" type="submit">Submit</button>
+                            <button class="add-btn" onclick="addForm()">Add More</button>
                         </form>
-                        <button class="add-btn" onclick="addForm()">Add More</button>
+                        
                     </div>
                     
                 </div>
