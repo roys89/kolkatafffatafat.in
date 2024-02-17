@@ -12,7 +12,7 @@ $phone = $_POST['phone'];
 $amount = $_POST['amount'];
 
 // Use prepared statements to prevent SQL injection
-$sqlUpdateUser = "UPDATE user_data SET wallet_bal = wallet_bal + ? WHERE phone = ?";
+$sqlUpdateUser = "UPDATE user_data SET wallet_bal = wallet_bal + ?, credit = credit + ? WHERE phone = ?";
 $sqlInsertTransaction = "INSERT INTO transaction_table (user_id, transaction_amount, phone, transaction_status, credit_unicode) VALUES ((SELECT user_id FROM user_data WHERE phone = ?), ?, ?, 'success', ?)";
 
 $stmtUpdateUser = $conn->prepare($sqlUpdateUser);
@@ -20,7 +20,7 @@ $stmtInsertTransaction = $conn->prepare($sqlInsertTransaction);
 
 if ($stmtUpdateUser && $stmtInsertTransaction) {
     // Bind parameters for update user_data
-    $stmtUpdateUser->bind_param("is", $amount, $phone);
+    $stmtUpdateUser->bind_param("iis", $amount, $amount, $phone);
 
     // Bind parameters for insert into transaction_table
     $stmtInsertTransaction->bind_param("siss", $phone, $amount, $phone, generateRandomString(10));
