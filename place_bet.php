@@ -191,7 +191,6 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
               </div>
             <div class="row no-gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12">
-                
                     <div class="contact-form" id="formContainer">
                         <form class="dynamic-form" onsubmit="submitForm(event)">
                             <div class="row">
@@ -206,8 +205,9 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                             </div>
                             <button class="submit-btn" type="submit">Submit</button>
                         </form>
+                        <button class="add-btn" onclick="addForm()">Add More</button>
                     </div>
-                    <button class="add-btn" onclick="addForm()">Add More</button>
+                    
                 </div>
             </div>
         </div>
