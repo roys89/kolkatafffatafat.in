@@ -342,7 +342,7 @@ function submitForm(event) {
 
     // Loop through each form section and extract values
     formSections.forEach(formSection => {
-        var betNumber = formSection.querySelector('.bet-number').value;
+        var betNumber = formSection.querySelector('.bet_number').value;
         var amount = formSection.querySelector('.amount').value;
 
         // Append form data to FormData object
