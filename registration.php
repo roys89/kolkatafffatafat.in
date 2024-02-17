@@ -17,49 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST["c_password"];
     $user_status = 'active';
 
-
-
-    function passtest($pass) {
-            if (!empty($pass)) { //check if string is empty
-                if (ctype_alnum($pass)) { //check if string is alphanumeric
-                    if (7 < strlen($pass)){ //check if string meets 8 or more characters
-                        if (strcspn($pass, '0123456789') != strlen($pass)){ //check if string has numbers
-                            if (strcspn($pass, 'abcdefghijklmnopqrstuvwxyz') != strlen($pass)) { //check if string has small letters
-                                if (strcspn($pass, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') != strlen($pass)) { //check if string has capital letters
-                                    return true; // Password passed
-                                }
-                                else {
-                                    return "<br />No capital letter";
-                                }
-                            }
-                            else {
-                                return "<br />No small letter";
-                            }
-                        }
-                        else {
-                            return "<br />No number";
-                        }
-                    }
-                    else {
-                        return "<br />Password is short";
-                    }
-                }
-                else {
-                    return "<br />Password has special character";
-                }
-            }
-            else {
-                return "<br />Password field is empty";
-            }
-        }
-
-        $functionResult = passtest($loginPassword);
-
-
-
-        if ($functionResult === true) {
-           
-         
+      
 
     if ($loginPassword !== $confirm_password) {
         echo '<script>alert("Passwords do not match!");</script>';
@@ -105,11 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error preparing check statement: " . $conn->error;
     }
 
-} else {
-    // Execute code when the password doesn't pass the test
-    echo "Password failed: $functionResult";
-    // Additional code...
-} 
+ 
 }
 
 $conn->close();
@@ -327,7 +281,7 @@ $conn->close();
                             <h4 class="sub-title">Personal Information</h4>
                             <input type="text" name="full_name" id="full_name" placeholder="Full Name*" require>
                             <input type="email" name="email" id="email" placeholder="Email*">
-                            <input type="text" name="phone" id="phone" placeholder="Phone No:*" require>
+                            <input type="number" name="phone" id="phone" placeholder="Phone No:*" require>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 additional-info">
                             <h4 class="sub-title">Additional Information</h4>
