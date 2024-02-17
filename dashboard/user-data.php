@@ -391,8 +391,19 @@ if (!isset($_SESSION['admin_id'])) {
 
 
                                     if ($result->num_rows > 0) {
-                                        echo
-                                        '<table class="w-full whitespace-nowrap">
+                                        echo '<div class="mb-4">
+                                        <label for="filterPhone" class="mr-2">Filter by Phone:</label>
+                                        <input type="text" id="filterPhone" class="border p-1">
+                                        <label for="numRows" class="mx-2">Show:</label>
+                                        <select id="numRows" class="border p-1">
+                                            <option value="10">10 rows</option>
+                                            <option value="25">25 rows</option>
+                                            <option value="50">50 rows</option>
+                                            <option value="100">100 rows</option>
+                                        </select>
+                                    </div>';
+
+                                         echo '<table class="w-full whitespace-nowrap">
                                                     <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                                         <tr>
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Phone</th>
@@ -798,6 +809,43 @@ if (!isset($_SESSION['admin_id'])) {
             <a href="#!" class="w-full text-white transition-all duration-200 ease-linear bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100">Buy Now</a>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Function to filter and limit rows based on user input
+        function filterAndLimitRows() {
+            var filterPhone = $('#filterPhone').val();
+            var numRows = $('#numRows').val();
+            
+            // Hide all rows
+            $('.data-row').hide();
+
+            // Show only rows that match the filter
+            $('.data-row').filter(function () {
+                return $(this).data('phone').indexOf(filterPhone) !== -1;
+            }).show();
+
+            // Show only the selected number of rows
+            $('.data-row:visible:lt(' + numRows + ')').show();
+        }
+
+        // Initial call to set default values
+        filterAndLimitRows();
+
+        // Event listener for filter input
+        $('#filterPhone').on('input', function () {
+            filterAndLimitRows();
+        });
+
+        // Event listener for number of rows input
+        $('#numRows').on('change', function () {
+            filterAndLimitRows();
+        });
+    });
+</script>
+
+
     <script src='assets/libs/choices.js/public/assets/scripts/choices.min.js'></script>
     <script src="assets/libs/%40popperjs/core/umd/popper.min.js"></script>
     <script src="assets/libs/tippy.js/tippy-bundle.umd.min.js"></script>
