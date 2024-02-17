@@ -281,7 +281,7 @@ $conn->close();
                             <h4 class="sub-title">Personal Information</h4>
                             <input type="text" name="full_name" id="full_name" placeholder="Full Name*" require>
                             <input type="email" name="email" id="email" placeholder="Email*">
-                            <input type="number" name="phone" id="phone" placeholder="Phone No:*" require>
+                            <input type="tel" name="phone" id="phone" placeholder="Phone No:*" require>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 additional-info">
                             <h4 class="sub-title">Additional Information</h4>
