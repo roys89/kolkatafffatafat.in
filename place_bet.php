@@ -203,10 +203,9 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
                                     <input type="number" id="amount" name="amount" placeholder="Enter the bet amount" min="10" required>
                                 </div>
                             </div>
+                            <button class="add-btn" type="button" onclick="addForm()">Add More</button>
                             <button class="submit-btn" type="submit">Submit</button>
-                            
                         </form>
-                        <button class="add-btn" onclick="addForm()">Add More</button>
                     </div>
                     
                 </div>
@@ -321,65 +320,60 @@ $phone = isset($_SESSION['phone']) ? $_SESSION['phone'] : '';
       </div>
       <!-- copyright footer end -->
       <script>
-    function addForm() {
-        // Clone the template form
-        var templateForm = document.querySelector('.dynamic-form');
-        var newForm = templateForm.cloneNode(true);
+function addForm() {
+    // Clone the first form section
+    var clonedFormSection = document.querySelector('.row').cloneNode(true);
 
-        // Clear the input values in the cloned form
-        newForm.reset();
+    // Clear input values in the cloned form section
+    clonedFormSection.querySelectorAll('input').forEach(input => input.value = '');
 
-        // Append the cloned form to the container
-        document.getElementById('formContainer').appendChild(newForm);
-    }
+    // Append the cloned form section to the container
+    document.getElementById('form-container').appendChild(clonedFormSection);
+}
 
-    function submitForm(event) {
-        event.preventDefault();
+function submitForm(event) {
+    event.preventDefault();
 
-        // Get the form data
-        var formData = new FormData(event.target);
+    // Get all form sections
+    var formSections = document.querySelectorAll('.row');
 
-        // Get three PHP variables from the page
-        var slotId = '<?php echo urldecode($slotId); ?>';
-        var baji = '<?php echo urldecode($baji); ?>';
-        var gameType = '<?php echo urldecode($gameType); ?>';
-        var userId = '<?php echo urldecode($userId); ?>';
-        var phone = '<?php echo urldecode($phone); ?>';
+    // Prepare FormData object to send to the server
+    var formData = new FormData();
 
-        // Append PHP variables to the form data
-        formData.append('slot_id', slotId);
-        formData.append('baji', baji);
-        formData.append('game_type', gameType);
-        formData.append('user_id', userId);
-        formData.append('phone', phone);
+    // Loop through each form section and extract values
+    formSections.forEach(formSection => {
+        var betNumber = formSection.querySelector('.bet-number').value;
+        var amount = formSection.querySelector('.amount').value;
 
-        // Perform an asynchronous request to your PHP script (replace 'your_script.php' with the actual script)
-        fetch('bet_submit.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json()) // assuming the PHP script returns JSON
-        .then(data => {
-            console.log(data);
+        // Append form data to FormData object
+        formData.append('bet_number[]', betNumber);
+        formData.append('amount[]', amount);
+    });
 
-            // Check if the submission was successful before removing the form
-            if (data.success) {
-                // Remove the submitted form from the DOM
-                $(event.target).remove();
-                // Display an alert after successful submission
-                alert('Form submitted successfully!');
-            } else {
-                // Display an alert with the error message if the submission failed
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => {
-            // Display an alert with the error message if there is a fetch error
-            console.error('Error:', error);
-            alert('Fetch error: ' + error.message);
-        });
-    }
+    // Append additional data
+    formData.append('slot_id', '<?php echo urldecode($slotId); ?>');
+    formData.append('baji', '<?php echo urldecode($baji); ?>');
+    formData.append('game_type', '<?php echo urldecode($gameType); ?>');
+    formData.append('user_id', '<?php echo urldecode($userId); ?>');
+    formData.append('phone', '<?php echo urldecode($phone); ?>');
+
+    // Send formData to the server using Ajax or any other method
+    // Example using fetch API:
+    fetch('bet_submit.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response from the server
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 </script>
+
 
 
     <!-- jquery -->
