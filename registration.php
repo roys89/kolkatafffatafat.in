@@ -285,7 +285,7 @@ $conn->close();
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 additional-info">
                             <h4 class="sub-title">Additional Information</h4>
-                            <input type="text" name="ref_id" id="ref_id" placeholder="Your Referral ID If Any">
+                            <!-- <input type="text" name="ref_id" id="ref_id" placeholder="Your Referral ID If Any"> -->
                             <input type="password" name="login_password" id="login_password" placeholder="Password*" require>
                             <input type="password" name="c_password" id="c_password" placeholder="Confirm Password*" require>
                         </div>

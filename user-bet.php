@@ -27,14 +27,7 @@ $user = $userResult->fetch_assoc();
 $userStmt->close();
 
 // Retrieve bet details from the bet_table for the logged-in user
-$betSql = "SELECT *,
-    CASE 
-        WHEN result_status = 'win' AND game_type = 'single' THEN amount * 9.5
-        WHEN result_status = 'win' AND game_type = 'patti' THEN amount * 12
-        ELSE amount
-    END AS modified_amount
-FROM master_bet
-WHERE user_id = ?";
+$betSql = "SELECT * FROM master_bet WHERE user_id = ?";
 $betStmt = $conn->prepare($betSql);
 $betStmt->bind_param("i", $user_id);
 $betStmt->execute();
@@ -261,7 +254,7 @@ $betStmt->close();
                                 <span class="single-data">' . $betRow['bet_number'] . '</span>
                             </td>
                             <td ' . $rowColor . '>
-                                <span class="profit">' . $betRow['modified_amount'] . '</span>
+                                <span class="profit">' . $betRow['win_amount'] . '</span>
                             </td>
                             <td ' . $rowColor . '>
                                 <span class="profit">' . $betRow['crdr'] . '</span>
