@@ -417,10 +417,9 @@ if (!isset($_SESSION['admin_id'])) {
                                                             <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Activity</th>
                                                         </tr>
                                                     </thead>';
-                                        while ($row = $result->fetch_assoc()) {
-
-                                            echo '  <tbody>
-                                                                    <tr>
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo '<tbody class="data-row" data-phone="' . $row['phone'] . '">
+                                                                <tr>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><a href="apps-ecommerce-order-overview.html">' . $row['phone'] . '</a></td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['full_name'] . '</td>
                                                                         <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' . $row['password'] . '</td>
@@ -445,9 +444,9 @@ if (!isset($_SESSION['admin_id'])) {
                                                                                 </ul>
                                                                             </div>
                                                                         </td>
-                                                                    </tr>
-                                                                </tbody>';
-                                        }
+                                                                        </tr>
+                                                                        </tbody>';
+                                                                }
 
                                         echo '</table>';
                                     } else {
