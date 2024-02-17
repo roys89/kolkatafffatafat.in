@@ -27,11 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashedPassword = password_hash($loginPassword, PASSWORD_DEFAULT);
 
-    $check_query = "SELECT user_id FROM user_data WHERE phone = ? OR email = ?";
+    $check_query = "SELECT user_id FROM user_data WHERE phone = ?";
     $check_stmt = $conn->prepare($check_query);
 
     if ($check_stmt) {
-        $check_stmt->bind_param("ss", $phone, $email);
+        $check_stmt->bind_param("s", $phone);
         $check_stmt->execute();
         $check_stmt->store_result();
 
