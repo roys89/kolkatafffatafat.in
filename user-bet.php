@@ -27,7 +27,7 @@ $user = $userResult->fetch_assoc();
 $userStmt->close();
 
 // Retrieve bet details from the bet_table for the logged-in user
-$betSql = "SELECT * FROM master_bet WHERE user_id = ?";
+$betSql = "SELECT * FROM master_bet WHERE user_id = ? ORDER BY bid_timestamp DESC";
 $betStmt = $conn->prepare($betSql);
 $betStmt->bind_param("i", $user_id);
 $betStmt->execute();
