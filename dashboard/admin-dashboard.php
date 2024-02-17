@@ -465,7 +465,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     LEFT JOIN
                         bet_table bt ON sl.bet_number = bt.bet_number
                     WHERE
-                        bt.baji = ?
+                        bt.baji = ? AND bt.game_type= 'single'
                     GROUP BY
                         sl.bet_number
                     HAVING total_bets > 0";
@@ -486,7 +486,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     LEFT JOIN
                         bet_table bt ON pl.bet_number = bt.bet_number
                     WHERE
-                        bt.baji = ?
+                        bt.baji = ? AND bt.game_type= 'patti'
                     GROUP BY
                         pl.bet_number
                     HAVING total_bets > 0";
