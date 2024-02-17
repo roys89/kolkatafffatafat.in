@@ -4910,6 +4910,7 @@ ul {
 }
 
 .register .reg-body form input[type="text"],
+.register .reg-body form input[type="number"],
 .register .reg-body form input[type="email"],
 .register .reg-body form input[type="password"] {
   height: 60px;
