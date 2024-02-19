@@ -385,7 +385,7 @@ if (!isset($_SESSION['admin_id'])) {
                                     }
 
                                     // Query to fetch data for each unique user_id with game_type as "single"
-                                    $query = "SELECT full_name, phone, password, wallet_bal, user_status, credit, debit, total_bet FROM user_data ORDER BY datetime DESC;";
+                                    $query = "SELECT user_id, full_name, phone, password, wallet_bal, user_status, credit, debit, total_bet FROM user_data ORDER BY datetime DESC;";
 
                                     $result = $conn->query($query);
 
@@ -851,7 +851,7 @@ if (!isset($_SESSION['admin_id'])) {
 
         // Event listener for delete button
         $('.delete-btn').on('click', function () {
-            var userId = $(this).data('userid');
+            var userId = $(this).data('user_id');
 
             // Confirm deletion with the user
             var confirmDelete = confirm('Are you sure you want to delete this user?');
