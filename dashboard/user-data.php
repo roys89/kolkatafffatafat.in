@@ -810,40 +810,7 @@ if (!isset($_SESSION['admin_id'])) {
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-    // Function to filter and limit rows based on user input
-    function filterAndLimitRows() {
-        var filterPhone = $('#filterPhone').val();
-        var numRows = $('#numRows').val();
 
-        // Show all rows
-        $('.data-row').show();
-
-        // Hide rows that don't match the filter
-        $('.data-row').filter(function () {
-            return $(this).data('phone').indexOf(filterPhone) === -1;
-        }).hide();
-
-        // Show only the selected number of rows
-        $('.data-row:visible:lt(' + numRows + ')').show();
-    }
-
-    // Initial call to set default values
-    filterAndLimitRows();
-
-    // Event listener for filter input
-    $('#filterPhone').on('input', function () {
-        filterAndLimitRows();
-    });
-
-    // Event listener for number of rows input
-    $('#numRows').on('change', function () {
-        filterAndLimitRows();
-    });
-});
-
-</script>
 
 <script>
     $(document).ready(function () {
