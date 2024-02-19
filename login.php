@@ -251,7 +251,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col-xl-6 col-lg-6">
                         <div class="reg-body login">
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                                <input type="text" name="phone" placeholder="Phone">
+                                <input type="number" name="phone" placeholder="Phone">
                                 <input type="password" name="login_password" placeholder="Password">
                                 <div class="bottom-part">
                                     <div class="row">
