@@ -439,7 +439,7 @@ if (!isset($_SESSION['admin_id'])) {
                                                                                         <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a class=" delete-btn block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" data-userid="' . $row['user_id'] . '"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
+                                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);" onclick="deleteUser(\'' . $row['user_id'] . '\')"><i data-lucide="trash-2" class="inline-block w-3 h-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
                                                                                     </li>
                                                                                 </ul>
                                                                                 </div>
@@ -812,36 +812,21 @@ if (!isset($_SESSION['admin_id'])) {
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
-<script>
-    $(document).ready(function () {
-        // Other code...
-
-        // Event listener for delete button
-        $('.delete-btn').on('click', function () {
-            var userId = $(this).data('user_id');
-
-            // Confirm deletion with the user
-            var confirmDelete = confirm('Are you sure you want to delete this user?');
-
-            if (confirmDelete) {
-                // Send an Ajax request to delete the user
-                $.ajax({
-                    type: 'POST',
-                    url: 'delete_user.php', // Create a new PHP file for handling deletions
-                    data: { user_id: userId },
-                    success: function (response) {
-                        console.log(response); // Log the server response
-
-                        // You can also update the UI to remove the deleted row if the server operation was successful
-                        // For example, you can use: $(this).closest('tr').remove();
-                    },
-                    error: function (error) {
-                        console.error('Error:', error);
-                    }
-                });
-            }
-        });
-    });
+    <script>
+    function deleteUser(userId) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            // Make an AJAX request to delete the user
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Reload the page or update the user interface as needed
+                    location.reload(); // Example: Reload the page
+                }
+            };
+            xhr.open("GET", "delete_user.php?user_id=" + userId, true);
+            xhr.send();
+        }
+    }
 </script>
 
 
