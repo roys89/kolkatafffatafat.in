@@ -23,6 +23,10 @@ if (!isset($_SESSION['admin_id'])) {
     <meta content="Themesdesign" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha384-cC9J3+Mx9ASLHtqL5t4lrb0c1yRC0p+8h50tU2DaTIiQkhE+W7QwO2RMAcKzWZNq" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-AZb8Xfb2x1/ZI6DflY4FexaHogwF2urZM5L5O2qV49I+JM/AEjN2P8GGKbe2DAF8" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha384-cEpd8w+F5qS9+o7Yzh0B5qwP5X/lhFEGpjfP5/txDhR3UN+tkzV8UrbT/7h8WAAc" crossorigin="anonymous"></script>
+    
     <!-- Layout config Js -->
     <script src="assets/js/layout.js"></script>
     <!-- Icons CSS -->
@@ -569,6 +573,12 @@ if (!isset($_SESSION['admin_id'])) {
                                                     ?>
                                                 </select>
                                             </div>
+                                            <script>
+                                                // Initialize Select2 for the dropdown with the 'select2' class
+                                                $(document).ready(function () {
+                                                    $('.select2').select2();
+                                                });
+                                            </script>
                                             <div class="mb-3">
                                                 <label for="inputText" class="inline-block mb-2 text-base font-medium">Amount<span class="text-red-500">*</span></label>
                                                 <input type="text" id="amount" name="amount" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" required>
