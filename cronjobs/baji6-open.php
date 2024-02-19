@@ -12,10 +12,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if today is Sunday (day of the week is 0)
+// Check if today is Sunday (day of the week is 0 in PHP's date function)
 if (date('w') != 0) {
     // Update records in game_table where closing_time is less than or equal to the current server time
-    $query = "UPDATE game_table SET baji_status = 'close', btn = 'buy-tips-btng' WHERE baji = 6";
+    $query = "UPDATE game_table SET baji_status = 'open', btn = 'buy-tips-btng' WHERE baji = 6";
     $result = $conn->query($query);
 
     if (!$result) {
@@ -26,10 +26,10 @@ if (date('w') != 0) {
         echo "Records updated successfully.";
     }
 } else {
-    // Output a message indicating that the query won't run on Sundays
-    echo "The query won't run on Sundays.";
+    // It's Sunday, do not run the query
+    echo "It's Sunday. The query was not executed.";
 }
 
-// Open the database connection
+// Close the database connection
 $conn->close();
 ?>
