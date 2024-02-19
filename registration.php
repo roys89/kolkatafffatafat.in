@@ -9,38 +9,35 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Generate a random user_id with 8 characters
     $user_id = bin2hex(random_bytes(4)); // 4 bytes = 8 characters
-   // Assuming that the $_POST variables are set
 
-// Sanitize full name
-$fullName = filter_var($_POST["full_name"]);
+    // Assuming that the $_POST variables are set
 
-// Sanitize email
-$email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    // Sanitize full name
+    $fullName = filter_var($_POST["full_name"], FILTER_SANITIZE_STRING);
 
-// Sanitize phone (remove non-numeric characters)
-$phone = filter_var($_POST["phone"], FILTER_SANITIZE_NUMBER_INT);
+    // Sanitize email
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 
-// Sanitize login password and confirm password (assuming they are both strings)
-$loginPassword = filter_var($_POST["login_password"]);
-$confirmPassword = filter_var($_POST["c_password"]);
+    // Sanitize phone (remove non-numeric characters)
+    $phone = filter_var($_POST["phone"], FILTER_SANITIZE_NUMBER_INT);
 
-// You may also want to trim the sanitized values to remove leading and trailing spaces
-$fullName = trim($fullName);
-$email = trim($email);
-$phone = trim($phone);
-$loginPassword = trim($loginPassword);
-$confirmPassword = trim($confirmPassword);
+    // Sanitize login password and confirm password (assuming they are both strings)
+    $loginPassword = filter_var($_POST["login_password"], FILTER_SANITIZE_STRING);
+    $confirmPassword = filter_var($_POST["c_password"], FILTER_SANITIZE_STRING);
+
+    // You may also want to trim the sanitized values to remove leading and trailing spaces
+    $fullName = trim($fullName);
+    $email = trim($email);
+    $phone = trim($phone);
+    $loginPassword = trim($loginPassword);
+    $confirmPassword = trim($confirmPassword);
 
     $user_status = 'active';
 
-      
-
-    if ($loginPassword !== $confirm_password) {
+    if ($loginPassword !== $confirmPassword) {
         echo '<script>alert("Passwords do not match!");</script>';
         exit();
     }
-
-    
 
     $hashedPassword = password_hash($loginPassword, PASSWORD_DEFAULT);
 
@@ -79,11 +76,11 @@ $confirmPassword = trim($confirmPassword);
         echo "Error preparing check statement: " . $conn->error;
     }
 
- 
 }
 
 $conn->close();
 ?>
+
 
 
 
