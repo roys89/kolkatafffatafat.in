@@ -18,8 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize email
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 
-    // Sanitize phone (remove non-numeric characters)
+    // Validate and sanitize phone (remove non-numeric characters)
     $phone = filter_var($_POST["phone"], FILTER_SANITIZE_NUMBER_INT);
+    if (!preg_match('/^[0-9]{10}$/', $phone)) {
+        echo '<script>alert("Invalid phone number format!");</script>';
+        exit();
+    }
 
     // Sanitize login password and confirm password (assuming they are both strings)
     $loginPassword = filter_var($_POST["login_password"], FILTER_SANITIZE_STRING);
@@ -307,7 +311,7 @@ $conn->close();
                     <div class="row">
                         <div class="col-xl-6 col-lg-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios5" value="option2">
+                                <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios5" value="option2" required>
                                 <label class="form-check-label" for="exampleRadios5">
                                     I agree to the terms &amp; conditions.
                                 </label>
