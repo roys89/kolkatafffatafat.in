@@ -14,19 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = filter_var($_POST['phone'], FILTER_SANITIZE_SPECIAL_CHARS);
     $login_password = filter_var($_POST['login_password'], FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password, user_status FROM user_data WHERE phone = ?");
-    $stmt->bind_param("i", $phone);
+    $stmt = $conn->prepare("SELECT user_id, full_name, email, hashed_password, user_status FROM user_data WHERE phone = ?");
+    $stmt->bind_param("s", $phone);
     $stmt->execute();
-    $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status);
+    $stmt->bind_result($user_id, $full_name, $email, $hashed_password, $user_status);
 
     if ($stmt->fetch()) {
         if (password_verify($login_password, $hashed_password)) {
             if ($user_status === 'active') {
-                // Add a session timeout for additional security
+
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['full_name'] = $full_name;
+                $_SESSION['email'] = $email;
                 $_SESSION['phone'] = $phone;
                 $_SESSION['login_time'] = time(); // Store the login time
+
                 header("Location: user-profile.php");
                 exit();
             } else {
@@ -46,9 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 ?>
-
-
-
 
 
 
