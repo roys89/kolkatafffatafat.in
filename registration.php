@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Assuming that the $_POST variables are set
 
     // Sanitize full name
-    $fullName = filter_var($_POST["full_name"], FILTER_SANITIZE_STRING);
+    $fullName = filter_var($_POST["full_name"], FILTER_SANITIZE_SPECIAL_CHARS);
 
     // Sanitize email
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
@@ -26,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Sanitize login password and confirm password (assuming they are both strings)
-    $loginPassword = filter_var($_POST["login_password"], FILTER_SANITIZE_STRING);
-    $confirmPassword = filter_var($_POST["c_password"], FILTER_SANITIZE_STRING);
+    $loginPassword = filter_var($_POST["login_password"], FILTER_SANITIZE_SPECIAL_CHARS);
+    $confirmPassword = filter_var($_POST["c_password"], FILTER_SANITIZE_SPECIAL_CHARS);
 
     // You may also want to trim the sanitized values to remove leading and trailing spaces
     $fullName = trim($fullName);

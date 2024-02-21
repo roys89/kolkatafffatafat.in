@@ -10,8 +10,9 @@ if (isset($_SESSION['user_id'])) {
 require_once('database.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $phone = $_POST['phone'];
-    $login_password = $_POST['login_password'];
+    // Sanitize input
+    $phone = filter_var($_POST['phone'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $login_password = filter_var($_POST['login_password'], FILTER_SANITIZE_SPECIAL_CHARS);
 
     $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password, user_status FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
@@ -45,6 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 ?>
+
+
 
 
 
