@@ -33,7 +33,7 @@ class LoginController
             return "Not active.";
         }
         // Check for duplicate logins
-        if (isset($_SESSION['phone']) && $_SESSION['phone'] === $user['phone']) {
+        if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $user['user_id']) {
             return "User already logged in.";
         }
 
