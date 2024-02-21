@@ -1,13 +1,8 @@
 <?php
-session_start();
 
-// Unset all session variables
-$_SESSION = array();
+require_once 'controllers/login_controller.php';
 
-// Destroy the session
-session_destroy();
+$loginController = new LoginController($db);
+$loginController->logoutUser();
 
-// Redirect to the login page
-header("Location: login.php");
-exit();
 ?>

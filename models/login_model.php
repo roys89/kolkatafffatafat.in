@@ -1,48 +1,17 @@
 <?php
-require_once('../database.php');
 
-function login($phone, $loginPassword) {
-    global $conn;
+require_once '../database.php';
+require_once '../controllers/login_controller.php';
 
-    $response = array('success' => false, 'message' => '');
+$loginController = new LoginController($db);
 
-    $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password, user_status FROM user_data WHERE phone = ?");
-    $stmt->bind_param("s", $phone);
-    $stmt->execute();
-    $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $phone = $_POST["phone"];
+    $password = $_POST["password"];
 
-    if ($stmt->fetch()) {
-        if (password_verify($loginPassword, $hashed_password)) {
-            if ($user_status === 'active') {
-                $_SESSION['user_id'] = $user_id;
-                $_SESSION['full_name'] = $full_name;
-                $_SESSION['phone'] = $phone;
-                $_SESSION['login_time'] = time();
+    $result = $loginController->loginUser($phone, $password);
 
-                $response['success'] = true;
-                $response['message'] = "Login successful. Redirecting...";
-            } else {
-                $response['message'] = "User account is not active.";
-            }
-        } else {
-            $response['message'] = "Invalid password.";
-        }
-    } else {
-        $response['message'] = "Invalid phone number.";
-    }
-
-    // Implement a delay to thwart brute-force attacks
-    sleep(2);
-
-    $stmt->close();
-    $conn->close();
-
-    // Display alerts and reload the page using JavaScript
-    echo '<script>';
-    echo 'alert("' . $response['message'] . '");';
-    echo '</script>';
-    
-    // Exit to prevent further execution
-    exit();
+    echo $result;
 }
+
 ?>

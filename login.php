@@ -217,8 +217,8 @@ if (isset($_SESSION['user_id'])) {
                     <div class="col-xl-6 col-lg-6">
                         <div class="reg-body login">
                             <form id="loginForm" action="controllers/login_controller.php" method="post">
-                                <input type="number" name="phone" placeholder="Phone">
-                                <input type="password" name="loginPassword" placeholder="Password">
+                                <input type="number" name="phone" id="phone" placeholder="Phone">
+                                <input type="password" name="password" id="password" placeholder="Password">
                                 <div class="bottom-part">
                                     <div class="row">
                                         <div class="col-xl-7 col-lg-7 d-xl-flex d-lg-flex d-block align-items-center">
@@ -234,7 +234,7 @@ if (isset($_SESSION['user_id'])) {
                                             </div>
                                         </div>
                                         <div class="col-xl-5 col-lg-5 text-right">
-                                            <button class="def-btn btn-form" type="submit">Login<i class="fas fa-arrow-right"></i></button>  
+                                            <button class="def-btn btn-form" type="button" onclick="login()">Login<i class="fas fa-arrow-right"></i></button>  
                                         </div>
                                     </div>
                                 </div>
@@ -245,18 +245,35 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('loginForm').addEventListener('submit', function (event) {
-                // Validate phone number (you can add more client-side validation if needed)
-                var phoneRegex = /^[0-9]+$/;
-                var phoneInput = document.getElementById('phone');
-                if (!phoneRegex.test(phoneInput.value)) {
-                    alert('Invalid phone number. Please enter only numeric values.');
-                    event.preventDefault();
-                    return;
+        function login() {
+            var phone = document.getElementById('phone').value;
+            var password = document.getElementById('password').value;
+
+            // Basic client-side validation
+            if (phone === "" || password === "") {
+                document.getElementById('error-message').innerHTML = "Please fill in all fields.";
+                return;
+            }
+
+            // Clear previous error messages
+            document.getElementById('error-message').innerHTML = "";
+
+            // Send login data to the server asynchronously
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'processLogin.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    document.getElementById('error-message').innerHTML = response;
+                    if (response === "Login successful.") {
+                        // Redirect or perform any other action after successful login
+                        window.location.href = "user-profile.php";
+                    }
                 }
-            });
-        });
+            };
+            xhr.send("phone=" + phone + "&password=" + password);
+        }
     </script>
     <!-- register end -->
 
