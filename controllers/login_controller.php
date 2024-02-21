@@ -30,7 +30,7 @@ class LoginController
         }
 
         // Check for duplicate logins
-        if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $user['id']) {
+        if (isset($_SESSION['phone']) && $_SESSION['phone'] === $user['phone']) {
             return "User already logged in.";
         }
 
