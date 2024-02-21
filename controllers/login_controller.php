@@ -20,7 +20,7 @@ class LoginController
 
         // Check if the user exists in the database
         $stmt = $this->conn->prepare("SELECT * FROM user_data WHERE phone = ?");
-        $stmt->bind_param("i", $phone);
+        $stmt->bind_param("s", $phone);
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
