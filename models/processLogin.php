@@ -1,7 +1,7 @@
 <?php
 
-require_once 'database.php';
-require_once 'LoginController.php';
+require_once '../database.php';
+require_once '../controllers/login_controller.php';
 
 $loginController = new LoginController($conn);
 
