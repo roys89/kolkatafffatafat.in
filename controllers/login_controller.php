@@ -29,6 +29,9 @@ class LoginController
             return "Invalid phone number or password.";
         }
 
+        if ($user['user_status'] !== "acitive") {
+            return "Not active.";
+        }
         // Check for duplicate logins
         if (isset($_SESSION['phone']) && $_SESSION['phone'] === $user['phone']) {
             return "User already logged in.";
