@@ -20,12 +20,12 @@ class LoginController
 
         // Check if the user exists in the database
         $stmt = $this->conn->prepare("SELECT * FROM user_data WHERE phone = ?");
-        $stmt->bind_param("s", $phone);
+        $stmt->bind_param("i", $phone);
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
 
-        if (!$user || !password_verify($password, $user['hashed_password'])) {
+        if ($password !== $user['password']) {
             return "Invalid phone number or password.";
         }
 
