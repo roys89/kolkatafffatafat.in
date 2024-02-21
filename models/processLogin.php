@@ -13,7 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($result === "Login successful.") {
         // Redirect to user-profile.php on successful login
-        echo "i dont know what the fuck is going on";
+        header("Location: ../user-profile.php");
+        exit();
     } else {
         echo $result; // Send other responses (e.g., error messages) to the client
     }
