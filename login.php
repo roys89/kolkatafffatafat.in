@@ -234,7 +234,7 @@ if (isset($_SESSION['user_id'])) {
                                             </div>
                                         </div>
                                         <div class="col-xl-5 col-lg-5 text-right">
-                                            <button class="def-btn btn-form" type="button" onclick="login()">Login<i class="fas fa-arrow-right"></i></button>  
+                                            <button class="def-btn btn-form" type="submit" onclick="login()">Login<i class="fas fa-arrow-right"></i></button>  
                                         </div>
                                     </div>
                                 </div>
