@@ -1,39 +1,20 @@
 <?php
-include 'database.php';
+// Generate a random user_id with 15 characters (alphanumeric)
+$user_id = bin2hex(random_bytes(8)); // 8 bytes = 16 characters
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Fetch data from the database
-$sql = "SELECT * FROM master_bet";
-$result = $conn->query($sql);
-
-// Check if there is any result
-if ($result->num_rows > 0) {
-    echo '<table border="1">';
-    echo '<tr><th>ID</th><th>Name</th><th>Result Status</th></tr>';
-
-    // Loop through each row of data
-    while ($row = $result->fetch_assoc()) {
-        // Check if the result_status is "success"
-        $rowColor = ($row['result_status'] == 'Win') ? 'style="background-color: green;"' : '';
-
-        // Display the data in a table row
-        
-        echo "<tr $rowColor>";
-        echo "<td>" . $row['bid_timestamp'] . "</td>";
-        echo "<td>" . $row['phone'] . "</td>";
-        echo "<td>" . $row['result_status'] . "</td>";
-        echo "</tr>";
-    }
-
-    echo '</table>';
-} else {
-    echo 'No results found';
-}
-
-// Close the database connection
-$conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User ID</title>
+</head>
+<body>
+
+    <h1>Your Random User ID:</h1>
+    <p><?php echo $user_id; ?></p>
+
+</body>
+</html>

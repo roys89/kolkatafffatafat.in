@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Generate a random user_id with 8 characters
-    $user_id = bin2hex(random_bytes(4)); // 4 bytes = 8 characters
+    $user_id = bin2hex(random_bytes(8)); // 4 bytes = 8 characters
 
     // Assuming that the $_POST variables are set
 
