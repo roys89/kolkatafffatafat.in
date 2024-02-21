@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $login_password = filter_var($_POST['login_password'], FILTER_SANITIZE_SPECIAL_CHARS);
 
     $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password, user_status FROM user_data WHERE phone = ?");
-    $stmt->bind_param("s", $phone);
+    $stmt->bind_param("i", $phone);
     $stmt->execute();
     $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status);
 
