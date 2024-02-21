@@ -1,7 +1,7 @@
 <?php
 
-require_once '../database.php';
-require_once '../controllers/login_controller.php';
+require_once 'database.php';
+require_once 'LoginController.php';
 
 $loginController = new LoginController($conn);
 
@@ -11,7 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $result = $loginController->loginUser($phone, $password);
 
-    echo $result;
+    if ($result === "Login successful.") {
+        // Redirect to user-profile.php on successful login
+        header("Location: user-profile.php");
+        exit();
+    } else {
+        echo $result; // Send other responses (e.g., error messages) to the client
+    }
 }
 
 ?>
