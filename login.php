@@ -260,7 +260,7 @@ if (isset($_SESSION['user_id'])) {
 
             // Send login data to the server asynchronously
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'processLogin.php', true);
+            xhr.open('POST', 'models/processLogin.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
