@@ -1,20 +1,57 @@
-<?php
-// Generate a random user_id with 15 characters (alphanumeric)
-$user_id = bin2hex(random_bytes(8)); // 8 bytes = 16 characters
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random User ID</title>
+    <title>Login Page</title>
 </head>
 <body>
 
-    <h1>Your Random User ID:</h1>
-    <p><?php echo $user_id; ?></p>
+    <form id="loginForm" action="models/processLogin.php" method="post">
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button class="def-btn btn-form" type="submit">Login<i class="fas fa-arrow-right"></i></button>
+        <p id="error-message"></p>
+    </form>
+
+    <!-- Include FontAwesome script if not already included -->
+    <!-- <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> -->
+
+    <script>
+        function login() {
+            var phone = document.getElementById('phone').value;
+            var password = document.getElementById('password').value;
+
+            // Basic client-side validation
+            if (phone === "" || password === "") {
+                document.getElementById('error-message').innerHTML = "Please fill in all fields.";
+                return;
+            }
+
+            // Clear previous error messages
+            document.getElementById('error-message').innerHTML = "";
+
+            // Send login data to the server asynchronously
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'models/processLogin.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    document.getElementById('error-message').innerHTML = response;
+                    if (response === "Login successful.") {
+                        // Redirect or perform any other action after successful login
+                        window.location.href = "dashboard.php";
+                    }
+                }
+            };
+            xhr.send("phone=" + phone + "&password=" + password);
+        }
+    </script>
 
 </body>
 </html>
