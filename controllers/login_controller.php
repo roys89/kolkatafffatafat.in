@@ -4,11 +4,11 @@ session_start();
 
 class LoginController
 {
-    private $db;
+    private $conn;
 
-    public function __construct($db)
+    public function __construct($conn)
     {
-        $this->db = $db;
+        $this->conn = $conn;
     }
 
     public function loginUser($phone, $password)
@@ -19,7 +19,7 @@ class LoginController
         }
 
         // Check if the user exists in the database
-        $stmt = $this->db->prepare("SELECT * FROM user_data WHERE phone = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM user_data WHERE phone = ?");
         $stmt->bind_param("s", $phone);
         $stmt->execute();
         $result = $stmt->get_result();

@@ -3,7 +3,7 @@
 require_once '../database.php';
 require_once '../controllers/login_controller.php';
 
-$loginController = new LoginController($db);
+$loginController = new LoginController($conn);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $phone = $_POST["phone"];
