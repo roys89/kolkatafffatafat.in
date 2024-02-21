@@ -7,48 +7,7 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 
-require_once('database.php');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize input
-    $phone = filter_var($_POST['phone'], FILTER_SANITIZE_SPECIAL_CHARS);
-    $login_password = filter_var($_POST['login_password'], FILTER_SANITIZE_SPECIAL_CHARS);
-
-    $stmt = $conn->prepare("SELECT user_id, full_name, email, hashed_password, user_status FROM user_data WHERE phone = ?");
-    $stmt->bind_param("s", $phone);
-    $stmt->execute();
-    $stmt->bind_result($user_id, $full_name, $email, $hashed_password, $user_status);
-
-    if ($stmt->fetch()) {
-        if (password_verify($login_password, $hashed_password)) {
-            if ($user_status === 'active') {
-
-                $_SESSION['user_id'] = $user_id;
-                $_SESSION['full_name'] = $full_name;
-                $_SESSION['email'] = $email;
-                $_SESSION['phone'] = $phone;
-                $_SESSION['login_time'] = time(); // Store the login time
-
-                header("Location: user-profile.php");
-                exit();
-            } else {
-                echo "User account is not active.";
-            }
-        } else {
-            echo "Invalid password.";
-        }
-    } else {
-        echo "Invalid phone number.";
-    }
-
-    // Implement a delay to thwart brute-force attacks
-    sleep(2);
-
-    $stmt->close();
-    $conn->close();
-}
 ?>
-
 
 
 
@@ -257,9 +216,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6">
                         <div class="reg-body login">
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                            <form id="loginForm" action="login.php" method="post">
                                 <input type="number" name="phone" placeholder="Phone">
-                                <input type="password" name="login_password" placeholder="Password">
+                                <input type="password" name="loginPassword" placeholder="Password">
                                 <div class="bottom-part">
                                     <div class="row">
                                         <div class="col-xl-7 col-lg-7 d-xl-flex d-lg-flex d-block align-items-center">
@@ -285,6 +244,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('loginForm').addEventListener('submit', function (event) {
+                // Validate phone number (you can add more client-side validation if needed)
+                var phoneRegex = /^[0-9]+$/;
+                var phoneInput = document.getElementById('phone');
+                if (!phoneRegex.test(phoneInput.value)) {
+                    alert('Invalid phone number. Please enter only numeric values.');
+                    event.preventDefault();
+                    return;
+                }
+            });
+        });
+    </script>
     <!-- register end -->
 
     <!-- footer begin -->
