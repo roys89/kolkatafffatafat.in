@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once('login_model.php'); // Include the model for database operations
+    require_once('models/login_model.php'); // Include the model for database operations
 
     $phone = filter_var($_POST['phone'], FILTER_SANITIZE_SPECIAL_CHARS);
     $loginPassword = filter_var($_POST['loginPassword'], FILTER_SANITIZE_SPECIAL_CHARS);
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $loginResult = login($phone, $login_password);
 
     if ($loginResult['success']) {
-        header("Location: user-profile.php");
+        header("Location: ../user-profile.php");
         exit();
     } else {
         echo $loginResult['message'];

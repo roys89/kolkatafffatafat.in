@@ -216,7 +216,7 @@ if (isset($_SESSION['user_id'])) {
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6">
                         <div class="reg-body login">
-                            <form id="loginForm" action="login.php" method="post">
+                            <form id="loginForm" action="controllers/login_controller.php" method="post">
                                 <input type="number" name="phone" placeholder="Phone">
                                 <input type="password" name="loginPassword" placeholder="Password">
                                 <div class="bottom-part">
