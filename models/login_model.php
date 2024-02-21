@@ -20,6 +20,7 @@ function login($phone, $loginPassword) {
                 $_SESSION['login_time'] = time();
 
                 $response['success'] = true;
+                $response['message'] = "Login successful. Redirecting...";
             } else {
                 $response['message'] = "User account is not active.";
             }
@@ -36,6 +37,13 @@ function login($phone, $loginPassword) {
     $stmt->close();
     $conn->close();
 
-    return $response;
+    // Display alerts and reload the page using JavaScript
+    echo '<script>';
+    echo 'alert("' . $response['message'] . '");';
+    echo 'window.location.reload();';
+    echo '</script>';
+    
+    // Exit to prevent further execution
+    exit();
 }
 ?>

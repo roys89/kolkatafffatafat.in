@@ -8,13 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $loginPassword = filter_var($_POST['loginPassword'], FILTER_SANITIZE_SPECIAL_CHARS);
 
     // Call the login function from the model
-    $loginResult = login($phone, $login_password);
+    $loginResult = login($phone, $loginPassword);
 
     if ($loginResult['success']) {
+        // Redirect with a success message
+        $_SESSION['alert'] = array('type' => 'success', 'message' => 'Login successful.');
         header("Location: ../user-profile.php");
         exit();
     } else {
-        echo $loginResult['message'];
+        // Redirect with an error message
+        $_SESSION['alert'] = array('type' => 'error', 'message' => $loginResult['message']);
+        header("Location: ../login.php");
+        exit();
     }
 }
 ?>
