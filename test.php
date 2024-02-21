@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <!-- Include FontAwesome script if not already included -->
+    <!-- <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> -->
 </head>
 <body>
 
@@ -17,9 +19,6 @@
         <button class="def-btn btn-form" type="submit">Login<i class="fas fa-arrow-right"></i></button>
         <p id="error-message"></p>
     </form>
-
-    <!-- Include FontAwesome script if not already included -->
-    <!-- <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> -->
 
     <script>
         function login() {
@@ -44,8 +43,11 @@
                     var response = xhr.responseText;
                     document.getElementById('error-message').innerHTML = response;
                     if (response === "Login successful.") {
-                        // Redirect or perform any other action after successful login
-                        window.location.href = "dashboard.php";
+                        // Redirect to user-profile.php on successful login
+                        window.location.href = "user-profile.php";
+                    } else {
+                        // Optionally, you can stay on the login page on login failure
+                        // window.location.href = "login.php";
                     }
                 }
             };
