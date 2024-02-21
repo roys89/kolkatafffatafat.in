@@ -3,8 +3,8 @@ session_start();
 
 // Check if the user is already logged in
 if (isset($_SESSION['user_id'])) {
-  header("Location: user-profile.php");
-  exit();
+    header("Location: user-profile.php");
+    exit();
 }
 
 require_once('database.php');
@@ -16,18 +16,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("SELECT user_id, full_name, hashed_password, user_status FROM user_data WHERE phone = ?");
     $stmt->bind_param("s", $phone);
     $stmt->execute();
-    $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status); // Fix the typo here
+    $stmt->bind_result($user_id, $full_name, $hashed_password, $user_status);
 
     if ($stmt->fetch()) {
         if (password_verify($login_password, $hashed_password)) {
             if ($user_status === 'active') {
+                // Add a session timeout for additional security
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['full_name'] = $full_name;
                 $_SESSION['phone'] = $phone;
+                $_SESSION['login_time'] = time(); // Store the login time
                 header("Location: user-profile.php");
-                exit(); // Add exit() after header to stop further execution
+                exit();
             } else {
-                echo "User is not active.";
+                echo "User account is not active.";
             }
         } else {
             echo "Invalid password.";
@@ -35,6 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Invalid phone number.";
     }
+
+    // Implement a delay to thwart brute-force attacks
+    sleep(2);
 
     $stmt->close();
     $conn->close();
