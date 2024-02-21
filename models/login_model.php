@@ -40,7 +40,6 @@ function login($phone, $loginPassword) {
     // Display alerts and reload the page using JavaScript
     echo '<script>';
     echo 'alert("' . $response['message'] . '");';
-    echo 'window.location.reload();';
     echo '</script>';
     
     // Exit to prevent further execution
