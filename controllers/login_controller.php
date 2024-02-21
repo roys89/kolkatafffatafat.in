@@ -36,7 +36,7 @@ class LoginController
         }
 
         // Set session variables
-        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['id'] = $user['id'];
         $_SESSION['phone'] = $user['phone'];
         $_SESSION['full_name'] = $user['full_name'];
 
