@@ -216,7 +216,7 @@ if (isset($_SESSION['user_id'])) {
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6">
                         <div class="reg-body login">
-                            <form id="loginForm" action="controllers/login_controller.php" method="post">
+                            <form form id="loginForm">
                                 <input type="number" name="phone" id="phone" placeholder="Phone">
                                 <input type="password" name="password" id="password" placeholder="Password">
                                 <div class="bottom-part">
@@ -261,7 +261,7 @@ if (isset($_SESSION['user_id'])) {
 
             // Send login data to the server asynchronously
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'processLogin.php', true);
+            xhr.open('POST', 'models/processLogin.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
