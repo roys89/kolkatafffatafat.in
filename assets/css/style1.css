@@ -3964,7 +3964,7 @@ ul {
 }
 
 .tipster-datails .part-bio .act-buttons {
-  display: flex;
+  display: absolute;
   margin-top: 40px;
 }
 
