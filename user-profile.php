@@ -247,9 +247,10 @@ $conn->close();
                 </ul>
 
                 <div class="act-buttons">
-                  <a href="user-add-money.php" class="follow">Add Balance</a>
-                  <a href="index.php" class="follow">Play</i></a>
+                  <a href="user-add-money.php" class="follow">Add Bal</a>
                   <a href="user-withdraw.php" class="subscribe">Withdrow<i class="far fa-eye"></i></a>
+                  <a href="index.php" class="follow">Play</i></a>
+                
                   
                 </div>
               </div>
