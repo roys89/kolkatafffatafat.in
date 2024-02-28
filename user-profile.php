@@ -3,7 +3,7 @@
 session_start();
 
 // Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
+if ((!isset($_SESSION['user_id'])) && (!isset($_SESSION['phone']))) {
   header("Location: login.php");
   exit();
 }
@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 $user_id = $_SESSION['user_id'];
 $userSql = "SELECT * FROM user_data WHERE user_id = ?";
 $userStmt = $conn->prepare($userSql);
-$userStmt->bind_param("i", $user_id);
+$userStmt->bind_param("s", $user_id);
 $userStmt->execute();
 $userResult = $userStmt->get_result();
 $user = $userResult->fetch_assoc();
